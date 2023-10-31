@@ -4,7 +4,9 @@
 
 <div>
   <%= link_to "Edit this dig", edit_dig_path(@dig) %> |
-  <%= link_to "Back to digs", digs_path %>
+  <%= link_to "Back to digs", digs_path %> | 
+
+  <%= link_to "Add participants", new_dig_participant_path %>
 
   <%= button_to "Destroy this dig", @dig, method: :delete %>
 </div>
