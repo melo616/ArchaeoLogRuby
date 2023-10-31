@@ -1,0 +1,32 @@
+<%= form_with(model: dig_participant) do |form| %>
+  <% if dig_participant.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dig_participant.errors.count, "error") %> prohibited this dig_participant from being saved:</h2>
+
+      <ul>
+        <% dig_participant.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :dig_id, style: "display: block" %>
+    <%= form.text_field :dig_id %>
+  </div>
+
+  <div>
+    <%= form.label :participant_id, style: "display: block" %>
+    <%= form.text_field :participant_id %>
+  </div>
+
+  <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.text_field :role %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @dig_participant %>
+
+<div>
+  <%= link_to "Edit this dig participant", edit_dig_participant_path(@dig_participant) %> |
+  <%= link_to "Back to dig participants", dig_participants_path %>
+
+  <%= button_to "Destroy this dig participant", @dig_participant, method: :delete %>
+</div>

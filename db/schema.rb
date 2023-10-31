@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_31_160741) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_31_163930) do
+  create_table "dig_participants", force: :cascade do |t|
+    t.integer "dig_id", null: false
+    t.integer "participant_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dig_id"], name: "index_dig_participants_on_dig_id"
+    t.index ["participant_id"], name: "index_dig_participants_on_participant_id"
+  end
+
+  create_table "digs", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "location"
+    t.string "name"
+    t.string "description"
+    t.string "season"
+    t.integer "artifact_count", default: 0
+    t.integer "creator_id", null: false
+    t.integer "pi_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_digs_on_creator_id"
+    t.index ["pi_id"], name: "index_digs_on_pi_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -28,4 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_160741) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "dig_participants", "digs"
+  add_foreign_key "dig_participants", "users", column: "participant_id"
+  add_foreign_key "digs", "users", column: "creator_id"
+  add_foreign_key "digs", "users", column: "pi_id"
 end
