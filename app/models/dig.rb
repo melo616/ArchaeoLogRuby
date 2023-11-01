@@ -6,6 +6,7 @@
 #  artifact_count :integer          default(0)
 #  description    :string
 #  end_date       :date
+#  integer        :string
 #  location       :string
 #  name           :string
 #  season         :string
@@ -30,6 +31,7 @@ class Dig < ApplicationRecord
   belongs_to :pi, class_name: "User"
 
   has_many :dig_participants
+  has_many :dig_images
   
   validates :name, presence: true
 

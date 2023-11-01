@@ -20,6 +20,6 @@
 #  participant_id  (participant_id => users.id)
 #
 class DigParticipant < ApplicationRecord
-  belongs_to :dig
+  belongs_to :dig, counter_cache: true
   belongs_to :participant, class_name: "User", foreign_key: "participant_id"
 end

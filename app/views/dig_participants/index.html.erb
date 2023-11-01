@@ -5,10 +5,9 @@
 <div id="dig_participants">
   <% @dig_participants.each do |dig_participant| %>
     <%= render dig_participant %>
-    <p>
-      <%= link_to "Show this dig participant", dig_participant %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New dig participant", new_dig_participant_path %>
+<%= link_to "New dig participant", new_dig_dig_participant_path %> | 
+
+<%= link_to "Back to dig", dig_path(@dig) %>

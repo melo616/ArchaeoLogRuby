@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Dig images</h1>
+
+<div id="dig_images">
+  <% @dig_images.each do |dig_image| %>
+    <%= render dig_image %>
+    <p>
+      <%= link_to "Show this dig image", dig_image %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dig image", new_dig_image_path %>

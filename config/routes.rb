@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dig_images
   resources :digs do
     resources :dig_participants
   end

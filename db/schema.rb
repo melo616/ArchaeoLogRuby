@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_31_163930) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_172200) do
+  create_table "dig_images", force: :cascade do |t|
+    t.string "image_url"
+    t.string "notes"
+    t.integer "dig_id_id", null: false
+    t.integer "user_id_id", null: false
+    t.boolean "cover_photo", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dig_id_id"], name: "index_dig_images_on_dig_id_id"
+    t.index ["user_id_id"], name: "index_dig_images_on_user_id_id"
+  end
+
   create_table "dig_participants", force: :cascade do |t|
     t.integer "dig_id", null: false
     t.integer "participant_id", null: false
@@ -33,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_163930) do
     t.integer "pi_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "integer"
     t.index ["creator_id"], name: "index_digs_on_creator_id"
     t.index ["pi_id"], name: "index_digs_on_pi_id"
   end
@@ -54,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_163930) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "dig_images", "dig_ids"
+  add_foreign_key "dig_images", "user_ids"
   add_foreign_key "dig_participants", "digs"
   add_foreign_key "dig_participants", "users", column: "participant_id"
   add_foreign_key "digs", "users", column: "creator_id"
