@@ -6,7 +6,6 @@
 #  artifact_count :integer          default(0)
 #  description    :string
 #  end_date       :date
-#  integer        :string
 #  location       :string
 #  name           :string
 #  season         :string

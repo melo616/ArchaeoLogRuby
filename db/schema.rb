@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_172200) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_215026) do
   create_table "dig_images", force: :cascade do |t|
     t.string "image_url"
     t.string "notes"
@@ -45,7 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_172200) do
     t.integer "pi_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "integer"
     t.index ["creator_id"], name: "index_digs_on_creator_id"
     t.index ["pi_id"], name: "index_digs_on_pi_id"
   end
