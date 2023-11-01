@@ -21,5 +21,5 @@
 #
 class DigParticipant < ApplicationRecord
   belongs_to :dig
-  belongs_to :participant
+  belongs_to :participant, class_name: "User", foreign_key: "participant_id"
 end

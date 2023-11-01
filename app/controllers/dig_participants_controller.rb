@@ -1,4 +1,5 @@
 class DigParticipantsController < ApplicationController
+  before_action :set_dig
   before_action :set_dig_participant, only: %i[ show edit update destroy ]
 
   # GET /dig_participants or /dig_participants.json
@@ -21,11 +22,11 @@ class DigParticipantsController < ApplicationController
 
   # POST /dig_participants or /dig_participants.json
   def create
-    @dig_participant = DigParticipant.new(dig_participant_params)
+    @dig_participant = @dig.dig_participants.new(dig_participant_params)
 
     respond_to do |format|
       if @dig_participant.save
-        format.html { redirect_to dig_participant_url(@dig_participant), notice: "Dig participant was successfully created." }
+        format.html { redirect_to dig_url(@dig), notice: "Dig participant was successfully created." }
         format.json { render :show, status: :created, location: @dig_participant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class DigParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @dig_participant.update(dig_participant_params)
-        format.html { redirect_to dig_participant_url(@dig_participant), notice: "Dig participant was successfully updated." }
+        format.html { redirect_to dig_dig_participant_url(@dig, @dig_participant), notice: "Dig participant was successfully updated." }
         format.json { render :show, status: :ok, location: @dig_participant }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,5 +67,9 @@ class DigParticipantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def dig_participant_params
       params.require(:dig_participant).permit(:dig_id, :participant_id, :role)
+    end
+
+    def set_dig
+      @dig = Dig.find_by(id: params.fetch(:dig_id))
     end
 end
