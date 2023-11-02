@@ -1,13 +1,8 @@
 <div id="<%= dom_id dig_participant %>">
-  <p>
-    <strong>Dig:</strong>
-    <%= dig_participant.dig_id %>
-  </p>
 
-  <p>
-    <strong>Participant:</strong>
-    <%= dig_participant.participant_id %>
-  </p>
+  <h4>
+    <%= dig_participant.participant.first_name %> <%= dig_participant.participant.last_name %>
+  </h4>
 
   <p>
     <strong>Role:</strong>
