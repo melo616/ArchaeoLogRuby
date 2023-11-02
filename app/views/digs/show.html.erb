@@ -7,8 +7,7 @@
   <%= link_to "Back to digs", digs_path %> | 
 
   <%= link_to "Participants", dig_dig_participants_path(@dig) %> | 
-  <%= link_to "Add participants", new_dig_dig_participant_path(@dig) %> | 
-  <%= link_to "Dig images", dig_images_url %>
+  <%= link_to "Add participants", new_dig_dig_participant_path(@dig) %>
   <%= button_to "Destroy this dig", @dig, method: :delete %>
 </div>
 

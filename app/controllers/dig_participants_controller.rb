@@ -4,7 +4,7 @@ class DigParticipantsController < ApplicationController
 
   # GET /dig_participants or /dig_participants.json
   def index
-    @dig_participants = DigParticipant.all
+    @dig_participants = DigParticipant.where(:dig_id => @dig.id)
   end
 
   # GET /dig_participants/1 or /dig_participants/1.json

@@ -38,7 +38,7 @@ task({ :sample_data => :environment }) do
     )
   end
 
-    20.times do
+    50.times do
       user = User.all.sample
       dig = Dig.all.sample
       DigParticipant.create(
