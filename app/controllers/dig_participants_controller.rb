@@ -39,7 +39,7 @@ class DigParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @dig_participant.update(dig_participant_params)
-        format.html { redirect_to dig_dig_participant_url(@dig, @dig_participant), notice: "Dig participant was successfully updated." }
+        format.html { redirect_to dig_dig_participants_url(@dig, @dig_participant), notice: "Dig participant was successfully updated." }
         format.json { render :show, status: :ok, location: @dig_participant }
       else
         format.html { render :edit, status: :unprocessable_entity }
