@@ -11,7 +11,6 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  username               :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -19,7 +18,6 @@
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -28,6 +26,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :created_digs, class_name: "Dig", foreign_key: "creator_id"
   has_many :directed_digs, class_name: "Dig", foreign_key: "pi_id"
-
-  validates :username, presence: true, uniqueness: true
 end

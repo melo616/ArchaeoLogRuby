@@ -8,19 +8,20 @@
 #  notes       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  dig_id_id   :integer          not null
-#  user_id_id  :integer          not null
+#  dig_id      :integer          not null
+#  user_id     :integer          not null
 #
 # Indexes
 #
-#  index_dig_images_on_dig_id_id   (dig_id_id)
-#  index_dig_images_on_user_id_id  (user_id_id)
+#  index_dig_images_on_dig_id   (dig_id)
+#  index_dig_images_on_user_id  (user_id)
 #
 # Foreign Keys
 #
-#  dig_id_id   (dig_id_id => dig_ids.id)
-#  user_id_id  (user_id_id => user_ids.id)
+#  dig_id   (dig_id => digs.id)
+#  user_id  (user_id => users.id)
 #
 class DigImage < ApplicationRecord
   belongs_to :dig
+  belongs_to :user
 end

@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: rails_template_production
-  username: rails_template
+  # username: rails_rails gentemplate
   password: <%= ENV["RAILS_TEMPLATE_DATABASE_PASSWORD"] %>
