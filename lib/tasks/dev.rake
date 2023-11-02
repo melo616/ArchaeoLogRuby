@@ -3,7 +3,7 @@ task({ :sample_data => :environment }) do
   p "Creating sample data"
 
   if Rails.env.development?
-      # DigPhoto.destroy_all
+      DigImage.destroy_all
       DigParticipant.destroy_all
       Dig.destroy_all
       User.destroy_all
@@ -38,28 +38,30 @@ task({ :sample_data => :environment }) do
     )
   end
 
-    # 20.times do
-    #   user = User.all.sample
-    #   dig = Dig.all.sample
-    #   pp user
-    #   pp dig
-    #   DigParticipant.create(
-    #     role: ["student", "lead"].sample,
-    #     dig_id: dig.id,
-    #     participant_id: user.id,
-    #   )
-    # end
+    20.times do
+      user = User.all.sample
+      dig = Dig.all.sample
+      DigParticipant.create(
+        role: ["student", "lead"].sample,
+        dig_id: dig.id,
+        participant_id: user.id,
+      )
+    end
 
-    # 20.times do 
-    #   user = User.all.sample
-    #   dig = Dig.all.sample
-    #   DigImage.create(
-        
-    #   )
-    # end
+    20.times do 
+      user = User.all.sample
+      dig = Dig.all.sample
+      DigImage.create(
+        notes: Faker::Quote.jack_handey,
+        image_url: "https://robohash.org/#{rand(9999)}",
+        dig_id: dig.id,
+        user_id: user.id,
+      )
+    end
 
-  # end
   p "There are now #{User.count} users."
   p "There are now #{Dig.count} digs."
+  p "There are now #{DigParticipant.count} participants."
+  p "There are now #{DigImage.count} dig images."
 
 end

@@ -11,3 +11,10 @@
   <%= link_to "Dig images", dig_images_url %>
   <%= button_to "Destroy this dig", @dig, method: :delete %>
 </div>
+
+  <p>
+    <strong>Dig Images:</strong>
+    <% @dig.dig_images.each do |image| %>
+      <img src="<%= image.image_url %>">
+    <% end %>
+  </p>
