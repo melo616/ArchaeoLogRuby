@@ -27,7 +27,7 @@
 #
 class Dig < ApplicationRecord
   belongs_to :creator, class_name: "User"
-  belongs_to :pi, class_name: "User"
+  belongs_to :primary_investigator, class_name: "User"
 
   has_many :dig_participants
   has_many :dig_images

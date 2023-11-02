@@ -65,6 +65,6 @@ class DigsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dig_params
-      params.require(:dig).permit(:start_date, :end_date, :location, :name, :description, :season, :artifact_count, :creator_id, :pi_id)
+      params.require(:dig).permit(:start_date, :end_date, :location, :name, :description, :season, :artifact_count, :creator_id, :primary_investigator_id)
     end
 end
