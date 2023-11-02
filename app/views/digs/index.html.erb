@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Digs</h1>
+
+<div id="digs">
+  <% @digs.each do |dig| %>
+    <%= render dig %>
+    <p>
+      <%= link_to "Show this dig", dig %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dig", new_dig_path %>

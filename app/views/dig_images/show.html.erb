@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @dig_image %>
+
+<div>
+  <%= link_to "Edit this dig image", edit_dig_image_path(@dig_image) %> |
+  <%= link_to "Back to dig images", dig_images_path %>
+
+  <%= button_to "Destroy this dig image", @dig_image, method: :delete %>
+</div>
