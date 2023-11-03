@@ -10,7 +10,7 @@
   </p>
 
   <div>
-     <%= link_to 'Edit', edit_dig_dig_participant_path(@dig, dig_participant) %>
+    <%= link_to 'Edit', edit_dig_dig_participant_path(@dig, dig_participant) %>
+    <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete %>
   </div>
-
 </div>
