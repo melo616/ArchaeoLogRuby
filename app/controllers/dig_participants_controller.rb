@@ -22,7 +22,17 @@ class DigParticipantsController < ApplicationController
 
   # POST /dig_participants or /dig_participants.json
   def create
-    @dig_participant = @dig.dig_participants.new(dig_participant_params)
+    dig_participant_params = params.require(:dig_participant).permit(:participant_email, :role)
+    participant_email = dig_participant_params[:participant_email]
+    participant = User.find_by(email: participant_email)
+    if participant
+      @dig_participant = @dig.dig_participants.new(dig_id: @dig.id, participant: participant, role: dig_participant_params[:role])
+    else
+      # format.html { redirect_to :new, status: :unprocessable_entity, notice: "No user associated with this email found."}
+      format.html { redirect_to(:action => "new", :notice => "No user associated with this email found.") }
+
+      # format.json { render json: @dig_participant.errors, status: :unprocessable_entity }
+    end
 
     respond_to do |format|
       if @dig_participant.save
