@@ -25,22 +25,20 @@ class DigParticipantsController < ApplicationController
     dig_participant_params = params.require(:dig_participant).permit(:participant_email, :role)
     participant_email = dig_participant_params[:participant_email]
     participant = User.find_by(email: participant_email)
-    if participant
-      @dig_participant = @dig.dig_participants.new(dig_id: @dig.id, participant: participant, role: dig_participant_params[:role])
-    else
-      # format.html { redirect_to :new, status: :unprocessable_entity, notice: "No user associated with this email found."}
-      format.html { redirect_to(:action => "new", :notice => "No user associated with this email found.") }
-
-      # format.json { render json: @dig_participant.errors, status: :unprocessable_entity }
-    end
-
     respond_to do |format|
-      if @dig_participant.save
-        format.html { redirect_to dig_url(@dig), notice: "Dig participant was successfully created." }
-        format.json { render :show, status: :created, location: @dig_participant }
+      if participant
+        @dig_participant = @dig.dig_participants.new(dig_id: @dig.id, participant: participant, role: dig_participant_params[:role])
+        if @dig_participant.save
+          format.html { redirect_to dig_url(@dig), notice: "Dig participant was successfully created." }
+          format.json { render :show, status: :created, location: @dig_participant }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @dig_participant.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @dig_participant.errors, status: :unprocessable_entity }
+        format.html { redirect_to dig_url(@dig), status: :unprocessable_entity, notice: "User not found."}
+        format.json { render json: { error: "User not found" }, status: :unprocessable_entity }
+
       end
     end
   end
