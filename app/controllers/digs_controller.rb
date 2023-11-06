@@ -27,6 +27,7 @@ class DigsController < ApplicationController
       if @dig.save
         format.html { redirect_to dig_url(@dig), notice: "Dig was successfully created." }
         format.json { render :show, status: :created, location: @dig }
+        DigParticipant.create(dig_id: @dig.id, participant: current_user, role: "admin")
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @dig.errors, status: :unprocessable_entity }
