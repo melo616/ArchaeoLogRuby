@@ -22,6 +22,7 @@
 #  user_id  (user_id => users.id)
 #
 class DigImage < ApplicationRecord
+  mount_uploader :image_url, ImageUrlUploader
   belongs_to :dig
   belongs_to :user
 end
