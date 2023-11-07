@@ -22,6 +22,8 @@
     <p>
     <strong>Artifacts:</strong>
     <% @dig.artifacts.each do |artifact| %>
-      <%= artifact.description %>
+      <p>
+        <%= link_to "#{artifact.description}", dig_artifact_path(@dig) %>
+      </p>
     <% end %>
   </p>
