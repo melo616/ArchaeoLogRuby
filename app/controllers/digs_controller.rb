@@ -21,15 +21,25 @@ class DigsController < ApplicationController
 
   # POST /digs or /digs.json
   def create
-    @dig = Dig.new(dig_params)
+    primary_investigator = User.find_by(email: dig_params[:primary_investigator_email])
 
     respond_to do |format|
-      if @dig.save
-        format.html { redirect_to dig_url(@dig), notice: "Dig was successfully created." }
-        format.json { render :show, status: :created, location: @dig }
+      if primary_investigator
+        new_params = dig_params.except(:primary_investigator_email)
+        new_params[:primary_investigator_id] = primary_investigator.id
+        @dig = Dig.new(new_params)
+        if @dig.save
+          format.html { redirect_to dig_url(@dig), notice: "Dig was successfully created." }
+          format.json { render :show, status: :created, location: @dig }
+          DigParticipant.create(dig_id: @dig.id, participant: current_user, role: "admin")
+          DigParticipant.create(dig_id: @dig.id, participant: primary_investigator, role: "primary investigator" )
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @dig.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @dig.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_dig_url, status: :unprocessable_entity, notice: "User not found."}
+        format.json { render json: { error: "User not found" }, status: :unprocessable_entity }
       end
     end
   end
@@ -65,6 +75,6 @@ class DigsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dig_params
-      params.require(:dig).permit(:start_date, :end_date, :location, :name, :description, :season, :artifact_count, :creator_id, :primary_investigator_id)
+      params.require(:dig).permit(:start_date, :end_date, :location, :name, :description, :season, :artifact_count, :creator_id, :primary_investigator_email)
     end
 end
