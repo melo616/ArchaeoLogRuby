@@ -1,4 +1,5 @@
 class ArtifactsController < ApplicationController
+  before_action :set_dig
   before_action :set_artifact, only: %i[ show edit update destroy ]
 
   # GET /artifacts or /artifacts.json
@@ -25,7 +26,7 @@ class ArtifactsController < ApplicationController
 
     respond_to do |format|
       if @artifact.save
-        format.html { redirect_to artifact_url(@artifact), notice: "Artifact was successfully created." }
+        format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Artifact was successfully created." }
         format.json { render :show, status: :created, location: @artifact }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,5 +67,10 @@ class ArtifactsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artifact_params
       params.require(:artifact).permit(:lat, :lng, :description, :material, :mohs_hardness, :weight, :dig_id, :site, :poster_id)
+    end
+
+    def set_dig
+      @dig = Dig.find_by(id: params.fetch(:dig_id))
+      pp @dig
     end
 end

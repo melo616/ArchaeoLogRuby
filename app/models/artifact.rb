@@ -3,6 +3,7 @@
 # Table name: artifacts
 #
 #  id            :integer          not null, primary key
+#  category      :string
 #  description   :text
 #  lat           :float
 #  lng           :float
@@ -16,7 +17,6 @@
 #  poster_id     :integer
 #
 class Artifact < ApplicationRecord
-  belongs_to :dig
-  belongs_to :user
-  
+  # belongs_to :dig, class_name: "Dig", foreign_key: "dig_id"
+  belongs_to :poster, class_name: "User", foreign_key: "poster_id"
 end

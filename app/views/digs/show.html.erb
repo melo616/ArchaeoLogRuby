@@ -7,7 +7,8 @@
   <%= link_to "Back to digs", digs_path %> | 
 
   <%= link_to "Participants", dig_dig_participants_path(@dig) %> | 
-  <%= link_to "Add participants", new_dig_dig_participant_path(@dig) %>
+  <%= link_to "Add participants", new_dig_dig_participant_path(@dig) %> | 
+  <%= link_to "Add artifacts", new_dig_artifact_path(@dig) %>
   <%= button_to "Destroy this dig", @dig, method: :delete %>
 </div>
 
@@ -15,5 +16,12 @@
     <strong>Dig Images:</strong>
     <% @dig.dig_images.each do |image| %>
       <img src="<%= image.image_url %>">
+    <% end %>
+  </p>
+
+    <p>
+    <strong>Artifacts:</strong>
+    <% @dig.artifacts.each do |artifact| %>
+      <%= artifact.description %>
     <% end %>
   </p>

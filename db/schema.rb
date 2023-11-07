@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_07_170849) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_07_174307) do
   create_table "artifacts", force: :cascade do |t|
     t.float "lat"
     t.float "lng"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_170849) do
     t.integer "poster_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "dig_images", force: :cascade do |t|
