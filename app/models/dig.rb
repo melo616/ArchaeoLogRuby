@@ -31,6 +31,7 @@ class Dig < ApplicationRecord
 
   has_many :dig_participants
   has_many :dig_images
+  has_many :artifacts
   
   validates :name, presence: true
 

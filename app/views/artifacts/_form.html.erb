@@ -1,0 +1,62 @@
+<%= form_with(model: artifact) do |form| %>
+  <% if artifact.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
+
+      <ul>
+        <% artifact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :lat, style: "display: block" %>
+    <%= form.text_field :lat %>
+  </div>
+
+  <div>
+    <%= form.label :lng, style: "display: block" %>
+    <%= form.text_field :lng %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :material, style: "display: block" %>
+    <%= form.text_field :material %>
+  </div>
+
+  <div>
+    <%= form.label :mohs_hardness, style: "display: block" %>
+    <%= form.text_field :mohs_hardness %>
+  </div>
+
+  <div>
+    <%= form.label :weight, style: "display: block" %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div>
+    <%= form.label :dig_id, style: "display: block" %>
+    <%= form.number_field :dig_id %>
+  </div>
+
+  <div>
+    <%= form.label :site, style: "display: block" %>
+    <%= form.text_field :site %>
+  </div>
+
+  <div>
+    <%= form.label :poster_id, style: "display: block" %>
+    <%= form.number_field :poster_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

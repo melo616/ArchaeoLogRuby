@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Artifacts</h1>
+
+<div id="artifacts">
+  <% @artifacts.each do |artifact| %>
+    <%= render artifact %>
+    <p>
+      <%= link_to "Show this artifact", artifact %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New artifact", new_artifact_path %>
