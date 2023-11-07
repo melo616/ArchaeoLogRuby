@@ -6,6 +6,10 @@ ruby "3.2.1"
 #user devise
 gem "devise"
 
+#cloudinary for image uploads
+gem "carrierwave"
+gem "cloudinary"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
