@@ -30,6 +30,7 @@ task({ :sample_data => :environment }) do
     address = Faker::Address.full_address
     date = Date.today
     test_id = User.all.sample.id
+    test_id_2 = User.all.sample.id
     season = ["Spring", "Summer", "Fall", "Winter"].sample + " 2023"
     Dig.create(
       description: description,
@@ -38,16 +39,16 @@ task({ :sample_data => :environment }) do
       location: address,
       name: "test",
       season: season,
-      creator_id: test_id,
+      creator_id: test_id_2,
       primary_investigator_id: test_id,
     )
   end
   pp "There are now #{Dig.count} digs."
 
-  digs = Dig.all
+  # digs = Dig.all
   
   pp "Generating dig participants"
-  digs.each do |dig|
+  Dig.all.each do |dig|
     num = rand(1..20)
     num.times do
       user = User.all.sample
@@ -62,7 +63,7 @@ task({ :sample_data => :environment }) do
   pp "There are now #{DigParticipant.count} participants."
 
   pp "Generating dig images"
-  digs.each do |dig|
+  Dig.all.each do |dig|
     num = rand(1..6)
     num.times do 
       user = dig.dig_participants.sample
@@ -77,7 +78,7 @@ task({ :sample_data => :environment }) do
   pp "There are now #{DigImage.count} dig images."
 
   pp "Generating artifacts (suspenseful music plays...)"
-  digs.each do |dig|
+  Dig.all.each do |dig|
     10.times do
       material = ["clay", "metal", "wood", "shell"].sample
       category = ["jewelry", "weapon", "pottery", "tool"].sample
