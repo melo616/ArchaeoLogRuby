@@ -19,11 +19,12 @@
     <% end %>
   </p>
 
-    <p>
+  <p>
     <strong>Artifacts:</strong>
     <% @dig.artifacts.each do |artifact| %>
       <p>
-        <%= link_to "#{artifact.description}", dig_artifact_path(@dig) %>
+        <%= link_to "#{artifact.description}", dig_artifact_path(@dig ,artifact) %>
       </p>
     <% end %>
   </p>
+
