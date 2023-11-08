@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_02_171000) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_07_174307) do
+  create_table "artifacts", force: :cascade do |t|
+    t.float "lat"
+    t.float "lng"
+    t.text "description"
+    t.string "material"
+    t.decimal "mohs_hardness"
+    t.float "weight"
+    t.integer "dig_id"
+    t.string "site"
+    t.integer "poster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category"
+  end
+
   create_table "dig_images", force: :cascade do |t|
     t.string "image_url"
     t.string "notes"

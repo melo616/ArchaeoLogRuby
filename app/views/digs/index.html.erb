@@ -4,7 +4,8 @@
 
 <div id="digs">
   <% @digs.each do |dig| %>
-    <%= render dig %>
+    <h2><%= dig.name %></h2>
+    <%= dig.location %>
     <p>
       <%= link_to "Show this dig", dig %>
     </p>
