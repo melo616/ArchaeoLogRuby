@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_07_174307) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_08_212855) do
   create_table "artifacts", force: :cascade do |t|
     t.float "lat"
     t.float "lng"
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_174307) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["dig_id", "participant_id"], name: "index_dig_participants_on_dig_id_and_participant_id", unique: true
     t.index ["dig_id"], name: "index_dig_participants_on_dig_id"
     t.index ["participant_id"], name: "index_dig_participants_on_participant_id"
   end
