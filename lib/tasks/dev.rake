@@ -30,13 +30,14 @@ task({ :sample_data => :environment }) do
     address = Faker::Address.full_address
     date = Date.today
     test_id = User.all.sample.id
+    season = ["Spring", "Summer", "Fall", "Winter"].sample + " 2023"
     Dig.create(
       description: description,
       start_date: date,
       end_date: date,
       location: address,
       name: "test",
-      season: "test",
+      season: season,
       creator_id: test_id,
       primary_investigator_id: test_id,
     )

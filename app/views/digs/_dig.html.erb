@@ -1,27 +1,12 @@
 <div id="<%= dom_id dig %>">
-  <p>
-    <strong>Start date:</strong>
-    <%= dig.start_date %>
-  </p>
 
-  <p>
-    <strong>End date:</strong>
-    <%= dig.end_date %>
-  </p>
+  <h1>
+    <%= dig.name %>
+  </h1>
 
   <p>
     <strong>Location:</strong>
     <%= dig.location %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= dig.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= dig.description %>
   </p>
 
   <p>
@@ -30,13 +15,25 @@
   </p>
 
   <p>
+    <strong>Duration:</strong>
+    <%= dig.start_date.strftime('%b %d, %Y') %> - <%= dig.end_date.strftime('%b %d, %Y') %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= dig.description %>
+  </p>
+
+
+
+  <p>
     <strong>Artifact count:</strong>
     <%= dig.artifact_count %>
   </p>
 
   <p>
     <strong>Creator:</strong>
-    <%= dig.creator_id %>
+    <%= dig.creator.first_name + " " + dig.creator.last_name %>
   </p>
 
   <p>
