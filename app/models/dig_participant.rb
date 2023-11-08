@@ -11,8 +11,9 @@
 #
 # Indexes
 #
-#  index_dig_participants_on_dig_id          (dig_id)
-#  index_dig_participants_on_participant_id  (participant_id)
+#  index_dig_participants_on_dig_id                     (dig_id)
+#  index_dig_participants_on_dig_id_and_participant_id  (dig_id,participant_id) UNIQUE
+#  index_dig_participants_on_participant_id             (participant_id)
 #
 # Foreign Keys
 #
@@ -20,6 +21,8 @@
 #  participant_id  (participant_id => users.id)
 #
 class DigParticipant < ApplicationRecord
+  validates :participant_id, uniqueness: { scope: :dig_id, message: "User has already participated in this dig" }
+
   belongs_to :dig
   belongs_to :participant, class_name: "User", foreign_key: "participant_id"
 end

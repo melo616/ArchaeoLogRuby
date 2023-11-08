@@ -27,4 +27,6 @@ class User < ApplicationRecord
   has_many :created_digs, class_name: "Dig", foreign_key: "creator_id"
   has_many :directed_digs, class_name: "Dig", foreign_key: "primary_investigator_id"
   has_many :created_artifacts, class_name: "Artifact", foreign_key: "poster_id"
+  has_many :dig_participants, foreign_key: "participant_id"
+  has_many :digs, through: :dig_participants
 end

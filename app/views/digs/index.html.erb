@@ -1,15 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Digs</h1>
+<h1>Welcome, <%= current_user.first_name %>!</h1>
+
+<%= link_to "Create a new dig", new_dig_path %>
+
+<h3>Digs You Participate In</h3>
 
 <div id="digs">
   <% @digs.each do |dig| %>
-    <h2><%= dig.name %></h2>
+    <h4><%= dig.name %></h4>
     <%= dig.location %>
     <p>
       <%= link_to "Show this dig", dig %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New dig", new_dig_path %>

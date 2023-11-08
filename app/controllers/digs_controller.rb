@@ -3,7 +3,7 @@ class DigsController < ApplicationController
 
   # GET /digs or /digs.json
   def index
-    @digs = Dig.all
+    @digs = current_user.digs
   end
 
   # GET /digs/1 or /digs/1.json

@@ -20,11 +20,11 @@
   </p>
 
   <p>
-    <strong>Artifacts:</strong>
+    <strong>Latest Artifacts</strong>
+    <p>Show all (<%= @dig.artifact_count %>)</p>
     <% @dig.artifacts.each do |artifact| %>
       <p>
         <%= link_to "#{artifact.description}", dig_artifact_path(@dig ,artifact) %>
       </p>
     <% end %>
   </p>
-

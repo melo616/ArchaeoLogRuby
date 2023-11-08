@@ -2,12 +2,12 @@
 
 <h1>Dig participants</h1>
 
+<%= link_to "Back to dig", dig_path(@dig) %> | 
+
+<%= link_to "New dig participant", new_dig_dig_participant_path %>
+
 <div id="dig_participants">
   <% @dig_participants.each do |dig_participant| %>
     <%= render dig_participant %>
   <% end %>
 </div>
-
-<%= link_to "New dig participant", new_dig_dig_participant_path %> | 
-
-<%= link_to "Back to dig", dig_path(@dig) %>
