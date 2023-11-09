@@ -2,17 +2,17 @@
 #
 # Table name: digs
 #
-#  id             :integer          not null, primary key
-#  artifact_count :integer          default(0)
-#  description    :string
-#  end_date       :date
-#  location       :string
-#  name           :string
-#  season         :string
-#  start_date     :date
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  creator_id     :integer          not null
+#  id              :integer          not null, primary key
+#  artifacts_count :integer          default(0)
+#  description     :string
+#  end_date        :date
+#  location        :string
+#  name            :string
+#  season          :string
+#  start_date      :date
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  creator_id      :integer          not null
 #
 # Indexes
 #

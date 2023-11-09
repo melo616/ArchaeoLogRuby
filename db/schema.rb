@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_155546) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_161457) do
   create_table "artifacts", force: :cascade do |t|
     t.float "lat"
     t.float "lng"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_155546) do
     t.string "name"
     t.string "description"
     t.string "season"
-    t.integer "artifact_count", default: 0
+    t.integer "artifacts_count", default: 0
     t.integer "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -78,7 +78,7 @@ task({ :sample_data => :environment }) do
 
   pp "Generating artifacts (suspenseful music plays...)"
   Dig.all.each do |dig|
-    10.times do
+    rand(5..20).times do
       material = ["clay", "metal", "wood", "shell"].sample
       category = ["jewelry", "weapon", "pottery", "tool"].sample
       hardness = rand(1..6)

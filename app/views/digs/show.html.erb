@@ -21,7 +21,7 @@
 
   <p>
     <strong>Latest Artifacts</strong>
-    <p>Show all (<%= @dig.artifact_count %>)</p>
+    <p>Show all (<%= @dig.artifacts_count %>)</p>
     <% @dig.artifacts.each do |artifact| %>
       <p>
         <%= link_to "#{artifact.description}", dig_artifact_path(@dig ,artifact) %>
