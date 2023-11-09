@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_08_212855) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_155546) do
   create_table "artifacts", force: :cascade do |t|
     t.float "lat"
     t.float "lng"
@@ -58,11 +58,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_212855) do
     t.string "season"
     t.integer "artifact_count", default: 0
     t.integer "creator_id", null: false
-    t.integer "primary_investigator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_digs_on_creator_id"
-    t.index ["primary_investigator_id"], name: "index_digs_on_primary_investigator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,5 +83,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_212855) do
   add_foreign_key "dig_participants", "digs"
   add_foreign_key "dig_participants", "users", column: "participant_id"
   add_foreign_key "digs", "users", column: "creator_id"
-  add_foreign_key "digs", "users", column: "primary_investigator_id"
 end

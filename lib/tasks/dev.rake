@@ -40,7 +40,6 @@ task({ :sample_data => :environment }) do
       name: "test",
       season: season,
       creator_id: test_id_2,
-      primary_investigator_id: test_id,
     )
   end
   pp "There are now #{Dig.count} digs."
