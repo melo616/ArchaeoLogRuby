@@ -17,6 +17,6 @@
 #  poster_id     :integer
 #
 class Artifact < ApplicationRecord
-  # belongs_to :dig, class_name: "Dig", foreign_key: "dig_id"
+  belongs_to :dig, counter_cache: true
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
 end

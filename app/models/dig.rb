@@ -2,32 +2,28 @@
 #
 # Table name: digs
 #
-#  id                      :integer          not null, primary key
-#  artifact_count          :integer          default(0)
-#  description             :string
-#  end_date                :date
-#  location                :string
-#  name                    :string
-#  season                  :string
-#  start_date              :date
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  creator_id              :integer          not null
-#  primary_investigator_id :integer          not null
+#  id              :integer          not null, primary key
+#  artifacts_count :integer          default(0)
+#  description     :string
+#  end_date        :date
+#  location        :string
+#  name            :string
+#  season          :string
+#  start_date      :date
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  creator_id      :integer          not null
 #
 # Indexes
 #
-#  index_digs_on_creator_id               (creator_id)
-#  index_digs_on_primary_investigator_id  (primary_investigator_id)
+#  index_digs_on_creator_id  (creator_id)
 #
 # Foreign Keys
 #
-#  creator_id               (creator_id => users.id)
-#  primary_investigator_id  (primary_investigator_id => users.id)
+#  creator_id  (creator_id => users.id)
 #
 class Dig < ApplicationRecord
   belongs_to :creator, class_name: "User"
-  belongs_to :primary_investigator, class_name: "User"
 
   has_many :dig_participants
   has_many :dig_images
@@ -35,5 +31,13 @@ class Dig < ApplicationRecord
   has_many :users, through: :dig_participants
   
   validates :name, presence: true
+
+  before_create :set_season
+
+  private
+
+  def set_season
+    # TODO: logic based on date/location to set season
+  end
 
 end

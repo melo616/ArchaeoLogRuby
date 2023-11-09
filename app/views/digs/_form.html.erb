@@ -34,7 +34,7 @@
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div>
@@ -43,17 +43,7 @@
   </div>
 
   <div>
-    <%= form.label :artifact_count, style: "display: block" %>
-    <%= form.number_field :artifact_count %>
-  </div>
-
-  <div>
     <%= form.hidden_field :creator_id, value: current_user.id %>
-  </div>
-
-  <div>
-    <%= form.label :primary_investigator_email, style: "display: block" %>
-    <%= form.text_field :primary_investigator_email %>
   </div>
 
   <div>
