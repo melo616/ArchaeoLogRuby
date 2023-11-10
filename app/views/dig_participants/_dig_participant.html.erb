@@ -3,7 +3,7 @@
   <h4>
     <%= dig_participant.participant.first_name %> <%= dig_participant.participant.last_name %>
   </h4>
-
+  <%= link_to "View profile", profile_path(dig_participant.participant_id) %>
   <p>
     <strong>Role:</strong>
     <%= dig_participant.role %>
