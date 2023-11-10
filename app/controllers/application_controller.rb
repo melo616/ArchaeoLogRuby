@@ -4,7 +4,16 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_authorized, unless: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :bio, :email, :password)}
+
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :bio, :email, :password, :current_password)}
+  end
 
   private
 
