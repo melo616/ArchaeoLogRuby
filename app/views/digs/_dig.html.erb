@@ -26,7 +26,7 @@
 
   <p>
     <strong>Created by:</strong>
-    <%= dig.creator.first_name + " " + dig.creator.last_name %>
+    <%= link_to "#{dig.creator.first_name} #{dig.creator.last_name}", profile_path(dig.creator) %>
   </p>
 
   <p>

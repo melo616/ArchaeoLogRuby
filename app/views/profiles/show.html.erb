@@ -1,1 +1,6 @@
-<h1>Hi</h1>
+<%= link_to 'Back', request.referer || root_path, class: 'btn btn-secondary' %>
+
+<h1>
+  <%= @profile.first_name %> <%= @profile.last_name %>
+</h1>
+
