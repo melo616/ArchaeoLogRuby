@@ -14,11 +14,13 @@ task({ :sample_data => :environment }) do
   12.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
+    bio = Faker::Lorem.sentence(word_count: 15)
     User.create(
       email: "#{first_name}@example.com",
       password: "password",
       first_name: first_name,
       last_name: last_name,
+      bio: bio,
       private: true,
     )
   end

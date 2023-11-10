@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_161457) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_10_205849) do
   create_table "artifacts", force: :cascade do |t|
     t.float "lat"
     t.float "lng"
@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_161457) do
     t.boolean "private"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
