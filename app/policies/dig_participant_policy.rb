@@ -20,6 +20,14 @@ class DigParticipantPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    lead?
+  end
+
+  def update?
+    lead?
+  end
+
   private
 
   def lead?
