@@ -11,14 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :participant_email, style: "display: block" %>
-    <%= form.text_field :participant_email %>
-  </div>
-
+  <% if @dig_participant.participant_id == nil %>
+    <div>
+      <%= form.label :participant_email, style: "display: block" %>
+      <%= form.text_field :participant_email %>
+    </div>
+  <%# else%>
+<!--    <div>-->
+      <%#= form.hidden_field :participant_email, value: @dig_participant %>
+<!--    </div>-->
+  <%end%>
   <div>
     <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
+    <%= form.collection_select :role, DigParticipant.roles.keys, :to_s, :humanize, {}, class: "form-select" %>
   </div>
 
   <div>

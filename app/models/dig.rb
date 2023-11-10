@@ -26,9 +26,10 @@ class Dig < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
   has_many :dig_participants
+  has_many :leads, -> { leads }, class_name: "DigParticipant"
   has_many :dig_images
   has_many :artifacts
-  has_many :users, through: :dig_participants
+  has_many :users, through: :dig_participants, source: :participant
   
   validates :name, presence: true
 

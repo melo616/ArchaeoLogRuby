@@ -1,7 +1,8 @@
 class DigParticipantsController < ApplicationController
   before_action :set_dig
   before_action :set_dig_participant, only: %i[ show edit update destroy ]
-
+  before_action(except: [:new]) { authorize(@dig_participant || DigParticipant) }
+  
   # GET /dig_participants or /dig_participants.json
   def index
     @dig_participants = DigParticipant.where(:dig_id => @dig.id)
@@ -13,7 +14,7 @@ class DigParticipantsController < ApplicationController
 
   # GET /dig_participants/new
   def new
-    @dig_participant = DigParticipant.new
+    @dig_participant = authorize @dig.dig_participants.new
   end
 
   # GET /dig_participants/1/edit

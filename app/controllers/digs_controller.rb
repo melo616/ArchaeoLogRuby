@@ -1,5 +1,6 @@
 class DigsController < ApplicationController
   before_action :set_dig, only: %i[ show edit update destroy ]
+  before_action { authorize(@dig || Dig) }
 
   # GET /digs or /digs.json
   def index
@@ -31,7 +32,7 @@ class DigsController < ApplicationController
       if @dig.save
         format.html { redirect_to dig_url(@dig), notice: "Dig was successfully created." }
         format.json { render :show, status: :created, location: @dig }
-        DigParticipant.create(dig_id: @dig.id, participant: current_user, role: "admin")
+        DigParticipant.create(dig_id: @dig.id, participant: current_user, role: "lead")
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @dig.errors, status: :unprocessable_entity }
