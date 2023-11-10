@@ -1,0 +1,14 @@
+<%= link_to 'back', request.referer || root_path %>
+
+<% if current_user == @profile %>
+  <%= link_to "Edit my profile", edit_user_registration_path %>
+<% end %>
+
+<h1>
+  <%= @profile.first_name %> <%= @profile.last_name %>
+</h1>
+
+<div>
+  <h3>Bio</h3>
+  <p><%= @profile.bio %></p>
+</div>

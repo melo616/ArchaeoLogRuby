@@ -15,7 +15,11 @@
                 autofocus: true %>
     <%= f.input :last_name,
                 required: true,
-                autofocus: true%>       
+                autofocus: true%>   
+    <%= f.input :bio,
+                required: false,
+                autofocus: false,
+                input_html: { autocomplete: "bio" }%>      
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
