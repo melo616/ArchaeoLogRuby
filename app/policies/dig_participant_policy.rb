@@ -28,6 +28,10 @@ class DigParticipantPolicy < ApplicationPolicy
     lead?
   end
 
+  def destroy?
+    lead?
+  end
+
   private
 
   def lead?
