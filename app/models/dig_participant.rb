@@ -25,4 +25,12 @@ class DigParticipant < ApplicationRecord
 
   belongs_to :dig
   belongs_to :participant, class_name: "User", foreign_key: "participant_id"
+
+  scope :leads, -> { where(role: :lead) }
+
+  enum role: {
+    lead: 'lead',
+    analyst: 'analyst',
+    field_worker: 'field worker'
+  }, _default: :field_worker
 end

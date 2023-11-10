@@ -1,5 +1,6 @@
 class DigsController < ApplicationController
   before_action :set_dig, only: %i[ show edit update destroy ]
+  before_action { authorize(@dig || Dig) }
 
   # GET /digs or /digs.json
   def index

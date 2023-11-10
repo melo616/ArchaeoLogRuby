@@ -37,7 +37,7 @@ task({ :sample_data => :environment }) do
       start_date: date,
       end_date: date,
       location: address,
-      name: "test",
+      name: "Test",
       season: season,
       creator_id: test_id_2,
     )
@@ -52,8 +52,13 @@ task({ :sample_data => :environment }) do
     num.times do
       user = User.all.sample
       dig = dig
+      sample_roles = {
+        "lead" => :lead,
+        "analyst" => :analyst,
+        "field worker" => :field_worker
+      }
       DigParticipant.create(
-        role: ["student", "lead"].sample,
+        role: sample_roles.keys.sample,
         dig_id: dig.id,
         participant_id: user.id,
       )

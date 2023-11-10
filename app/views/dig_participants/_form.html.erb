@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
+    <%= form.collection_select :role, DigParticipant.roles.keys, :to_s, :humanize, {}, class: "form-select" %>
   </div>
 
   <div>
