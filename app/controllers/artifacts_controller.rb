@@ -1,10 +1,11 @@
 class ArtifactsController < ApplicationController
   before_action :set_dig
   before_action :set_artifact, only: %i[ show edit update destroy ]
+  before_action(except: [:new]) { authorize(@artifact || Artifact) }
 
   # GET /artifacts or /artifacts.json
   def index
-    @artifacts = Artifact.all
+    @artifacts = Artifact.where(:dig_id => @dig.id)
   end
 
   # GET /artifacts/1 or /artifacts/1.json
@@ -14,6 +15,7 @@ class ArtifactsController < ApplicationController
   # GET /artifacts/new
   def new
     @artifact = Artifact.new
+    authorize @artifact
   end
 
   # GET /artifacts/1/edit
@@ -23,7 +25,6 @@ class ArtifactsController < ApplicationController
   # POST /artifacts or /artifacts.json
   def create
     @artifact = Artifact.new(artifact_params)
-
     respond_to do |format|
       if @artifact.save
         format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Artifact was successfully created." }

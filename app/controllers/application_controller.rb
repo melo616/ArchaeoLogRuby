@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 
   protected
-
+  #accepts additional user parameters
   def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :bio, :email, :password)}
 

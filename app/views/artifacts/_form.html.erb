@@ -51,6 +51,10 @@
     <%= form.hidden_field :poster_id, value: current_user.id %>
   </div>
 
+    <div>
+    <%= form.hidden_field :dig_id, value: @dig.id %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
