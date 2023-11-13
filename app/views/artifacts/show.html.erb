@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @artifact %>
 
 <div>
-  <%= link_to "Edit this artifact", edit_dig_artifact_path(@artifact) %> |
-  <%= link_to "Back to artifacts", dig_artifacts_path %>
+  <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact) %> |
+  <%= link_to "Back", request.referer || root_path %>
 
   <%#= button_to "Destroy this artifact", @artifact, method: :delete %>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: [@dig, artifact], url: dig_artifacts_path) do |form| %>
+<%= form_with(model: [@dig, artifact]) do |form| %>
   <% if artifact.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(artifact.errors.count, "error") %> prohibited this artifact from being saved:</h2>
@@ -48,7 +48,7 @@
   </div>
 
   <div>
-    <%= form.hidden_field :poster_id, value: current_user.id %>
+    <%= form.hidden_field :dig_id, value: @dig.id %>
   </div>
 
   <div>
