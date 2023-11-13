@@ -7,20 +7,19 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def index?
-    # TODO: need to know the dig
-    true
+    participant?
   end
 
   def show?
-    true
+    participant?
   end
 
   def new?
-    true
+    create?
   end
 
   def create?
-    true
+    participant?
   end
 
   def edit?
@@ -37,6 +36,10 @@ class ArtifactPolicy < ApplicationPolicy
 
 
   private
+
+  def participant?
+    @artifact.dig.dig_participants.include?(user)
+  end
 
   def lead?
     @artifact.dig.leads.include?(user)
