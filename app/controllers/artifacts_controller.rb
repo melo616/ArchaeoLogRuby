@@ -20,7 +20,6 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/1/edit
   def edit
-
   end
 
   # POST /artifacts or /artifacts.json

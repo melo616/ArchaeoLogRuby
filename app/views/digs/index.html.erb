@@ -6,10 +6,14 @@
 
 <div id="digs">
   <% @digs.each do |dig| %>
-    <h4><%= dig.name %></h4>
-    <%= dig.location %>
-    <p>
-      <%= link_to "Show this dig", dig %>
-    </p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h4 class="card-title"><%= dig.name %></h4>
+      <p class="card-text"><%= dig.location %></p>
+      <p>
+        <%= link_to "Show this dig", dig %>
+      </p>
+    </div>
   <% end %>
+  </div>
 </div>

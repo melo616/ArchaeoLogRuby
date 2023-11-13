@@ -38,11 +38,11 @@ class ArtifactPolicy < ApplicationPolicy
   private
 
   def participant?
-    @artifact.dig.dig_participants.include?(user)
+    @artifact.dig.dig_participants.any? { |participant| participant.participant_id == user.id }
   end
 
   def lead?
-    @artifact.dig.leads.include?(user)
+    @artifact.dig.leads.any? { |lead| lead.participant_id == user.id }
   end
 
   def poster?
