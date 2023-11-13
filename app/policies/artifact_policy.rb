@@ -7,7 +7,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def index?
-    participant?
+    true
   end
 
   def show?
@@ -19,7 +19,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def create?
-    participant?
+    true
   end
 
   def edit?
