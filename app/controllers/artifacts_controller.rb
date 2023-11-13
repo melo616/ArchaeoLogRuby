@@ -20,6 +20,7 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/1/edit
   def edit
+
   end
 
   # POST /artifacts or /artifacts.json
@@ -39,8 +40,11 @@ class ArtifactsController < ApplicationController
   # PATCH/PUT /artifacts/1 or /artifacts/1.json
   def update
     respond_to do |format|
+      
       if @artifact.update(artifact_params)
-        format.html { redirect_to artifact_url(@artifact), notice: "Artifact was successfully updated." }
+        
+        debugger
+        format.html { redirect_to dig_artifact_url(@artifact), notice: "Artifact was successfully updated." }
         format.json { render :show, status: :ok, location: @artifact }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,6 +67,7 @@ class ArtifactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_artifact
       @artifact = Artifact.find(params[:id])
+      pp @artifact
     end
 
     # Only allow a list of trusted parameters through.
@@ -71,7 +76,7 @@ class ArtifactsController < ApplicationController
     end
 
     def set_dig
-      @dig = Dig.find_by(id: params.fetch(:dig_id))
+      @dig = Dig.find(params.fetch(:dig_id))
       pp @dig
     end
 end

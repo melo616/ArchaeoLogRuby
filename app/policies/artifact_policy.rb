@@ -40,10 +40,12 @@ class ArtifactPolicy < ApplicationPolicy
 
   def lead?
     @artifact.dig.leads.any? { |lead| lead[:participant_id] == @user.id }
+    pp "Checked lead"
   end
 
   def poster?
     @user == @artifact.poster
+    pp "Checked poster"
   end
 
 end
