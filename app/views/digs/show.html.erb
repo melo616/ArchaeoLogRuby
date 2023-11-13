@@ -20,8 +20,8 @@
 
   <p>
     <strong>Latest Artifacts</strong>
-    <%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %>
-    <% @dig.artifacts.each do |artifact| %>
+    <p><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></p>
+    <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
       <p>
         <%= link_to "#{artifact.description}", dig_artifact_path(@dig, artifact) %>
       </p>
