@@ -14,7 +14,7 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/new
   def new
-    @artifact = Artifact.new
+    @artifact = current_user.created_artifacts.new
     authorize @artifact
   end
 
@@ -25,7 +25,7 @@ class ArtifactsController < ApplicationController
 
   # POST /artifacts or /artifacts.json
   def create
-    @artifact = Artifact.new(artifact_params)
+    @artifact = current_user.created_artifacts.new(artifact_params)
     respond_to do |format|
       if @artifact.save
         format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Artifact was successfully created." }
@@ -40,9 +40,8 @@ class ArtifactsController < ApplicationController
   # PATCH/PUT /artifacts/1 or /artifacts/1.json
   def update
     respond_to do |format|
-      
       if @artifact.update(artifact_params)
-        format.html { redirect_to dig_artifact_url(@artifact), notice: "Artifact was successfully updated." }
+        format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Artifact was successfully updated." }
         format.json { render :show, status: :ok, location: @artifact }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,19 +61,17 @@ class ArtifactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artifact
-      @artifact = Artifact.find(params[:id])
-      pp @artifact
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artifact
+    @artifact = Artifact.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def artifact_params
-      params.require(:artifact).permit(:lat, :lng, :description, :material, :mohs_hardness, :weight, :dig_id, :site, :poster_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def artifact_params
+    params.require(:artifact).permit(:lat, :lng, :description, :material, :mohs_hardness, :weight, :dig_id, :site)
+  end
 
-    def set_dig
-      @dig = Dig.find(params.fetch(:dig_id))
-      pp @dig
-    end
+  def set_dig
+    @dig = Dig.find(params.fetch(:dig_id))
+  end
 end
