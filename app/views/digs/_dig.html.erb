@@ -1,8 +1,10 @@
 <div id="<%= dom_id dig %>">
 
-  <h1>
+  <h1 class="mt-4 mb-4 text-danger">
     <%= dig.name %>
   </h1>
+
+  <hr>
 
   <p>
     <strong>Location:</strong>
@@ -32,5 +34,7 @@
   <p>
     <strong>Your role in this dig is <%= dig.dig_participants.find_by(participant_id: current_user.id).role %>.</strong>
   </p>
+
+  <hr>
 
 </div>
