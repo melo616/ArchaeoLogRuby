@@ -24,11 +24,11 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def edit?
-    lead? || poster?
+    poster?
   end
 
   def update?
-    lead? || poster?
+    poster?
   end
 
   def destroy?
@@ -39,12 +39,13 @@ class ArtifactPolicy < ApplicationPolicy
   private
 
   def lead?
-    @artifact.dig.leads.any? { |lead| lead[:participant_id] == @user.id }
-    pp "Checked lead"
+    # @artifact.dig.leads.any? { |lead| lead[:participant_id] == @user.id }
+    # pp "Checked lead"
+    @artifact.dig.leads.include?(user)
   end
 
   def poster?
-    @user == @artifact.poster
+    @artifact.poster == user
     pp "Checked poster"
   end
 

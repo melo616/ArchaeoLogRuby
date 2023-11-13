@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this artifact", dig_artifacts_path(@artifact) %> |
+  <%= link_to "Show this artifact", dig_artifact_path(@dig, @artifact) %> |
   <%= link_to 'back', request.referer || root_path %>
 </div>

@@ -42,8 +42,6 @@ class ArtifactsController < ApplicationController
     respond_to do |format|
       
       if @artifact.update(artifact_params)
-        
-        debugger
         format.html { redirect_to dig_artifact_url(@artifact), notice: "Artifact was successfully updated." }
         format.json { render :show, status: :ok, location: @artifact }
       else
