@@ -4,9 +4,7 @@
   <div>
     <%= link_to "Edit this dig", edit_dig_path(@dig) %> |
     <%= link_to "Back to digs", digs_path %> | 
-
     <%= link_to "Participants", dig_dig_participants_path(@dig) %> | 
-    <%= link_to "Add participants", new_dig_dig_participant_path(@dig) %> | 
     <%= link_to "Add artifacts", new_dig_artifact_path(@dig) %>
     <%= button_to "Destroy this dig", @dig, method: :delete %>
   </div>
@@ -22,9 +20,15 @@
     <strong>Latest Artifacts</strong>
     <p><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></p>
     <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
-      <p>
-        <%= link_to "#{artifact.description}", dig_artifact_path(@dig, artifact) %>
-      </p>
+      <% if artifact.description.blank? %>
+        <p>
+          <%= link_to "#{artifact.category}, #{artifact.material}", dig_artifact_path(@dig, artifact) %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to "#{artifact.description}", dig_artifact_path(@dig, artifact) %>
+        </p>
+      <% end %>
     <% end %>
   </p>
 </div>

@@ -3,8 +3,9 @@
   <%= render @artifact %>
 
   <div>
-    <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact) %> |
-    <%= link_to "Back", request.referer || root_path %>
+    <%= link_to "Show this artifact", dig_artifact_path(@dig, @artifact) %> |
+    <%= link_to 'Back to dig', dig_path(@dig) %> |
+    <%= link_to "Artifact list", dig_artifacts_path(@dig) %>
 
     <%= button_to "Destroy this artifact", dig_artifact_path(@dig, @artifact), method: :delete %>
   </div>

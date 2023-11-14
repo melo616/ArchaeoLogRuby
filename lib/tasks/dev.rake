@@ -139,7 +139,49 @@ task({ :sample_data => :environment }) do
       category = ["jewelry", "weapon", "pottery", "tool"].sample
       hardness = rand(1..6)
       poster = dig.dig_participants.sample
-      description = Faker::Lorem.sentence(word_count: 10)
+      sample_data_descriptions = [
+        "Pottery fragments from a Bronze Age settlement, showcasing intricate designs and evidence of advanced craftsmanship.",
+        "Excavated animal bones providing insights into the dietary habits of a prehistoric community.",
+        "Flint tools and arrowheads, suggesting the presence of early human activity in the region.",
+        "Ancient textile remnants, revealing the weaving techniques and textile patterns of a bygone era.",
+        "Ornate jewelry pieces made from various materials, offering clues about social status and cultural preferences.",
+        "Preserved plant remains, indicating the agricultural practices and plant species cultivated in antiquity.",
+        "Architectural fragments from a Roman villa, shedding light on the construction methods and architectural styles of the time.",
+        "Seashell artifacts with intricate carvings, suggesting a coastal civilization with maritime connections.",
+        "Human skeletal remains providing valuable data on health, lifestyle, and possible causes of mortality in ancient populations.",
+        "Inscribed stone tablets containing ancient scripts, contributing to the understanding of language and communication.",
+        "Metal artifacts, including tools and weapons, revealing advancements in metallurgy and craftsmanship.",
+        "Ceramic vessels with unique shapes and decorative elements, showcasing the artistry of ancient pottery makers.",
+        "Charred seeds and plant residues, offering insights into ancient agriculture and dietary habits.",
+        "Shell beads and jewelry, providing evidence of trade networks and cultural exchange in prehistoric times.",
+        "Bronze statuettes depicting deities, offering glimpses into religious beliefs and artistic expression.",
+        "Well-preserved wooden artifacts, such as tools and implements, offering rare insights into ancient woodworking techniques.",
+        "Stone carvings illustrating scenes from daily life, mythology, and rituals, enriching our understanding of ancient cultures.",
+        "Glass artifacts, including beads and vessels, showcasing the skill of ancient glassmakers and trade connections.",
+        "Clay figurines representing humans and animals, serving various ceremonial and symbolic purposes.",
+        "Fossilized pollen grains, contributing to the reconstruction of ancient landscapes and environmental conditions.",
+      "Stone tools with distinctive markings, hinting at the purposes and techniques of tool production in ancient societies.",
+        "Metallic ingots and smelting residues, providing evidence of early metalworking and technological advancements.",
+        "Fragmented manuscripts and scrolls, offering glimpses into ancient literature, knowledge, and cultural practices.",
+        "Bone and antler artifacts, showcasing the versatility of materials used in crafting tools and decorative items.",
+        "Carved ivory artifacts, depicting intricate scenes and patterns, highlighting the artistry of ancient ivory carvers.",
+        "Shell tools and implements, illustrating the ingenuity of utilizing marine resources for practical purposes.",
+        "Amulets and talismans, believed to have held religious or protective significance in ancient belief systems.",
+        "Stone slabs with petroglyphs, featuring symbolic carvings and artwork, providing insights into ancient symbolism.",
+        "Engraved metal coins, offering information about economic systems, trade routes, and currency in ancient civilizations.",
+        "Remnants of ancient dyes and pigments, contributing to the understanding of artistic expression and color symbolism.",
+        "Preserved plant fibers, showcasing various weaving techniques used in the creation of textiles and baskets.",
+        "Clay tokens and counting devices, potentially linked to early systems of accounting and record-keeping.",
+        "Decorative shell inlays from furniture and artifacts, reflecting the aesthetic preferences of ancient cultures.",
+        "Architectural ceramics, such as roof tiles and bricks, revealing construction methods and building styles.",
+        "Burnt offerings and ceremonial deposits, shedding light on religious rituals and practices of ancient societies.",
+        "Metallic mirrors and reflective objects, indicating advancements in metallurgy and personal grooming habits.",
+        "Fragmented musical instruments, providing insights into the musical traditions and cultural significance of sound.",
+        "Wooden cart fragments and wheel components, offering clues about transportation methods in ancient civilizations.",
+        "Copper alloy and gold jewelry, showcasing the craftsmanship and artistic styles of ancient metalworkers.",
+        "Bone flutes and musical instruments, contributing to the understanding of ancient music and artistic expression."
+      ]
+      description = sample_data_descriptions.sample
       Artifact.create(
         lat: 1.11111,
         lng: 1.11111,
