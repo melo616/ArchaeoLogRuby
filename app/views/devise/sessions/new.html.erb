@@ -7,8 +7,9 @@
 </div>
 
 <div style="height: 200px; background-color: #800000;"></div>
-<div class="row">
-  <div class="col-4">
+<div class="row mt-5">
+  <div class="col-4 d-flex align-items-center justify-content-center">
+    <div>
       <h2>Log in</h2>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
@@ -28,11 +29,12 @@
       <% end %>
 
       <%= render "devise/shared/links" %>
+    </div>
   </div>
-  <div class="col-4 text-center d-flex align-items-center">
+  <div class="col-4 text-center d-flex align-items-center justify-content-center">
     <h2>About</h2>
   </div>
-  <div class="col-4 d-flex align-items-center" style="border: 2px solid #ff69b4">
+  <div class="col-4 d-flex align-items-center justify-content-center">
     <h2>Some thing</h2>
   </div>
 </div>
