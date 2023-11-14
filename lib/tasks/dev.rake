@@ -14,7 +14,24 @@ task({ :sample_data => :environment }) do
   12.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    bio = Faker::Lorem.sentence(word_count: 15)
+    user_bios = [
+      "Passionate archaeologist with a knack for uncovering ancient mysteries. Excited to explore new sites and contribute to our understanding of the past.",
+      "Dedicated field worker with years of experience in hands-on excavations. Thrives on the thrill of discovering artifacts and unraveling history.",
+      "Archaeology enthusiast fascinated by cultural heritage. Eager to collaborate with fellow researchers to reveal the stories buried beneath the sands of time.",
+      "Field archaeologist with expertise in prehistoric civilizations. Committed to preserving and interpreting the archaeological record for future generations.",
+      "Seasoned explorer with a deep appreciation for ancient cultures. Believes in the power of archaeology to bridge the gap between the past and the present.",
+      "Curious researcher passionate about underwater archaeology. Aiming to unravel the mysteries of sunken civilizations and their maritime connections.",
+        "Adventurous field archaeologist specializing in ancient trade routes. Enjoys the challenges of remote excavations and connecting the dots of human history.",
+        "Cultural heritage preservationist dedicated to documenting and safeguarding endangered archaeological sites. Committed to fostering awareness and appreciation.",
+        "Innovative archaeologist leveraging cutting-edge technology for non-invasive site exploration. Excited about the intersection of archaeology and modern science.",
+        "Anthropologist with a focus on human evolution. Thrives on uncovering clues to our ancient ancestors and understanding the dynamics of early societies.",
+        "Archaeological illustrator with a passion for bringing ancient artifacts and structures to life through detailed and accurate visual representations.",
+        "Historical archaeologist fascinated by colonial-era sites. Aims to shed light on the daily lives and interactions of people from the past.",
+        "Archaeobotanist exploring the relationships between ancient civilizations and plant life. Interested in the role of agriculture in shaping human history.",
+        "Ceramic specialist with an eye for pottery analysis. Enjoys decoding cultural and social aspects through the study of ancient ceramic artifacts.",
+        "Archaeological photographer capturing the essence of excavation sites. Believes in the power of visual storytelling to convey the richness of archaeological discoveries."
+    ]
+    bio = user_bios.sample
     User.create(
       email: "#{first_name}@example.com",
       password: "password",
@@ -28,20 +45,52 @@ task({ :sample_data => :environment }) do
 
   pp "Generating digs"
   12.times do
+    dig_names = [
+      "Valley of the Kings",
+      "Lost City of Atlantis",
+      "Machu Picchu Excavation",
+      "Pompeii Unearthed",
+      "Ancient Troy Expedition",
+      "Mayan Temples Discovery",
+      "Giza Pyramids Exploration",
+      "Easter Island Expedition",
+      "Stonehenge Unveiling",
+      "Incan Citadel Quest",
+      "Citadel of the Ancients Excavation",
+      "Herculaneum Rediscovery Project",
+      "Amazon Rainforest Archaeological Expedition",
+      "Celtic Burial Mounds Exploration",
+      "Terra Cotta Army Unveiling",
+      "Teotihuacan Pyramid Quest",
+      "Babylonian Empire Dig Site",
+      "Petra Rose City Expedition",
+      "Mesoamerican Ballgame Unearthed",
+      "Chichen Itza Temples Investigation",
+      "Cappadocia Underground Cities Excavation",
+      "Pueblo Cliff Dwellings Discovery",
+      "Indus Valley Civilization Unraveling",
+      "Scottish Neolithic Village Dig",
+      "Roman Forum Restoration Project",
+      "Ancient Greek Shipwreck Exploration",
+      "Viking Age Settlement Investigation",
+      "Harappan Port City Unveiling",
+      "Egyptian Oasis Temple Expedition",
+      "Pre-Columbian Cave Paintings Study"
+    ]
+    name = dig_names.sample
     description = Faker::Lorem.sentence(word_count: 3)
     address = Faker::Address.full_address
     date = Date.today
     test_id = User.all.sample.id
-    test_id_2 = User.all.sample.id
     season = ["Spring", "Summer", "Fall", "Winter"].sample + " 2023"
     Dig.create(
       description: description,
       start_date: date,
       end_date: date,
       location: address,
-      name: "Test",
+      name: name,
       season: season,
-      creator_id: test_id_2,
+      creator_id: test_id,
     )
   end
   pp "There are now #{Dig.count} digs."
