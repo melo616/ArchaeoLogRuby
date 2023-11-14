@@ -1,12 +1,25 @@
-<h1>Artifacts</h1>
+<div class="container">
+  <h1>Artifacts</h1>
 
-<div id="artifacts">
-  <% @artifacts.each do |artifact| %>
-    <%= render artifact %>
-    <p>
-      <%= link_to "Show this artifact", dig_artifact_path(@dig.id, artifact.id) %>
-    </p>
-  <% end %>
+  <%= link_to "New artifact", new_dig_artifact_path %>
+
+  <div id="artifacts">
+    <% @artifacts.each do |artifact| %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <p class="card-title"><%= artifact.description %></p>
+        <p class="card-text">Posted by:
+          <% if artifact.poster == current_user %>
+            You
+          <% else %>
+            <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
+          <% end %>
+        </p>
+        <p>
+          <%= link_to "Show this artifact", dig_artifact_path(@dig.id, artifact.id) %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New artifact", new_dig_artifact_path %>

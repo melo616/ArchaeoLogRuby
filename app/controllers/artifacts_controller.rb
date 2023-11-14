@@ -54,7 +54,7 @@ class ArtifactsController < ApplicationController
     @artifact.destroy
 
     respond_to do |format|
-      format.html { redirect_to artifacts_url, notice: "Artifact was successfully destroyed." }
+      format.html { redirect_to dig_artifacts_url(@dig), notice: "Artifact was successfully destroyed." }
       format.json { head :no_content }
     end
   end
