@@ -20,7 +20,6 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts/1/edit
   def edit
-
   end
 
   # POST /artifacts or /artifacts.json
@@ -55,7 +54,7 @@ class ArtifactsController < ApplicationController
     @artifact.destroy
 
     respond_to do |format|
-      format.html { redirect_to artifacts_url, notice: "Artifact was successfully destroyed." }
+      format.html { redirect_to dig_artifacts_url(@dig), notice: "Artifact was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -68,7 +67,7 @@ class ArtifactsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def artifact_params
-    params.require(:artifact).permit(:lat, :lng, :description, :material, :mohs_hardness, :weight, :dig_id, :site)
+    params.require(:artifact).permit(:lat, :lng, :description, :material, :category, :mohs_hardness, :weight, :dig_id, :site)
   end
 
   def set_dig

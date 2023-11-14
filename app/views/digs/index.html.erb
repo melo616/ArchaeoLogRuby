@@ -1,15 +1,22 @@
-<h1>Welcome, <%= current_user.first_name %>!</h1>
-
-<%= link_to "Create a new dig", new_dig_path %>
-
-<h3>Digs You Participate In</h3>
-
-<div id="digs">
-  <% @digs.each do |dig| %>
-    <h4><%= dig.name %></h4>
-    <%= dig.location %>
-    <p>
-      <%= link_to "Show this dig", dig %>
-    </p>
-  <% end %>
+<div class="container">
+  <h1>Welcome, <%= current_user.first_name %>!</h1>
+  <div style="padding: 20px; text-align: center;">
+    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-8" %></h3>
+  </div>
+  <div style="text-align: center">
+    <h3>Digs You Participate In</h3>
+    <div id="digs" class="d-flex justify-content-center flex-wrap">
+        <% @digs.each do |dig| %>
+        <div class="card" style="width: 50%; margin: 10px;">
+          <div class="card-body">
+            <h4 class="card-title"><%= dig.name %></h4>
+            <p class="card-text"><%= dig.location %></p>
+            <p>
+              <%= link_to "Show this dig", dig %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </div>
 </div>

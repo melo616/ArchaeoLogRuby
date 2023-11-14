@@ -1,14 +1,26 @@
-<%= link_to 'back', request.referer || root_path %>
+<div class="container mt-5">
+  <%= link_to 'back', request.referer || root_path %>
 
-<% if current_user == @profile %>
-  <%= link_to "Edit my profile", edit_user_registration_path %>
-<% end %>
+  <% if current_user == @profile %>
+    <%= link_to "Edit my profile", edit_user_registration_path %>
+  <% end %>
 
-<h1>
-  <%= @profile.first_name %> <%= @profile.last_name %>
-</h1>
+  <h1>
+    <%= @profile.first_name %> <%= @profile.last_name %>
+  </h1>
 
-<div>
-  <h3>Bio</h3>
-  <p><%= @profile.bio %></p>
+  <div>
+    <h4>Bio</h4>
+    <p><%= @profile.bio %></p>
+  </div>
+
+  <h4>Participant in the following digs:</h4>
+  <% @profile.dig_participants.each do |participation| %>
+    <% dig = Dig.find_by(id: participation.dig_id) %>
+     <p> 
+      <%= link_to "#{dig.name}", dig_path(dig) %>
+    </p>
+  <% end %>
+
+  <p><strong>Member since <%= @profile.created_at.strftime("%b %d, %Y") %></strong></p>
 </div>

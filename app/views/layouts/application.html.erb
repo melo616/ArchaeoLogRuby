@@ -10,9 +10,20 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      a {
+        text-decoration: none !important;
+        color: #6c757d;
+      }
+      h1, h2, h3 {
+        color: #dc3545;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="text-secondary">
     <%= render partial: "shared/navbar" %>
     <%= render "shared/flash" %>
     <%= yield %>
