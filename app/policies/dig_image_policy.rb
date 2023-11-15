@@ -11,7 +11,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    participant?
   end
 
   def new?
@@ -27,11 +27,11 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    poster? || lead?
   end
 
   def destroy?
-    true
+    poster? || lead?
   end
 
 
@@ -46,7 +46,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def poster?
-    @dig_image.poster == user
+    @dig_image.user == user
   end
 
 end
