@@ -5,8 +5,6 @@
 #  id            :integer          not null, primary key
 #  category      :string
 #  description   :text
-#  lat           :float
-#  lng           :float
 #  material      :string
 #  mohs_hardness :decimal(, )
 #  site          :string

@@ -184,8 +184,6 @@ task({ :sample_data => :environment }) do
       ]
       description = sample_data_descriptions.sample
       Artifact.create(
-        lat: 1.11111,
-        lng: 1.11111,
         material: material,
         category: category,
         mohs_hardness: hardness,

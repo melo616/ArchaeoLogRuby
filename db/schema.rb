@@ -10,10 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_10_205849) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_15_231427) do
   create_table "artifacts", force: :cascade do |t|
-    t.float "lat"
-    t.float "lng"
     t.text "description"
     t.string "material"
     t.decimal "mohs_hardness"

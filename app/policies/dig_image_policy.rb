@@ -1,4 +1,4 @@
-class ArtifactPolicy < ApplicationPolicy
+class DigImagePolicy < ApplicationPolicy
   attr_reader :user, :dig_image
 
   def initialize(user, dig_image)
