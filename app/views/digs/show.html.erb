@@ -9,12 +9,15 @@
     <%= button_to "Destroy this dig", @dig, method: :delete %>
   </div>
 
+  <div>
   <p>
     <strong>Dig Images:</strong>
     <% @dig.dig_images.each do |image| %>
       <img src="<%= image.image_url %>">
     <% end %>
   </p>
+  <%= link_to "Add a new dig image", new_dig_dig_image_path(@dig) %>
+  </div>
 
   <p>
     <strong>Latest Artifacts</strong>
