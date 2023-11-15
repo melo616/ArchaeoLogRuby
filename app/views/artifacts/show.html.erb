@@ -1,12 +1,17 @@
 <div class="container">
 
+  <h1>Artifact Details</h3>
+
   <%= render @artifact %>
 
   <div>
-    <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact) %> |
     <%= link_to "Back to dig", dig_path(@dig) %> |
-    <%= link_to "Artifact list", dig_artifacts_path(@dig) %>
+    <%= link_to "Artifact list", dig_artifacts_path(@dig) %> 
+    <% if current_user == @artifact.poster || @dig.leads.any? { |lead| lead.participant_id == current_user.id } %>
+    |
 
+    <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact) %> 
     <%= button_to "Destroy this artifact", dig_artifact_path(@dig, @artifact), method: :delete %>
+    <% end %>
   </div>
 </div>
