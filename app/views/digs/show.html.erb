@@ -13,7 +13,11 @@
   <p>
     <strong>Dig Images:</strong>
     <% @dig.dig_images.each do |image| %>
-      <img src="<%= image.image_url %>">
+      <% if image.image_url.present? %>
+        <%= image_tag image.image_url.url %>
+      <% else %>
+        <p>Debug it</p>
+      <% end %>
     <% end %>
   </p>
   <%= link_to "Add a new dig image", new_dig_dig_image_path(@dig) %>
