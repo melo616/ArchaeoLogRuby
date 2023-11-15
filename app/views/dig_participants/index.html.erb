@@ -1,11 +1,18 @@
-<h1>Dig participants</h1>
+<div class="container">
+  <h1>Dig participants</h1>
 
-<%= link_to "Back to dig", dig_path(@dig) %> | 
+  <div class="mt-4 mb-4 ml-4">
+    <%= link_to "Back to dig", dig_path(@dig) %> | 
+    <%= link_to "New dig participant", new_dig_dig_participant_path %>
+  </div>
 
-<%= link_to "New dig participant", new_dig_dig_participant_path %>
-
-<div id="dig_participants">
-  <% @dig_participants.each do |dig_participant| %>
-    <%= render dig_participant %>
-  <% end %>
+  <div id="dig_participants">
+    <ul class="list-group">
+      <% @dig_participants.each do |dig_participant| %>
+        <li class="list-group-item pt-4 pb-4">
+          <%= render dig_participant %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
