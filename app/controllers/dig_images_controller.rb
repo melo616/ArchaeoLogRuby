@@ -27,7 +27,7 @@ class DigImagesController < ApplicationController
 
     respond_to do |format|
       if @dig_image.save
-        format.html { redirect_to dig_dig_image_url(@dig, @dig_image), notice: "Dig image was successfully created." }
+        format.html { redirect_to dig_url(@dig), notice: "Dig image was successfully created." }
         format.json { render :show, status: :created, location: @dig_image }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -14,7 +14,7 @@
     <strong>Dig Images:</strong>
     <% @dig.dig_images.each do |image| %>
       <% if image.image_url.present? %>
-        <%= image_tag image.image_url.url %>
+        <%= image_tag image.image_url.url, style: "height: 100px;" %>
       <% else %>
         <p>Debug it</p>
       <% end %>
