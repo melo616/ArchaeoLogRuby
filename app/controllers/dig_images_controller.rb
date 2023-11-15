@@ -54,7 +54,7 @@ class DigImagesController < ApplicationController
     @dig_image.destroy
 
     respond_to do |format|
-      format.html { redirect_to dig_images_url, notice: "Dig image was successfully destroyed." }
+      format.html { redirect_to dig_url(@dig), notice: "Dig image was successfully destroyed." }
       format.json { head :no_content }
     end
   end

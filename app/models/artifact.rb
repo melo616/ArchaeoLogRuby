@@ -19,4 +19,12 @@
 class Artifact < ApplicationRecord
   belongs_to :dig, counter_cache: true
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
+
+  validate :poster_is_dig_participant
+
+  def poster_is_dig_participant
+    unless dig.dig_participants.pluck(:participant_id).include? poster.id
+      errors.add(:poster, "must be a dig participant")
+    end
+  end
 end

@@ -19,7 +19,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    participant?
   end
 
   def edit?
