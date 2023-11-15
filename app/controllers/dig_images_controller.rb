@@ -1,5 +1,7 @@
 class DigImagesController < ApplicationController
+  before_action :set_dig
   before_action :set_dig_image, only: %i[ show edit update destroy ]
+  after_action :skip_pundit_authorization
 
   # GET /dig_images or /dig_images.json
   def index
@@ -25,7 +27,7 @@ class DigImagesController < ApplicationController
 
     respond_to do |format|
       if @dig_image.save
-        format.html { redirect_to dig_image_url(@dig_image), notice: "Dig image was successfully created." }
+        format.html { redirect_to dig_url(@dig), notice: "Dig image was successfully created." }
         format.json { render :show, status: :created, location: @dig_image }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class DigImagesController < ApplicationController
     @dig_image.destroy
 
     respond_to do |format|
-      format.html { redirect_to dig_images_url, notice: "Dig image was successfully destroyed." }
+      format.html { redirect_to dig_url(@dig), notice: "Dig image was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +67,16 @@ class DigImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dig_image_params
-      params.require(:dig_image).permit(:image_url, :notes)
+      params.require(:dig_image).permit(:image_url, :notes, :dig_id, :user_id)
+    end
+
+    def set_dig
+      @dig = Dig.find(params.fetch(:dig_id))
+    end
+
+    #for development only - DELETE
+    def skip_pundit_authorization
+      skip_authorization
+      skip_policy_scope
     end
 end

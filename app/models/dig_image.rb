@@ -24,4 +24,6 @@
 class DigImage < ApplicationRecord
   belongs_to :dig
   belongs_to :user
+
+  mount_uploader :image_url, ImageUrlUploader
 end
