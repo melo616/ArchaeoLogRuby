@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :digs do
     resources :dig_participants, except: [:show]
     resources :artifacts
-    resources :dig_images
+    resources :images
   end
 
   devise_for :users

@@ -1,0 +1,7 @@
+<%= render @image %>
+
+<div>
+  <%= link_to "Edit this dig image", edit_dig_image_path(@dig, @image) %>
+<!---->
+  <%= button_to "Destroy this dig image", dig_image_path(@dig, @image), method: :delete %>
+</div>

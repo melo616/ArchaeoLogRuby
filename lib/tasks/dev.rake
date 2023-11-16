@@ -4,7 +4,7 @@ task({ :sample_data => :environment }) do
 
   if Rails.env.development?
       Artifact.destroy_all
-      DigImage.destroy_all
+      Image.destroy_all
       DigParticipant.destroy_all
       Dig.destroy_all
       User.destroy_all
@@ -123,7 +123,7 @@ task({ :sample_data => :environment }) do
   #   num.times do 
   #     user = dig.dig_participants.sample
   #     image_url = "https://res.cloudinary.com/demo/image/upload/sample1.jpg"
-  #     DigImage.create(
+  #     Image.create(
   #       notes: Faker::Quote.jack_handey,
   #       image_url: image_url,
   #       dig_id: dig.id,
@@ -131,7 +131,7 @@ task({ :sample_data => :environment }) do
   #     )
   #   end
   # end
-  # pp "There are now #{DigImage.count} dig images."
+  # pp "There are now #{Image.count} dig images."
 
   pp "Generating artifacts (suspenseful music plays...)"
   Dig.all.each do |dig|

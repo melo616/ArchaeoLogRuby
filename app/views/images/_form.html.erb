@@ -1,0 +1,39 @@
+<%= form_with(model: [@dig, image], html: { multipart: true} ) do |form| %>
+  <% if image.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% image.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%#= form.label :image_url, style: "display: block" %>
+    <%= form.file_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.text_field :notes %>
+  </div>
+
+  <% if @artifact %>
+      <%= form.hidden_field :imageable_type, value: "Artifact" %>
+      <%= form.hidden_field :imageable_id, value: @artifact.id %>
+  <% else %>
+      <%= form.hidden_field :imageable_type, value: "Dig" %>
+      <%= form.hidden_field :imageable_id, value: @dig.id %>
+  <% end %>
+
+  <div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

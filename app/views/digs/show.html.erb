@@ -12,9 +12,9 @@
   <div>
   <p>
     <strong>Dig Images:</strong>
-    <% @dig.dig_images.each do |image| %>
+    <% @dig.images.each do |image| %>
       <% if image.image_url.present? %>
-        <%= link_to dig_dig_image_path(@dig, image), style: "text-decoration: none;" do %>
+        <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
           <%= image_tag image.image_url.url, style: "height: 100px;" %>
         <% end %>
       <% else %>
@@ -22,7 +22,7 @@
       <% end %>
     <% end %>
   </p>
-  <%= link_to "Add a new dig image", new_dig_dig_image_path(@dig) %>
+  <%= link_to "Add a new dig image", new_dig_image_path(@dig) %>
   </div>
 
   <p>

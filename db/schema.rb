@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_231427) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_16_214429) do
   create_table "artifacts", force: :cascade do |t|
     t.text "description"
     t.string "material"
@@ -22,18 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_231427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
-  end
-
-  create_table "dig_images", force: :cascade do |t|
-    t.string "image_url"
-    t.string "notes"
-    t.integer "dig_id", null: false
-    t.integer "user_id", null: false
-    t.boolean "cover_photo", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dig_id"], name: "index_dig_images_on_dig_id"
-    t.index ["user_id"], name: "index_dig_images_on_user_id"
   end
 
   create_table "dig_participants", force: :cascade do |t|
@@ -61,6 +49,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_231427) do
     t.index ["creator_id"], name: "index_digs_on_creator_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "image_url"
+    t.string "notes"
+    t.integer "user_id", null: false
+    t.boolean "cover_photo", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_commentable"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,9 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_231427) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "dig_images", "digs"
-  add_foreign_key "dig_images", "users"
   add_foreign_key "dig_participants", "digs"
   add_foreign_key "dig_participants", "users", column: "participant_id"
   add_foreign_key "digs", "users", column: "creator_id"
+  add_foreign_key "images", "users"
 end
