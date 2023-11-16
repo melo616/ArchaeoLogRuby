@@ -24,7 +24,6 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    debugger
     @image = Image.new(image_params)
 
     respond_to do |format|
