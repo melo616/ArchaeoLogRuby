@@ -1,11 +1,13 @@
-<h1>New dig participant</h1>
+<div class="container">  
+  <h1>New dig participant</h1>
 
-<%= notice %>
+  <%= notice %>
 
-<div>
-  <%= link_to "Back to dig participants", dig_dig_participants_path(@dig) %>
+  <div>
+    <%= link_to "Back to dig participants", dig_dig_participants_path(@dig) %>
+  </div>
+
+  <hr>
+
+  <%= render "form", dig_participant: @dig_participant %>
 </div>
-
-<hr>
-
-<%= render "form", dig_participant: @dig_participant %>

@@ -1,9 +1,11 @@
-<h1>Editing dig</h1>
+<div class="container"> 
+  <h1>Editing dig</h1>
 
-<div>
-  <%= link_to "Back to dig", @dig %>
+  <div>
+    <%= link_to "Back to dig", @dig %>
+  </div>
+
+  <hr>
+
+  <%= render "form", dig: @dig %>
 </div>
-
-<hr>
-
-<%= render "form", dig: @dig %>
