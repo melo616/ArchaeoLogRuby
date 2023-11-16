@@ -30,7 +30,7 @@ class DigParticipantsController < ApplicationController
       if participant
         @dig_participant = @dig.dig_participants.new(dig_id: @dig.id, participant: participant, role: dig_participant_params[:role])
         if @dig_participant.save
-          format.html { redirect_to dig_url(@dig), notice: "Dig participant was successfully created." }
+          format.html { redirect_to dig_dig_participants_url(@dig), notice: "Dig participant was successfully created." }
           format.json { render :show, status: :created, location: @dig_participant }
         else
           format.html { render :new, status: :unprocessable_entity }
