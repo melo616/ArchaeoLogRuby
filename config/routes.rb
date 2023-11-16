@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   get 'info/about'
 
   resources :digs do
-    resources :dig_participants, except: [:show]
-    resources :artifacts
     resources :images
+    resources :dig_participants, except: [:show]
+    resources :artifacts do
+      resources :images
+    end
   end
 
   devise_for :users

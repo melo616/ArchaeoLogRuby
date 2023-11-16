@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_dig
+  before_action :set_artifact
   before_action :set_image, only: %i[ show edit update destroy ]
   after_action :skip_pundit_authorization
 
@@ -23,6 +24,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
+    debugger
     @image = Image.new(image_params)
 
     respond_to do |format|
@@ -72,6 +74,12 @@ class ImagesController < ApplicationController
 
     def set_dig
       @dig = Dig.find(params.fetch(:dig_id))
+    end
+
+    def set_artifact
+      if params[:artifact_id]
+        @artifact = Artifact.find(params.fetch(:artifact_id))
+      end
     end
 
     #for development only - DELETE
