@@ -3,6 +3,13 @@
 
   <%= link_to "Back to dig", dig_path(@dig) %> |
   <%= link_to "New artifact", new_dig_artifact_path %>
+  <hr>
+
+  <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+    <h3>Data Visualization</h3>
+      <%= pie_chart Artifact.where(dig_id: @dig.id).group(:category).count %>
+      <%#= bar_chart Artifact.where(dig_id: @dig.id).group(:created_on).count %>
+  <% end %>
 
   <div id="artifacts">
     <% @artifacts.each do |artifact| %>
