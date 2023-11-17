@@ -7,6 +7,10 @@
   </div>
 
   <div id="dig_participants">
+  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
+      What does my role mean?
+  </button>
+  <%= render partial: "shared/roles_info_modal" %>
     <ul class="list-group">
       <% @dig_participants.each do |dig_participant| %>
         <li class="list-group-item pt-4 pb-4">
@@ -16,4 +20,3 @@
     </ul>
   </div>
 </div>
-
