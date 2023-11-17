@@ -103,6 +103,7 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
+    chartkick (5.0.4)
     choice (0.2.0)
     cloudinary (1.28.0)
       aws_cf_signer
@@ -440,6 +441,7 @@ DEPENDENCIES
   bootsnap
   capybara
   carrierwave
+  chartkick
   cloudinary
   debug
   devise
