@@ -1,12 +1,18 @@
 <%= render @image %>
 
-<div>
-  <% if @artifact %>
-    <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image) %>
-  <% else %>
-    <%= link_to "Edit this image", edit_dig_image_path(@dig, @image) %>
-  <% end %>
-  
-<!---->
-  <%= button_to "Destroy this image", dig_image_path(@dig, @image), method: :delete %>
-</div>
+<% if current_user == @image.user %>
+  <div>
+    <% if @artifact %>
+      <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image) %>
+    <% else %>
+      <%= link_to "Edit this image", edit_dig_image_path(@dig, @image) %>
+    <% end %>
+    
+  <!---->
+    <% if @artifact %>
+      <%= button_to "Destroy this image", dig_artifact_image_path(@dig, @artifact, @image), method: :delete %>
+    <% else %>
+      <%= button_to "Destroy this image", dig_image_path(@dig, @image), method: :delete %>
+    <% end %>
+  </div>
+<% end %>
