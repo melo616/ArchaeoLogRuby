@@ -11,8 +11,10 @@
     </div>
 
     <div class="col-4">
-      <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant) %>
-      <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete %>
+      <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
+        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant) %>
+        <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete %>
+      <% end %>
     </div>
   </div>
 </div>

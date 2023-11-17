@@ -2,8 +2,11 @@
   <h1>Dig participants</h1>
 
   <div class="mt-4 mb-4 ml-4">
-    <%= link_to "Back to dig", dig_path(@dig) %> | 
-    <%= link_to "New dig participant", new_dig_dig_participant_path %>
+    <%= link_to "Back to dig", dig_path(@dig) %>
+    
+    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
+      <%= link_to "New dig participant", new_dig_dig_participant_path %>
+    <% end %>
   </div>
 
   <div id="dig_participants">

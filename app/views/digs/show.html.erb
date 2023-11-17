@@ -3,11 +3,18 @@
 
   <div>
     <%= link_to "Back to digs", digs_path %> | 
-    <%= link_to "Edit this dig", edit_dig_path(@dig) %> |
     <%= link_to "Participants", dig_dig_participants_path(@dig) %> | 
     <%= link_to "Add artifacts", new_dig_artifact_path(@dig) %>
-    <%= button_to "Destroy this dig", @dig, method: :delete %>
   </div>
+
+  <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
+    <div>
+      <%= link_to "Edit this dig", edit_dig_path(@dig) %>
+      <%= button_to "Destroy this dig", @dig, method: :delete %>
+    </div>
+  <% end %>
+
+  <hr>
 
   <div>
     <p>
@@ -25,10 +32,15 @@
     <%= link_to "Add a new dig image", new_dig_image_path(@dig) %>
   </div>
 
-  <p>
-    <strong>Latest Artifacts</strong>
-    <p><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></p>
-    <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
+  <hr>
+
+    <div class="mb-3">
+      <h3>Latest Artifacts</h3>
+      <i><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></i>
+    </div>
+
+    <div>
+      <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
       <% if artifact.description.blank? %>
         <p>
           <%= link_to "#{artifact.category}, #{artifact.material}", dig_artifact_path(@dig, artifact) %>
@@ -39,5 +51,5 @@
         </p>
       <% end %>
     <% end %>
-  </p>
+    </div>
 </div>

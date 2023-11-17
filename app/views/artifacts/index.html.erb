@@ -8,12 +8,14 @@
   <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
     <h3>Data Visualization</h3>
       <%= pie_chart Artifact.where(dig_id: @dig.id).group(:category).count %>
+      <!--TO DO: write method -->
       <%#= bar_chart Artifact.where(dig_id: @dig.id).group(:created_on).count %>
+    <hr>
   <% end %>
 
-  <div id="artifacts">
+  <div id="artifacts" class="d-flex justify-content-center flex-wrap">
     <% @artifacts.each do |artifact| %>
-    <div class="card mb-4" style="width: 50%;">
+    <div class="card mb-4" style="width: 60%;">
       <div class="card-body">
         <p class="card-title"><%= artifact.description %></p>
         <p class="card-text">Posted by:
