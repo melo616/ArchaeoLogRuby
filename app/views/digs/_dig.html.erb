@@ -32,9 +32,9 @@
   </p>
 
   <p>
-    <strong>Your role in this dig is <%= dig.dig_participants.find_by(participant_id: current_user.id).role %>.</strong>
+    <strong>Your role in this dig is <%= dig.dig_participants.find_by(participant_id: current_user.id).role.humanize %>.</strong>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
       ?
     </button>
     <%= render partial: "shared/roles_info_modal" %>

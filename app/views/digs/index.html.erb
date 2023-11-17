@@ -6,7 +6,7 @@
   <div style="text-align: center" class="mb-4">
     <h3>Digs You Participate In</h3>
     <div id="digs" class="d-flex justify-content-center flex-wrap">
-        <% @digs.each do |dig| %>
+        <% @digs.order(end_date: :desc).each do |dig| %>
         <div class="card" style="width: 50%; margin: 10px;">
           <div class="card-body">
             <h4 class="card-title"><%= dig.name %></h4>
