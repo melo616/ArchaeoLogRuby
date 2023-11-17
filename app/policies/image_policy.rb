@@ -1,9 +1,9 @@
-class DigImagePolicy < ApplicationPolicy
-  attr_reader :user, :dig_image
+class ImagePolicy < ApplicationPolicy
+  attr_reader :user, :image
 
-  def initialize(user, dig_image)
+  def initialize(user, image)
     @user = user
-    @dig_image = dig_image
+    @image = image
   end
 
   def index?
@@ -38,15 +38,15 @@ class DigImagePolicy < ApplicationPolicy
   private
 
   def participant?
-    @dig_image.dig.dig_participants.any? { |participant| participant.participant_id == user.id }
+    @image.dig.dig_participants.any? { |participant| participant.participant_id == user.id }
   end
 
   def lead?
-    @dig_image.dig.leads.any? { |lead| lead.participant_id == user.id }
+    @image.dig.leads.any? { |lead| lead.participant_id == user.id }
   end
 
   def poster?
-    @dig_image.user == user
+    @image.user == user
   end
 
 end

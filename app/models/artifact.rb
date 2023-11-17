@@ -17,6 +17,8 @@
 class Artifact < ApplicationRecord
   belongs_to :dig, counter_cache: true
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
+  
+  has_many :images, as: :imageable, dependent: :destroy
 
   validate :poster_is_dig_participant
 
