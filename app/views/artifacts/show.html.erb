@@ -23,7 +23,7 @@
       <strong>Artifact Images:</strong>
       <% @artifact.images.each do |image| %>
         <% if image.image_url.present? %>
-          <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
+          <%= link_to dig_artifact_image_path(@dig, @artifact, image), style: "text-decoration: none;" do %>
             <%= image_tag image.image_url.url, style: "height: 100px;" %>
           <% end %>
         <% else %>

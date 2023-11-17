@@ -1,7 +1,12 @@
 <%= render @image %>
 
 <div>
-  <%= link_to "Edit this dig image", edit_dig_image_path(@dig, @image) %>
+  <% if @artifact %>
+    <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image) %>
+  <% else %>
+    <%= link_to "Edit this image", edit_dig_image_path(@dig, @image) %>
+  <% end %>
+  
 <!---->
-  <%= button_to "Destroy this dig image", dig_image_path(@dig, @image), method: :delete %>
+  <%= button_to "Destroy this image", dig_image_path(@dig, @image), method: :delete %>
 </div>
