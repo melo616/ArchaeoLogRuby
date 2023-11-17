@@ -1,14 +1,26 @@
-# Rails Template
+# ArchaeoLog
 
-This is a base Ruby on Rails repository configured for learning with Codespaces (and Gitpod).
+ArchaeoLog is a digital field log where archaeologists can create digs, add participants, add images, and log artifacts. It is a streamlined and user-friendly application that serves as a modern and lightweight upgrade to traditional museum and archaeological software.
+
+# Features
+
+1. Digs: Create and manage archaeological digs with details such as location, start and end date, and description. 
+2. Participants: Add participants involved in a dig and assign roles to ensure security and access.
+3. Artifacts Logging: Log artifacts discovered during digs with detailed information such as material, category, description, and images.
+4.  Image Uploads: Upload images related to digs and artifacts and add notes for easy reference. Utilizes Cloudinary for cloud-based storage.
+5.  Data Visualization: Uses ChartKick for visualization of artifacts by type and date found.
+6.  Modularized Data: Easy navigation of information related to digs, participants, and artifacts.
+
+# Future Features
+1. Announcements: Keep dig participants informed with announcements related to your project.
+2. Maps Integration: View your dig's location on a map using GeoCoding and Google Maps API.
+
+This project was built using a base Ruby on Rails template provided by DPI.
 
 - Ruby version: `3.2.1`
 - Rails version: `7.0.4.3`
 
-
-We've added additional Ruby gems and other software that aren't automatically available in a new Rails app.
-
-### Additional gems:
+### Gems included in DPI's Rails Template
 
 - [`appdev_support`](https://github.com/firstdraft/appdev_support)
 - [`annotate`](https://github.com/ctran/annotate_models)
@@ -33,6 +45,12 @@ We've added additional Ruby gems and other software that aren't automatically av
 - [`table_print`](https://github.com/arches/table_print)
 - [`web_git`](https://github.com/firstdraft/web_git)
 - [`webmock`](https://github.com/bblimke/webmock)
+
+### Additional Gems for ArchaeoLog
+
+- [`cloudinary`](https://github.com/cloudinary/cloudinary_gem)
+- [`chartkick`](https://github.com/ankane/chartkick)
+- [`pundit`](https://github.com/varvet/pundit)
 
 ### Additional software:
 - OS Ubuntu 20.04.5 LTS
