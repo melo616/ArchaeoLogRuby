@@ -2,6 +2,10 @@
 
 <h1>Announcements</h1>
 
+<%= link_to "Back to dig", dig_path(@dig) %> |
+<%= link_to "New announcement", new_dig_announcement_path(@dig) %>
+<hr>
+
 <div id="announcements">
   <% @announcements.each do |announcement| %>
     <%= render announcement %>
@@ -10,5 +14,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New announcement", new_dig_announcement_path(@dig) %>

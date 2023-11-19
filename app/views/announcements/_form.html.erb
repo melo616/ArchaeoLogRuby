@@ -1,4 +1,4 @@
-<%= form_with(model: announcement) do |form| %>
+<%= form_with(model: [@dig, announcement]) do |form| %>
   <% if announcement.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
@@ -22,13 +22,8 @@
   </div>
 
   <div>
-    <%= form.label :poster_id, style: "display: block" %>
-    <%= form.text_field :poster_id %>
-  </div>
-
-  <div>
-    <%= form.label :dig_id, style: "display: block" %>
-    <%= form.text_field :dig_id %>
+    <%= form.hidden_field :poster_id %>
+    <%= form.hidden_field :dig_id %>
   </div>
 
   <div>

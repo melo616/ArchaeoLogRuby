@@ -15,6 +15,8 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/new
   def new
     @announcement = Announcement.new
+    @announcement.dig = @dig
+    authorize @announcement
   end
 
   # GET /announcements/1/edit
