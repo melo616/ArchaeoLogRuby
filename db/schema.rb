@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_19_184412) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_20_155232) do
   create_table "announcements", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "poster_id", null: false
     t.integer "dig_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "poster_id", null: false
     t.index ["dig_id"], name: "index_announcements_on_dig_id"
     t.index ["poster_id"], name: "index_announcements_on_poster_id"
   end
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_184412) do
   end
 
   add_foreign_key "announcements", "digs"
-  add_foreign_key "announcements", "posters"
+  add_foreign_key "announcements", "users", column: "poster_id"
   add_foreign_key "dig_participants", "digs"
   add_foreign_key "dig_participants", "users", column: "participant_id"
   add_foreign_key "digs", "users", column: "creator_id"

@@ -26,10 +26,12 @@ class AnnouncementsController < ApplicationController
   # POST /announcements or /announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
+    @announcement.dig = @dig
+    authorize @announcement
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully created." }
+        format.html { redirect_to dig_announcement_url(@announcement), notice: "Announcement was successfully created." }
         format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new, status: :unprocessable_entity }

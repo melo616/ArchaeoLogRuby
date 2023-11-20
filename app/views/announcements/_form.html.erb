@@ -22,8 +22,8 @@
   </div>
 
   <div>
-    <%= form.hidden_field :poster_id %>
-    <%= form.hidden_field :dig_id %>
+    <%= form.hidden_field :poster_id, value: current_user.id %>
+    <%= form.hidden_field :dig_id, value: @dig.id %>
   </div>
 
   <div>

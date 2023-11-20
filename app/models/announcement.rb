@@ -18,9 +18,9 @@
 # Foreign Keys
 #
 #  dig_id     (dig_id => digs.id)
-#  poster_id  (poster_id => posters.id)
+#  poster_id  (poster_id => users.id)
 #
 class Announcement < ApplicationRecord
-  belongs_to :poster
+  belongs_to :poster, class_name: "User", foreign_key: "poster_id"
   belongs_to :dig
 end

@@ -10,7 +10,7 @@
   <% @announcements.each do |announcement| %>
     <%= render announcement %>
     <p>
-      <%= link_to "Show this announcement", announcement %>
+      <%= link_to "Show this announcement", dig_announcement_path(@dig, announcement) %>
     </p>
   <% end %>
 </div>
