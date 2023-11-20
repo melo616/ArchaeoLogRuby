@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements or /announcements.json
   def index
-    @announcements = Announcement.where(:dig_id => @dig.id)
+    @announcements = Announcement.where(:dig_id => @dig.id).order(created_at: :desc)
   end
 
   # GET /announcements/1 or /announcements/1.json
@@ -31,7 +31,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to dig_announcement_url(@announcement), notice: "Announcement was successfully created." }
+        format.html { redirect_to dig_announcement_url(@dig, @announcement), notice: "Announcement was successfully created." }
         format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class AnnouncementsController < ApplicationController
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
-        format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully updated." }
+        format.html { redirect_to dig_announcement_url(@dig, @announcement), notice: "Announcement was successfully updated." }
         format.json { render :show, status: :ok, location: @announcement }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
 
     respond_to do |format|
-      format.html { redirect_to announcements_url, notice: "Announcement was successfully destroyed." }
+      format.html { redirect_to dig_announcements_url(@dig, @announcement), notice: "Announcement was successfully destroyed." }
       format.json { head :no_content }
     end
   end

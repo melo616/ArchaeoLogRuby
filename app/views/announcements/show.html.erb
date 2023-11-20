@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <%= render @announcement %>
 
-<%= render @announcement %>
+  <% if @announcement.poster == current_user %>
+    <div>
+      <%= link_to "Edit this announcement", edit_dig_announcement_path(@dig, @announcement) %> |
+      <%= link_to "Back to announcements", dig_announcements_path(@dig) %>
 
-<div>
-  <%= link_to "Edit this announcement", edit_announcement_path(@announcement) %> |
-  <%= link_to "Back to announcements", announcements_path %>
-
-  <%= button_to "Destroy this announcement", @announcement, method: :delete %>
+      <%= button_to "Destroy this announcement", dig_announcement_path(@dig, @announcement), method: :delete %>
+    </div>
+  <% end %>
 </div>

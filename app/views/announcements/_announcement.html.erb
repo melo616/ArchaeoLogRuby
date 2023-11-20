@@ -1,22 +1,21 @@
 <div id="<%= dom_id announcement %>">
-  <p>
-    <strong>Title:</strong>
+  <h3>
     <%= announcement.title %>
-  </p>
+  </h3>
+
+  <div>
+    <%= link_to "Back to dig", dig_path(@dig) %> |
+    <%= link_to "Back to announcements", dig_announcements_path(@dig) %> 
+  </div>
+
+  <hr>
 
   <p>
-    <strong>Body:</strong>
     <%= announcement.body %>
   </p>
 
   <p>
-    <strong>Poster:</strong>
-    <%= announcement.poster_id %>
-  </p>
-
-  <p>
-    <strong>Dig:</strong>
-    <%= announcement.dig_id %>
+    Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by <%= announcement.poster.first_name %> <%= announcement.poster.last_name %>
   </p>
 
 </div>
