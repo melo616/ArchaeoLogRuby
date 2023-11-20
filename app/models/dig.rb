@@ -30,6 +30,7 @@ class Dig < ApplicationRecord
   has_many :leads, -> { leads }, class_name: "DigParticipant", dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_many :artifacts, dependent: :destroy
+  has_many :announcements, dependent: :destroy
   
   validates :name, presence: true
 

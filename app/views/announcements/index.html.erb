@@ -1,0 +1,19 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Announcements</h1>
+
+  <%= link_to "Back to dig", dig_path(@dig) %> |
+  <%= link_to "New announcement", new_dig_announcement_path(@dig) %>
+  <hr>
+
+  <div id="announcements">
+    <% @announcements.each do |announcement| %>
+      <div class="d-flex justify-content-between align-items-center">
+        <h3><%= link_to "#{announcement.title}", dig_announcement_path(@dig, announcement) %></h3>
+        <p>Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by <%= announcement.poster.first_name %> <%= announcement.poster.last_name %></p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>
