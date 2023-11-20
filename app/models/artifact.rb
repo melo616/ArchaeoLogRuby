@@ -20,6 +20,18 @@ class Artifact < ApplicationRecord
   
   has_many :images, as: :imageable, dependent: :destroy
 
+  enum category: {
+    jewelry: 'jewelry', 
+    weaponry: 'weaponry', 
+    tool: 'tool', 
+    feature: 'feature', 
+    pottery: 'pottery', 
+    tablet: 'tablet', 
+    human_remains: 'human remains', 
+    clothing: 'clothing', 
+    faunal_remains: 'faunal remains', 
+    other: 'other'}
+
   validate :poster_is_dig_participant
 
   def poster_is_dig_participant

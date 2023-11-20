@@ -137,7 +137,19 @@ task({ :sample_data => :environment }) do
   Dig.all.each do |dig|
     rand(5..20).times do
       material = ["clay", "metal", "wood", "shell"].sample
-      category = ["jewelry", "weapon", "pottery", "tool"].sample
+      categories = {
+        "jewelry" => :jewelry,
+        "weaponry" => :weaponry,
+        "tool" => :tool,
+        "feature" => :feature,
+        "pottery" => :pottery,
+        "tablet" => :tablet,
+        "human remains" => :human_remains,
+        "clothing" => :clothing,
+        "faunal remains" => :faunal_remains, 
+        "other" => :other
+      }
+      category = categories.keys.sample
       hardness = rand(1..6)
       poster = dig.dig_participants.sample
       sample_data_descriptions = [
