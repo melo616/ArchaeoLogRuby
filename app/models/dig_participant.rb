@@ -22,6 +22,7 @@
 #
 class DigParticipant < ApplicationRecord
   validates :participant_id, uniqueness: { scope: :dig_id, message: "User has already participated in this dig" }
+  validates :role, presence: true
 
   belongs_to :dig
   belongs_to :participant, class_name: "User", foreign_key: "participant_id"
