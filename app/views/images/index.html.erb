@@ -1,0 +1,12 @@
+<h1>Dig images</h1>
+
+<div id="images">
+  <% @images.each do |image| %>
+    <%= render image %>
+    <p>
+      <%= link_to "Show this dig image", image %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dig image", new_image_path %>

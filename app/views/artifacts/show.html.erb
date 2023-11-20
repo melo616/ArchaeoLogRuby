@@ -1,12 +1,36 @@
 <div class="container">
 
-  <%= render @artifact %>
+  <h1>Artifact Details</h3>
 
   <div>
-    <%= link_to "Show this artifact", dig_artifact_path(@dig, @artifact) %> |
     <%= link_to "Back to dig", dig_path(@dig) %> |
-    <%= link_to "Artifact list", dig_artifacts_path(@dig) %>
+    <%= link_to "Artifact list", dig_artifacts_path(@dig) %> 
+  </div>
 
+  <hr>
+
+  <%= render @artifact %>
+
+  <% if current_user == @artifact.poster || @dig.leads.any? { |lead| lead.participant_id == current_user.id } %>
+    <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact) %> 
     <%= button_to "Destroy this artifact", dig_artifact_path(@dig, @artifact), method: :delete %>
+  <% end %>
+
+  <hr>
+
+  <div>
+    <p>
+      <strong>Artifact Images:</strong>
+      <% @artifact.images.each do |image| %>
+        <% if image.image_url.present? %>
+          <%= link_to dig_artifact_image_path(@dig, @artifact, image), style: "text-decoration: none;" do %>
+            <%= image_tag image.image_url.url, style: "height: 100px;" %>
+          <% end %>
+        <% else %>
+          <p>Debug it</p>
+        <% end %>
+      <% end %>
+    </p>
+    <%= link_to "Add a new artifact image", new_dig_artifact_image_path(@dig, @artifact) %>
   </div>
 </div>

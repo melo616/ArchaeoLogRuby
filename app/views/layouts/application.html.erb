@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>ArchaeoLog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,14 +12,20 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <style>
+      h1 a,
+      h2 a,
+      h3 a {
+        color: #dc3545;
+      }
       a {
         text-decoration: none !important;
         color: #6c757d;
       }
       h1, h2, h3 {
-        color: #dc3545;
+        color: #dc3545; 
         margin-top: 10px;
         margin-bottom: 10px;
+        font-family: 'Lora', serif;
       }
     </style>
   </head>

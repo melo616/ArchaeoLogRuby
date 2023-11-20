@@ -1,6 +1,6 @@
-class CreateDigImages < ActiveRecord::Migration[7.0]
+class CreateImages < ActiveRecord::Migration[7.0]
   def change
-    create_table :dig_images do |t|
+    create_table :images do |t|
       t.string :image_url
       t.string :notes
       t.references :dig, null: false, foreign_key: true

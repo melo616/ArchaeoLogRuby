@@ -12,28 +12,18 @@
   <% end %>
 
   <div>
-    <%= form.label :lat, style: "display: block" %>
-    <%= form.text_field :lat %>
+    <%= form.label :material, style: "display: block" %>
+    <%= form.text_field :material %>
   </div>
 
   <div>
-    <%= form.label :lng, style: "display: block" %>
-    <%= form.text_field :lng %>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.collection_select :category, Artifact.categories.keys, :to_s, :humanize, {prompt: true}, class: "form-select" %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :material, style: "display: block" %>
-    <%= form.text_field :material %>
-  </div>
-
-    <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
   </div>
 
   <div>

@@ -5,8 +5,6 @@
 #  id            :integer          not null, primary key
 #  category      :string
 #  description   :text
-#  lat           :float
-#  lng           :float
 #  material      :string
 #  mohs_hardness :decimal(, )
 #  site          :string
@@ -19,6 +17,20 @@
 class Artifact < ApplicationRecord
   belongs_to :dig, counter_cache: true
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
+  
+  has_many :images, as: :imageable, dependent: :destroy
+
+  enum category: {
+    jewelry: 'jewelry', 
+    weaponry: 'weaponry', 
+    tool: 'tool', 
+    feature: 'feature', 
+    pottery: 'pottery', 
+    tablet: 'tablet', 
+    human_remains: 'human remains', 
+    clothing: 'clothing', 
+    faunal_remains: 'faunal remains', 
+    other: 'other'}
 
   validate :poster_is_dig_participant
 

@@ -1,8 +1,11 @@
 <div id="<%= dom_id dig %>">
 
-  <h1 class="mt-4 mb-4 text-danger">
-    <%= dig.name %>
-  </h1>
+  <div class="mt-4 mb-4 d-flex justify-content-between align-items-center">
+    <h1 class="text-danger">
+      <%= dig.name %>
+    </h1>
+    <%= link_to "Announcements", dig_announcements_path(dig), class: "btn btn-secondary" %>
+  </div>
 
   <hr>
 
@@ -32,7 +35,12 @@
   </p>
 
   <p>
-    <strong>Your role in this dig is <%= dig.dig_participants.find_by(participant_id: current_user.id).role %>.</strong>
+    <strong>Your role in this dig is <%= dig.dig_participants.find_by(participant_id: current_user.id).role.humanize %>.</strong>
+
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
+      ?
+    </button>
+    <%= render partial: "shared/roles_info_modal" %>
   </p>
 
   <hr>

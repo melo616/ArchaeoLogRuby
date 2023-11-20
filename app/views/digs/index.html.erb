@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Welcome, <%= current_user.first_name %>!</h1>
   <div style="padding: 20px; text-align: center;">
-    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-8" %></h3>
+    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-8", style: "width: 50%;" %></h3>
   </div>
-  <div style="text-align: center">
+  <div style="text-align: center" class="mb-4">
     <h3>Digs You Participate In</h3>
     <div id="digs" class="d-flex justify-content-center flex-wrap">
-        <% @digs.each do |dig| %>
+        <% @digs.order(end_date: :desc).each do |dig| %>
         <div class="card" style="width: 50%; margin: 10px;">
           <div class="card-body">
             <h4 class="card-title"><%= dig.name %></h4>

@@ -1,11 +1,28 @@
-<h1>Dig participants</h1>
+<div class="container">
+  <h1>Dig participants</h1>
 
-<%= link_to "Back to dig", dig_path(@dig) %> | 
+  <div class="mt-4 mb-4 ml-4 d-flex justify-content-between">
+    <div>
+    <%= link_to "Back to dig", dig_path(@dig) %>
+    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
+      <%= link_to "New dig participant", new_dig_dig_participant_path %>
+    <% end %>
+    </div>
+    <div>
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
+        Understanding Roles
+      </button>
+    </div>
+  </div>
 
-<%= link_to "New dig participant", new_dig_dig_participant_path %>
-
-<div id="dig_participants">
-  <% @dig_participants.each do |dig_participant| %>
-    <%= render dig_participant %>
-  <% end %>
+  <div id="dig_participants">
+  <%= render partial: "shared/roles_info_modal" %>
+    <ul class="list-group">
+      <% @dig_participants.each do |dig_participant| %>
+        <li class="list-group-item pt-4 pb-4">
+          <%= render dig_participant %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

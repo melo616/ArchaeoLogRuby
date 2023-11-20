@@ -1,11 +1,13 @@
-<h1>Editing artifact</h1>
+<div class="container">  
+  <h1>Editing artifact</h1>
 
-<%= render "form", artifact: @artifact %>
+  <div>
+    <%= link_to "Back to artifact", dig_artifact_path(@dig, @artifact) %> |
+    <%= link_to 'Back to dig', dig_path(@dig) %> |
+    <%= link_to "Artifact list", dig_artifacts_path(@dig) %>
+  </div>
 
-<br>
+  <hr>
 
-<div>
-  <%= link_to "Show this artifact", dig_artifact_path(@dig, @artifact) %> |
-  <%= link_to 'Back to dig', dig_path(@dig) %> |
-  <%= link_to "Artifact list", dig_artifacts_path(@dig) %>
+  <%= render "form", artifact: @artifact %>
 </div>

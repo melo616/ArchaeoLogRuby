@@ -1,0 +1,13 @@
+<div id="<%= dom_id image %>">
+  <%= image_tag @image.image_url.url, style: "height: 350px;" %>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= image.notes %>
+  </p>
+
+  <p>
+    <strong>Posted by:</strong> <%= link_to "#{User.find(image.user.id).first_name} #{User.find(image.user.id).last_name}", profile_path(image.user) %> on <%= image.created_at.strftime("%b %d, %Y") %>
+  </p>
+
+</div>

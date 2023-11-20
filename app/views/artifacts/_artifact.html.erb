@@ -1,8 +1,4 @@
 <div id="<%= dom_id artifact %>">
-  <p>
-    <strong>Description:</strong>
-    <%= artifact.description %>
-  </p>
 
   <p>
     <strong>Material:</strong>
@@ -11,7 +7,12 @@
 
     <p>
     <strong>Category:</strong>
-    <%= artifact.category %>
+    <%= artifact.category.humanize %>
+  </p>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= artifact.description %>
   </p>
 
   <p>
@@ -27,16 +28,6 @@
   <p>
     <strong>Site:</strong>
     <%= artifact.site %>
-  </p>
-
-  <p>
-    <strong>Lat:</strong>
-    <%= artifact.lat %>
-  </p>
-
-  <p>
-    <strong>Lng:</strong>
-    <%= artifact.lng %>
   </p>
 
   <p>
