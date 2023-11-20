@@ -23,4 +23,6 @@
 class Announcement < ApplicationRecord
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
   belongs_to :dig
+
+  validates :title, presence: true
 end
