@@ -46,7 +46,7 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def poster?
-    @image.user == user
+    @image.poster == user
   end
 
 end

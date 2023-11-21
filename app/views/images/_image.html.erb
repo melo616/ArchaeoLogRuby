@@ -7,7 +7,7 @@
   </p>
 
   <p>
-    <strong>Posted by:</strong> <%= link_to "#{User.find(image.user.id).first_name} #{User.find(image.user.id).last_name}", profile_path(image.user) %> on <%= image.created_at.strftime("%b %d, %Y") %>
+    <strong>Posted by:</strong> <%= link_to "#{User.find(image.poster.id).first_name} #{User.find(image.poster.id).last_name}", profile_path(image.poster) %> on <%= image.created_at.strftime("%b %d, %Y") %>
   </p>
 
 </div>

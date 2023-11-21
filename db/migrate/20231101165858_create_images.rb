@@ -3,8 +3,8 @@ class CreateImages < ActiveRecord::Migration[7.0]
     create_table :images do |t|
       t.string :image_url
       t.string :notes
-      t.references :dig, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :imageable, polymorphic: true, null: false
+      t.references :poster, null: false, foreign_key: { to_table: :users }
       t.boolean :cover_photo, default: false
       t.timestamps
     end

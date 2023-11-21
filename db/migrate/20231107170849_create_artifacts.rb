@@ -1,15 +1,14 @@
 class CreateArtifacts < ActiveRecord::Migration[7.0]
   def change
     create_table :artifacts do |t|
-      t.float :lat
-      t.float :lng
-      t.text :description
       t.string :material
+      t.string :category
+      t.text :description
       t.decimal :mohs_hardness
       t.float :weight
-      t.integer :dig_id
       t.string :site
-      t.integer :poster_id
+      t.references :dig, null: false, foreign_key: true
+      t.references :poster, null: false, foreign_key: { to_table: :users}
 
       t.timestamps
     end

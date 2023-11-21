@@ -1,3 +1,11 @@
+desc "Drops, creates, and migrates database"
+task reset: [
+  :environment,
+  "db:drop",
+  "db:create",
+  "db:migrate"
+]
+
 desc "Fill the database tables with some sample data"
 task({ :sample_data => :environment }) do
   pp "☆･ﾟ:* Creating sample data *:･ﾟ☆"

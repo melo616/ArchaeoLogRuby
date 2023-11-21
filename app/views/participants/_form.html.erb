@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% if @dig_participant.participant_id == nil %>
+  <% if @participant.participant_id == nil %>
     <div>
       <%= form.label :participant_email, style: "display: block" %>
       <%= form.text_field :participant_email %>

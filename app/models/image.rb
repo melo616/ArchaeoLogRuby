@@ -5,21 +5,21 @@
 #  id             :integer          not null, primary key
 #  cover_photo    :boolean          default(FALSE)
 #  image_url      :string
-#  imageable_type :string
+#  imageable_type :string           not null
 #  notes          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
-#  imageable_id   :integer
-#  user_id        :integer          not null
+#  imageable_id   :integer          not null
+#  poster_id      :integer          not null
 #
 # Indexes
 #
-#  index_images_on_commentable  (imageable_type,imageable_id)
-#  index_images_on_user_id      (user_id)
+#  index_images_on_imageable  (imageable_type,imageable_id)
+#  index_images_on_poster_id  (poster_id)
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  poster_id  (poster_id => users.id)
 #
 class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true

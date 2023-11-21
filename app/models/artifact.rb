@@ -11,8 +11,18 @@
 #  weight        :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  dig_id        :integer
-#  poster_id     :integer
+#  dig_id        :integer          not null
+#  poster_id     :integer          not null
+#
+# Indexes
+#
+#  index_artifacts_on_dig_id     (dig_id)
+#  index_artifacts_on_poster_id  (poster_id)
+#
+# Foreign Keys
+#
+#  dig_id     (dig_id => digs.id)
+#  poster_id  (poster_id => users.id)
 #
 class Artifact < ApplicationRecord
   belongs_to :dig, counter_cache: true
@@ -32,11 +42,11 @@ class Artifact < ApplicationRecord
     faunal_remains: 'faunal remains', 
     other: 'other'}
 
-  validate :poster_is_dig_participant
+  validate :poster_is_participant
 
-  def poster_is_dig_participant
-    unless dig.dig_participants.pluck(:participant_id).include? poster.id
-      errors.add(:poster, "must be a dig participant")
+  def poster_is_participant
+    unless dig.participants.pluck(:participant_id).include? poster.id
+      errors.add(:poster, "must be a participant")
     end
   end
 end
