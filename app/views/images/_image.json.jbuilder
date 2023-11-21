@@ -1,2 +1,2 @@
-json.extract! image, :id, :image_url, :notes, :created_at, :updated_at
-json.url image_url(image, format: :json)
+json.extract! image, :id, :image, :notes, :created_at, :updated_at
+json.url image(image, format: :json)

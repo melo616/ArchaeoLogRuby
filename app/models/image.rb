@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  cover_photo    :boolean          default(FALSE)
-#  image_url      :string
+#  image          :string
 #  imageable_type :string           not null
 #  notes          :string
 #  created_at     :datetime         not null
@@ -26,5 +26,5 @@ class Image < ApplicationRecord
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
 
   #for image uploads
-  mount_uploader :image_url, ImageUrlUploader
+  mount_uploader :image, ImageUploader
 end
