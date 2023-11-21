@@ -6,6 +6,9 @@ ruby "3.2.1"
 # user devise
 gem "devise"
 
+#for devise form
+gem "simple_form"
+
 # authorization library
 gem "pundit"
 
