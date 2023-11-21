@@ -20,7 +20,7 @@
 #  dig_id          (dig_id => digs.id)
 #  participant_id  (participant_id => users.id)
 #
-class Participant < ApplicationRecord
+class DigParticipant < ApplicationRecord
   validates :participant_id, uniqueness: { scope: :dig_id, message: "User has already participated in this dig" }
   validates :role, presence: true
 

@@ -42,10 +42,10 @@ class Artifact < ApplicationRecord
     faunal_remains: 'faunal remains', 
     other: 'other'}
 
-  validate :poster_is_participant
+  validate :poster_is_dig_participant
 
-  def poster_is_participant
-    unless dig.participants.pluck(:participant_id).include? poster.id
+  def poster_is_dig_participant
+    unless dig.dig_participants.pluck(:participant_id).include? poster.id
       errors.add(:poster, "must be a participant")
     end
   end

@@ -1,7 +1,7 @@
 <%= form_with(model: dig_participant, url: [@dig, @dig_participant]) do |form| %>
   <% if dig_participant.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(dig_participant.errors.count, "error") %> prohibited this dig_participant from being saved:</h2>
+      <h2><%= pluralize(dig_participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
 
       <ul>
         <% dig_participant.errors.each do |error| %>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% if @participant.participant_id == nil %>
+  <% if @dig_participant.participant_id == nil %>
     <div>
       <%= form.label :participant_email, style: "display: block" %>
       <%= form.text_field :participant_email %>
