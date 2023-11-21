@@ -88,3 +88,4 @@ production:
   database: archaeolog_production
   # username: rails_rails gentemplate
   password: <%= ENV["ARCHAEOLOG_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
