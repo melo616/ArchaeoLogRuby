@@ -1,5 +1,7 @@
 databases:
   - name: archaeolog
+  - databaseName: archaeolog
+  - user: archaeolog
 
 services:
   - type: web
@@ -9,10 +11,9 @@ services:
     buildCommand: "./bin/render-build.sh" # # we already created these two files for you
     startCommand: "./bin/render-start.sh"
     envVars: # this section sets some ENV variables needed by Render for deployment
-      - key: SECRET_KEY_BASE
-        generateValue: true
       - key: DATABASE_URL
-        from_database:
+        fromDatabase:
           name: archaeolog
           property: connectionString
-
+      - key: RAILS_MASTER_KEY
+        sync: false
