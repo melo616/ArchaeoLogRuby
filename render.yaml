@@ -1,7 +1,5 @@
 databases:
   - name: archaeolog
-    databaseName: archaeolog
-    user: archaeolog
 
 services:
   - type: web
@@ -13,3 +11,8 @@ services:
     envVars: # this section sets some ENV variables needed by Render for deployment
       - key: SECRET_KEY_BASE
         generateValue: true
+      - key: DATABASE_URL
+        from_database:
+          name: archaeolog
+          property: connectionString
+
