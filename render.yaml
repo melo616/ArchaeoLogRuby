@@ -2,6 +2,7 @@ databases:
   - name: archaeolog
     databaseName: archaeolog
     user: archaeolog
+    plan: free
 
 services:
   - type: web
