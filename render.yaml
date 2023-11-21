@@ -1,7 +1,7 @@
 databases:
   - name: archaeolog
-  - databaseName: archaeolog
-  - user: archaeolog
+    databaseName: archaeolog
+    user: archaeolog
 
 services:
   - type: web
