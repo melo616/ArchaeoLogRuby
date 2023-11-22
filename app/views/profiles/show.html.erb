@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <%= link_to 'Back', request.referer || root_path %>
+  <%= link_to 'Back to digs', root_path %>
 
   <% if current_user == @profile %>
      | <%= link_to "Edit my profile", edit_user_registration_path %>
