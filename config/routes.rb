@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   resources :digs do
     resources :images
-    resources :invitations, except: [:show, :edit, :update]
     resources :dig_participants, except: [:show]
     resources :announcements
     resources :artifacts do
       resources :images
     end
   end
+
+  resources :invitations, except: [:show, :edit, :update]
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

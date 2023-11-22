@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>Welcome, <%= current_user.first_name %>!</h1>
+  <div class="d-flex justify-content-between">
+    <h1>Welcome, <%= current_user.first_name %>!</h1>
+    <%= link_to "Invitations", invitations_path %>
+  </div>
   <div style="padding: 20px; text-align: center;">
     <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-8", style: "width: 50%;" %></h3>
   </div>
