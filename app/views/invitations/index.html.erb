@@ -6,7 +6,7 @@
     <h3>Invitations Awaiting Your Action</h3>
       <% @received_invitations.each do |invitation| %>
         <%= render invitation %>
-        <%= button_to "Accept", { controller: "dig_participants", action: "create", dig_id: invitation.dig_id, participant_id: invitation.recipient_id, role: invitation.role }, method: :post %>
+        <%= button_to "Accept", accept_invitation_path(invitation) %>
       <% end %>
     </div>
     <hr>

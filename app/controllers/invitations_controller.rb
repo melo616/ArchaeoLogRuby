@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: %i[ show edit update destroy ]
+  before_action :set_invitation, only: %i[ accept destroy ]
   after_action :skip_pundit_authorization
   
   # GET /invitations or /invitations.json
@@ -34,6 +34,12 @@ class InvitationsController < ApplicationController
           format.json { render json: { error: "User not found" }, status: :unprocessable_entity }
       end
     end
+  end
+
+  def accept
+    @invitation.status = "accepted"
+    @invitation.save
+    DigParticipant.create(dig_id: @invitation.dig_id, participant: current_user, role: @invitation.role)
   end
 
   # DELETE /invitations/1 or /invitations/1.json

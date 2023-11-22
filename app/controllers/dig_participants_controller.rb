@@ -39,7 +39,6 @@ class DigParticipantsController < ApplicationController
       else
         format.html { redirect_to dig_url(@dig), status: :unprocessable_entity, notice: "User not found."}
         format.json { render json: { error: "User not found" }, status: :unprocessable_entity }
-
       end
     end
   end
