@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invitations
   get 'info/about'
 
   resources :digs do
