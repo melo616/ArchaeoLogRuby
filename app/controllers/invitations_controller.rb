@@ -9,9 +9,9 @@ class InvitationsController < ApplicationController
   end
 
   # GET /invitations/new
-  def new
-    @invitation = Invitation.new
-  end
+  # def new
+  #   @invitation = Invitation.new
+  # end
 
   # POST /invitations or /invitations.json
   def create
@@ -56,10 +56,6 @@ class InvitationsController < ApplicationController
     def invitation_params
       params.require(:invitation).permit(:role, :status, :dig_id, :sender_id, :recipient_id)
     end
-
-    # def set_dig
-    #   @dig = Dig.find(params.fetch(:dig_id))
-    # end
 
     #for development only - DELETE
     def skip_pundit_authorization

@@ -1,7 +1,7 @@
 <div id="<%= dom_id invitation %>">
   <p>
     <strong>Role:</strong>
-    <%= invitation.role %>
+    <%= invitation.role.humanize %>
   </p>
 
   <p>
@@ -11,17 +11,17 @@
 
   <p>
     <strong>Dig:</strong>
-    <%= invitation.dig_id %>
+    <%= Dig.find(invitation.dig_id).name %>
   </p>
 
   <p>
     <strong>Sender:</strong>
-    <%= invitation.sender_id %>
+    <%= invitation.sender.first_name %> <%= invitation.sender.last_name %>
   </p>
 
   <p>
     <strong>Recipient:</strong>
-    <%= invitation.recipient_id %>
+<%= invitation.recipient.first_name %> <%= invitation.recipient.last_name %>
   </p>
 
 </div>
