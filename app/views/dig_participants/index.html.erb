@@ -5,7 +5,7 @@
     <div>
     <%= link_to "Back to dig", dig_path(@dig) %>
     <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
-      <%= link_to "New dig participant", new_dig_dig_participant_path %>
+      <%= link_to "Invite new participant", new_dig_invitation_path %>
     <% end %>
     </div>
     <div>

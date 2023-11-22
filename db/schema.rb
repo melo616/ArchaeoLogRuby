@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_201658) do
 
   create_table "invitations", force: :cascade do |t|
     t.string "role"
-    t.string "status"
+    t.string "status", default: "pending"
     t.integer "dig_id", null: false
     t.integer "sender_id", null: false
     t.integer "recipient_id", null: false

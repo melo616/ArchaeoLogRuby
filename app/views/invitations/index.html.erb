@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <h1>Your Pending Invitations</h1>
 
-<h1>Invitations</h1>
-
-<div id="invitations">
-  <% @invitations.each do |invitation| %>
-    <%= render invitation %>
-    <p>
-      <%= link_to "Show this invitation", invitation %>
-    </p>
-  <% end %>
+  <div id="invitations">
+    <div>
+    <h3>Invitations Awaiting Your Action</h3>
+      <% @received_invitations.each do |invitation| %>
+        <%= render invitation %>
+        <p>
+          Accept
+        </p>
+      <% end %>
+    </div>
+    <hr>
+    <div>
+    <h3>Your Sent Invitations</h3>
+      <% @sent_invitations.each do |invitation| %>
+        <%= render invitation %>
+        <p>
+          Accept
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New invitation", new_invitation_path %>

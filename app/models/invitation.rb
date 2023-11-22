@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  role         :string
-#  status       :string
+#  status       :string           default("pending")
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  dig_id       :integer          not null
@@ -25,6 +25,14 @@
 #
 class Invitation < ApplicationRecord
   belongs_to :dig
-  belongs_to :sender
-  belongs_to :recipient
+  belongs_to :sender, class_name: "User", foreign_key: "sender_id"
+  belongs_to :recipient, class_name: "User", foreign_key: "recipient_id"
+
+  enum status: { pending: "pending", rejected: "rejected", accepted: "accepted" }
+
+  enum role: {
+    lead: 'lead',
+    analyst: 'analyst',
+    field_worker: 'field worker'
+  }, _default: :field_worker
 end

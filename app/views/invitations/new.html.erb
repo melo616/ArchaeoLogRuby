@@ -1,9 +1,11 @@
-<h1>New invitation</h1>
+<div class="container">
+  <h1>New invitation</h1>
+  
+  <div>
+    <%= link_to "Back to dig", digs_path(@dig) %>
+  </div>
 
-<%= render "form", invitation: @invitation %>
+  <hr>
 
-<br>
-
-<div>
-  <%= link_to "Back to invitations", invitations_path %>
+  <%= render "form", invitation: @invitation %>
 </div>

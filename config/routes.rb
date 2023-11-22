@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :invitations
   get 'info/about'
 
   resources :digs do
     resources :images
+    resources :invitations, except: [:show, :edit, :update]
     resources :dig_participants, except: [:show]
     resources :announcements
     resources :artifacts do
