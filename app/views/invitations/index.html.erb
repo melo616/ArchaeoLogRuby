@@ -16,7 +16,7 @@
     <hr>
     <div>
     <h3>Your Sent Invitations</h3>
-      <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer;">Invite new participant</p>
+      <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer; display: inline-block; color: black;">Invite new participant</p>
       <% if @pending_sent_invitations.count > 0 %>
         <% @pending_sent_invitations.each do |invitation| %>
           <%= render invitation %>
