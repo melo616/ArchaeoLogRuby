@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   has_many :dig_participants, foreign_key: "participant_id"
   has_many :digs, through: :dig_participants
-
+  has_many :led_digs, -> { where(dig_participants: { role: 'lead' }) }, through: :dig_participants, source: :dig
   has_many :announcements
 
   validates :first_name, presence: true

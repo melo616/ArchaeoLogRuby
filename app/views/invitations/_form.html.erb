@@ -10,9 +10,15 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.hidden_field :dig_id, value: @dig.id %>
-  </div>
+  <% if @dig %>
+    <div>
+      <%= form.hidden_field :dig_id, value: @dig.id %>
+    </div>
+  <% else %>
+    <% @led_digs = current_user.led_digs %>
+    <%= form.label :dig, style: "display: block" %>
+    <%= form.collection_select :dig_id, @led_digs, :id, :name, prompt: true %>
+  <% end %>
 
   <div>
     <%= form.label :participant_email, style: "display: block" %>
