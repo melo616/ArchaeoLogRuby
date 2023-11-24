@@ -29,7 +29,7 @@ class InvitationsController < ApplicationController
           sender = current_user
           @invitation = Invitation.new(dig_id: invitation_params[:dig_id], recipient: participant, sender: sender, role: invitation_params[:role])
             if @invitation.save
-              format.html { redirect_to root_path, notice: "Invitation was successfully sent." }
+              format.html { redirect_to invitations_path, notice: "Invitation was successfully sent." }
               format.json { render :show, status: :created, location: @invitation }
             else
               format.html { render :new, status: :unprocessable_entity }
@@ -47,6 +47,10 @@ class InvitationsController < ApplicationController
     @invitation.status = "accepted"
     @invitation.save
     DigParticipant.create(dig_id: @invitation.dig_id, participant: current_user, role: @invitation.role)
+    respond_to do |format|
+      format.html { redirect_to invitations_url, notice: "Invitation to #{@invitation.dig.name} accepted." }
+      format.json { render json: { message: "Invitation accepted" }, status: :ok }
+    end
   end
 
   # DELETE /invitations/1 or /invitations/1.json
