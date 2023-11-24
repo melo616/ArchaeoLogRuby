@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :invitations, only: [:index, :create, :destroy]
+  post "/invitations/accept/:id", to: "invitations#accept", as: "accept_invitation"
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :profiles, only: [:show]

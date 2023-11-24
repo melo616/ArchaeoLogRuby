@@ -25,6 +25,8 @@
 class Dig < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
+  has_many :invitations, dependent: :destroy
+
   has_many :dig_participants, dependent: :destroy
   has_many :users, through: :dig_participants, source: :participant, dependent: :destroy
   has_many :leads, -> { leads }, class_name: "DigParticipant", dependent: :destroy

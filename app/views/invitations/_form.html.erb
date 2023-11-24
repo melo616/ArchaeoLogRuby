@@ -1,0 +1,36 @@
+<%= form_with(model: @invitation, url: { controller: 'invitations', action: 'create' }) do |form| %>
+  <% if invitation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+      <ul>
+        <% invitation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @dig %>
+    <div>
+      <%= form.hidden_field :dig_id, value: @dig.id %>
+    </div>
+  <% else %>
+    <% @led_digs = current_user.led_digs %>
+    <%= form.label :dig, style: "display: block" %>
+    <%= form.collection_select :dig_id, @led_digs, :id, :name, prompt: true %>
+  <% end %>
+
+  <div>
+    <%= form.label :participant_email, style: "display: block" %>
+    <%= form.text_field :participant_email %>
+  </div>
+
+  <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.collection_select :role, Invitation.roles.keys, :to_s, :humanize, {}, class: "form-select" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

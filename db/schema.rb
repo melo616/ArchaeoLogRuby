@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_19_184412) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_22_201658) do
   create_table "announcements", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -75,6 +75,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_184412) do
     t.index ["poster_id"], name: "index_images_on_poster_id"
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.string "role"
+    t.string "status", default: "pending"
+    t.integer "dig_id", null: false
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dig_id"], name: "index_invitations_on_dig_id"
+    t.index ["recipient_id"], name: "index_invitations_on_recipient_id"
+    t.index ["sender_id"], name: "index_invitations_on_sender_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -99,4 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_184412) do
   add_foreign_key "dig_participants", "users", column: "participant_id"
   add_foreign_key "digs", "users", column: "creator_id"
   add_foreign_key "images", "users", column: "poster_id"
+  add_foreign_key "invitations", "digs"
+  add_foreign_key "invitations", "users", column: "recipient_id"
+  add_foreign_key "invitations", "users", column: "sender_id"
 end
