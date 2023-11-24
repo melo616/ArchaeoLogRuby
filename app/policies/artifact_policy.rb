@@ -10,6 +10,14 @@ class ArtifactPolicy < ApplicationPolicy
     true
   end
 
+  def artifacts_by_category?
+    true
+  end
+
+  def artifacts_by_day?
+    true
+  end
+
   def show?
     participant?
   end
