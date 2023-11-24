@@ -1,5 +1,6 @@
 # ArchaeoLog
 
+[`See the site`]([https://github.com/varvet/pundi](https://archaeolog.onrender.com)
 ArchaeoLog is a digital field log where archaeologists can create digs, add participants, add images, and log artifacts. It is a streamlined and user-friendly application that serves as a modern and lightweight upgrade to traditional museum and archaeological software.
 
 # Features
