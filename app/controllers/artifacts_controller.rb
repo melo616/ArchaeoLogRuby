@@ -8,6 +8,17 @@ class ArtifactsController < ApplicationController
     @artifacts = Artifact.where(:dig_id => @dig.id)
   end
 
+  # Data visualization
+  def artifacts_by_category
+    artifact_counts = Artifact.where(dig_id: @dig.id).group(:category).count
+    humanized_counts = artifact_counts.transform_keys{ |category| category.to_s.humanize}
+    render json: humanized_counts
+  end
+
+  def artifacts_by_day
+    render json: Artifact.group_by_day(:created_at).count
+  end
+
   # GET /artifacts/1 or /artifacts/1.json
   def show
   end

@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :announcements
     resources :artifacts do
       resources :images
+      collection do
+        get "artifacts_by_category"
+        get "artifacts_by_day"
+      end
     end
   end
 

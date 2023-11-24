@@ -165,6 +165,8 @@ GEM
       octokit (~> 5.0)
       oj (~> 3.13.12)
       rake (~> 13)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     hashdiff (1.0.1)
     htmlbeautifier (1.4.2)
     http (5.1.1)
@@ -450,6 +452,7 @@ DEPENDENCIES
   draft_matchers
   faker
   grade_runner
+  groupdate
   htmlbeautifier
   http
   importmap-rails
