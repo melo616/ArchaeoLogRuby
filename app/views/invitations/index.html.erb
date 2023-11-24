@@ -4,9 +4,13 @@
   <div id="invitations">
     <div>
     <h3>Invitations Awaiting Your Action</h3>
-      <% @received_invitations.each do |invitation| %>
-        <%= render invitation %>
-        <%= button_to "Accept", accept_invitation_path(invitation) %>
+      <% if @pending_received_invitations.count > 0 %>
+        <% @pending_received_invitations.each do |invitation| %>
+          <%= render invitation %>
+          <%= button_to "Accept", accept_invitation_path(invitation) %>
+        <% end %>
+      <% else %>
+        <p>You have no pending invitations.</p>
       <% end %>
     </div>
     <hr>

@@ -4,8 +4,8 @@ class InvitationsController < ApplicationController
   
   # GET /invitations or /invitations.json
   def index
-    @received_invitations = current_user.received_invitations
-    @sent_invitations = current_user.sent_invitations
+    @pending_received_invitations = current_user.pending_received_invitations
+    @pending_sent_invitations = current_user.pending_sent_invitations
   end
 
   # GET /invitations/new

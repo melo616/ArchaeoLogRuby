@@ -29,7 +29,10 @@ class User < ApplicationRecord
   has_many :created_artifacts, class_name: "Artifact", foreign_key: "poster_id"
 
   has_many :sent_invitations, class_name: "Invitation", foreign_key: "sender_id"
-  has_many :received_invitations, class_name: "Invitation", foreign_key: "recipient_id"
+  has_many :pending_sent_invitations, -> { where(status: "pending") }, class_name: "Invitation", foreign_key: "sender_id"
+
+  has_many :pending_invitations, class_name: "Invitation", foreign_key: "recipient_id"
+  has_many :pending_received_invitations, -> { where(status: "pending") }, class_name: "Invitation", foreign_key: "recipient_id"
 
   has_many :dig_participants, foreign_key: "participant_id"
   has_many :digs, through: :dig_participants
