@@ -4,14 +4,14 @@
     <%= link_to "Invitations", invitations_path %>
   </div>
   <div style="padding: 20px; text-align: center;">
-    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-8", style: "width: 50%;" %></h3>
+    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-lg-8 col-12" %></h3>
   </div>
   <div style="text-align: center" class="mb-4">
     <h3>Digs You Participate In</h3>
     <div id="digs" class="d-flex justify-content-center flex-wrap">
       <% if @digs.count > 0 %>
         <% @digs.order(end_date: :desc).each do |dig| %>
-        <div class="card" style="width: 50%; margin: 10px;">
+        <div class="card col-lg-8 col-12 mb-3">
           <div class="card-body">
             <h4 class="card-title"><%= dig.name %></h4>
             <p class="card-text"><%= dig.location %></p>

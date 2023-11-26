@@ -7,7 +7,10 @@
       <% if @pending_received_invitations.count > 0 %>
         <% @pending_received_invitations.each do |invitation| %>
           <%= render invitation %>
-          <%= button_to "Accept", accept_invitation_path(invitation) %>
+          <div class="btn-toolbar">
+            <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-secondary" %>
+            <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
+          </div>
         <% end %>
       <% else %>
         <p>You have no pending invitations.</p>
@@ -28,7 +31,7 @@
     </div>
   </div>
 
-   <!-- MODAL -->
+  <!-- MODAL -->
   <div class="modal" id="newInvitationModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
