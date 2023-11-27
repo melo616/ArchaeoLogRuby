@@ -5,7 +5,7 @@ class DigsController < ApplicationController
   # GET /digs or /digs.json
   def index
     @q = current_user.digs.ransack(params[:q])
-    @digs = @q.result
+    @digs = @q.result(:distinct => true).includes(:leads)
   end
 
   # GET /digs/1 or /digs/1.json
