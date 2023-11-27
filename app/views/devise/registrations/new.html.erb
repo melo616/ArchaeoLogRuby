@@ -8,30 +8,30 @@
       <%= f.input :email,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "email" }%>
+                  input_html: { class: "form-control", autocomplete: "email" }%>
       <%= f.input :first_name,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "first_name" }%>
+                  input_html: { class: "form-control", autocomplete: "first_name" }%>
       <%= f.input :last_name,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "last_name" }%> 
+                  input_html: { class: "form-control", autocomplete: "last_name" }%> 
       <%= f.input :bio,
                   required: false,
                   autofocus: false,
-                  input_html: { autocomplete: "bio" }%>                  
+                  input_html: { class: "form-control", autocomplete: "bio" }%>                  
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { class: "form-control", autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   required: true,
-                  input_html: { autocomplete: "new-password" } %>
+                  input_html: { class: "form-control", autocomplete: "new-password" } %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "btn btn-outline-secondary mt-2" %>
     </div>
   <% end %>
 
