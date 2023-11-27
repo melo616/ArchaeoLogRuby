@@ -1,33 +1,37 @@
 <div class="container">
   <h1>Your Pending Invitations</h1>
 
+  <hr />
+
   <div id="invitations">
     <div>
-    <h3>Invitations Awaiting Your Action</h3>
-      <% if @pending_received_invitations.count > 0 %>
-        <% @pending_received_invitations.each do |invitation| %>
-          <%= render invitation %>
-          <div class="btn-toolbar">
-            <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
-            <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
-          </div>
+      <h3>Invitations Awaiting Your Action</h3>
+        <% if @pending_received_invitations.count > 0 %>
+          <% @pending_received_invitations.each do |invitation| %>
+            <%= render invitation %>
+            <div class="btn-toolbar">
+              <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
+              <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>You have no pending invitations.</p>
         <% end %>
-      <% else %>
-        <p>You have no pending invitations.</p>
-      <% end %>
     </div>
-    <hr>
+
+    <hr />
+
     <div>
-    <h3>Your Sent Invitations</h3>
-      <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer; display: inline-block; color: black;">Invite new participant</p>
-      <% if @pending_sent_invitations.count > 0 %>
-        <% @pending_sent_invitations.each do |invitation| %>
-          <%= render invitation %>
-          <%= button_to "Withdraw", invitation, method: :delete, class: "btn btn-outline-secondary" %>
+      <h3>Your Sent Invitations</h3>
+        <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" class="btn btn-outline-secondary" style="cursor: pointer; display: inline-block;">Invite new participant</p>
+        <% if @pending_sent_invitations.count > 0 %>
+          <% @pending_sent_invitations.each do |invitation| %>
+            <%= render invitation %>
+            <%= button_to "Withdraw", invitation, method: :delete, class: "btn btn-outline-secondary" %>
+          <% end %>
+        <% else %>
+          <p>You have no sent invitations awaiting acceptance. </p>
         <% end %>
-      <% else %>
-        <p>You have no sent invitations awaiting acceptance. </p>
-      <% end %>
     </div>
   </div>
 

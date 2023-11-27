@@ -38,6 +38,10 @@ class Dig < ApplicationRecord
 
   before_create :set_season
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "season"]
+  end
+
   private
 
   def set_season
