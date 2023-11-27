@@ -32,17 +32,17 @@
 
         <div id="digs" class="d-flex justify-content-center flex-wrap">
           <% @digs.order(end_date: :desc).each do |dig| %>
-          <div class="card col-lg-8 col-12 mb-3 shadow-sm">
-            <div class="card-header">
-              <h4 class="card-title pt-2"><%= dig.name %></h4>
-            </div>
-            <div class="card-body">
-              <p class="card-text"><%= dig.location %></p>
-              <p>
-                <%= link_to "Show this dig", dig %>
-              </p>
-            </div>
-          </div>
+            <%= link_to dig_path(dig) do %>
+              <div class="card col-lg-8 col-12 mb-3 shadow-sm">
+                <div class="card-header">
+                  <h4 class="card-title pt-2"><%= dig.name %></h4>
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><%= dig.location %></p>
+                  <p class="card-text"><%= dig.season %></p>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         <% else %>
           <p>No results</p>
