@@ -10,9 +10,9 @@
       <%= dig_participant.role.humanize %>
     </div>
 
-    <div class="d-flex justify-content-md-end col-md-4">
+    <div class="d-flex justify-content-md-end justify-content-between col-md-4 mt-2 mt-md-0 btn-toolbar">
       <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
-        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant), class: "btn btn-outline-secondary" %>&nbsp;
+        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
         <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-secondary" %>
       <% end %>
     </div>
