@@ -42,6 +42,10 @@ class Dig < ApplicationRecord
     ["name", "season"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["dig_participants", "leads"]
+  end
+
   private
 
   def set_season

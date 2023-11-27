@@ -34,4 +34,9 @@ class DigParticipant < ApplicationRecord
     analyst: 'analyst',
     field_worker: 'field worker'
   }, _default: :field_worker
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["participant_id", "role", "dig_id"]
+  end
+
 end

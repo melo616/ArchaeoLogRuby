@@ -15,9 +15,12 @@
           <p id="filterToggle" style="cursor: pointer;">Show filter</p>
           <div id="filterForm" class="mb-2">
             <%= search_form_for @q do |f| %>
-              <%= f.label :name_cont, "Filter by name" %>
-              <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
-              <%= f.submit :class => "btn btn-outline-secondary" %>
+              <%= f.label :name_i_cont, "Filter by name" %>
+              <%= f.text_field :name_i_cont, :placeholder => "Enter a few characters" %>
+              <div>
+                <%= link_to "Clear filters", digs_path(@dig) %>
+                <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
+              </div>
             <% end %>
           </div>
         </div>
