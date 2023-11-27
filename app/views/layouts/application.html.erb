@@ -31,6 +31,25 @@
         font-family: 'Lora', serif;
       }
     </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const filterToggle = document.getElementById('filterToggle')
+        const filterForm = document.getElementById('filterForm');
+
+        filterForm.style.display = 'none';
+
+        filterToggle.onclick = function() {
+          if (filterForm.style.display !== 'none') {
+            filterForm.style.display = 'none';
+            filterToggle.innerText = 'Show filter';
+          }
+          else {
+            filterForm.style.display = 'block';
+            filterToggle.innerText = 'Hide filter';
+          }
+        }
+      });
+    </script>
   </head>
 
   <body class="text-secondary">

@@ -5,3 +5,4 @@ import "controllers"
 // for chartkick
 import "chartkick"
 import "Chart.bundle"
+

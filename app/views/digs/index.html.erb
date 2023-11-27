@@ -11,14 +11,15 @@
     <div id="digs" class="d-flex justify-content-center flex-wrap">
       <% if current_user.digs.count != 0 %>
         <% if @digs.count > 0 %>
-          <%= search_form_for @q do |f| %>
-            <%= f.label :name_cont, "Filter by name" %>
-            <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
-            <%= f.submit :class => "btn btn-outline-secondary" %>
-          <% end %>
-          <div>
-
+        <p id="filterToggle" style="cursor: pointer";>Show filter</p>
+          <div id="filterForm">
+            <%= search_form_for @q do |f| %>
+              <%= f.label :name_cont, "Filter by name" %>
+              <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
+              <%= f.submit :class => "btn btn-outline-secondary" %>
+            <% end %>
           </div>
+
           <% @digs.order(end_date: :desc).each do |dig| %>
           <div class="card col-lg-8 col-12 mb-3">
             <div class="card-body">
