@@ -1,0 +1,22 @@
+<div>
+  <p id="filterToggle" style="cursor: pointer;">Show filter</p>
+  <hr />
+  <div id="filterForm" class="mb-2">
+    <%= search_form_for @q do |f| %>
+      <div class="form-check form-switch">
+        <%= f.check_box :led_by, { class: "form-check-input", role: "switch" }, params.dig(:q, :led_by) || current_user.id, nil  %>
+        <%= f.label :led_by, "Only digs I lead", class: "form-check-label" %>
+      </div>
+
+      <div>
+        <%= f.label :name_i_cont, "Filter by name", class: "form-label" %>
+        <%= f.text_field :name_i_cont, :placeholder => "Enter a few characters", class: "form-control", type: "search" %>
+      </div>
+      <div>
+        <%= link_to "Clear filters", digs_path(@dig) %>
+        <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
+      </div>
+    <% end %>
+    <hr />
+  </div>
+</div>

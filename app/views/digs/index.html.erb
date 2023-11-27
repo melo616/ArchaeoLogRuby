@@ -9,42 +9,18 @@
   <div style="padding: 20px; text-align: center;">
     <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-secondary btn-block col-lg-8 col-12" %></h3>
   </div>
-  <div style="text-align: center" class="mb-4">
+  <div class="mb-4">
     <h3>Digs You Participate In</h3>
     <div>
       <% if current_user.digs.count != 0 %>
         <% if @digs.count > 0 %>
-        <div>
-          <p id="filterToggle" style="cursor: pointer;">Show filter</p>
-          <hr />
-          <div id="filterForm" class="mb-2">
-            <%= search_form_for @q do |f| %>
-              <%= f.label :name_i_cont, "Filter by name" %>
-              <%= f.text_field :name_i_cont, :placeholder => "Enter a few characters" %>
-              <div>
-                <%= link_to "Clear filters", digs_path(@dig) %>
-                <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
-              </div>
+          <%= render "search" %>
+          <div id="digs" class="row">
+            <% @digs.order(end_date: :desc).each do |dig| %>
+              <%= link_to dig_path(dig), class: "col-12" do %>
+                <%= render "card", dig: dig %>
+              <% end %>
             <% end %>
-            <hr />
-          </div>
-        </div>
-
-        <div id="digs" class="d-flex justify-content-center flex-wrap">
-          <% @digs.order(end_date: :desc).each do |dig| %>
-          <div class="col-lg-8 col-12">
-            <%= link_to dig_path(dig) do %>
-              <div class="card mb-3 shadow-sm">
-                <div class="card-header">
-                  <h4 class="card-title pt-2"><%= dig.name %></h4>
-                </div>
-                <div class="card-body">
-                  <p class="card-text"><%= dig.location %></p>
-                  <p class="card-text"><%= dig.season %></p>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
           </div>
         <% else %>
           <p>No results</p>
@@ -52,7 +28,6 @@
       <% else %>
         <p>You're not participating in any digs. Create or join a dig to get started!<p>
       <% end %>
-      </div>
     </div>
   </div>
 </div>
