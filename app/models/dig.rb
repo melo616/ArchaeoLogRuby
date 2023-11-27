@@ -29,7 +29,7 @@ class Dig < ApplicationRecord
 
   has_many :dig_participants, dependent: :destroy
   has_many :users, through: :dig_participants, source: :participant, dependent: :destroy
-  has_many :leads, -> { leads }, class_name: "DigParticipant", dependent: :destroy
+  has_many :leads, -> { where(dig_participants: { role: 'lead' }) }, through: :dig_participants, source: :participant, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_many :artifacts, dependent: :destroy
   has_many :announcements, dependent: :destroy

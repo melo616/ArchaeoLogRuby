@@ -1,11 +1,5 @@
 <div class="container mt-5 mb-3">
   <%= render @dig %>
-  <div>
-    <h3>Participants</h3>
-    <i><%= link_to "Show all", dig_dig_participants_path(@dig) %></i>
-  </div>
-
-  <hr />
 
   <div>
     <p>
@@ -20,14 +14,25 @@
         <% end %>
       <% end %>
     </p>
-    <%= link_to "Add a new dig image", new_dig_image_path(@dig) %>
+    <%= link_to "Add a new dig image", new_dig_image_path(@dig), class: "btn btn-outline-secondary" %>
+  </div>
+
+  <hr />
+
+  <div>
+    <h3>Participants</h3>
+    <strong>This dig's lead(s):</strong>
+    <% @dig.leads.each do |lead| %>
+      <p><%= link_to "#{lead.first_name} #{lead.last_name}", profile_path(lead.id) %></p>
+    <% end %>
+    <i><%= link_to "Show all participants", dig_dig_participants_path(@dig) %></i>
   </div>
 
   <hr />
 
     <div class="mb-3">
       <h3>Latest Artifacts</h3>
-      <p><%= link_to "New artifact", new_dig_artifact_path(@dig) %></p>
+      <p><%= link_to "Log new artifact", new_dig_artifact_path(@dig), class: "btn btn-outline-secondary" %></p>
       <i><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></i>
     </div>
 
