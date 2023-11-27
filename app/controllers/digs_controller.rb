@@ -4,7 +4,8 @@ class DigsController < ApplicationController
 
   # GET /digs or /digs.json
   def index
-    @digs = current_user.digs
+    @q = current_user.digs.ransack(params[:q])
+    @digs = @q.result
   end
 
   # GET /digs/1 or /digs/1.json
