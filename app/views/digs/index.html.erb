@@ -32,8 +32,9 @@
 
         <div id="digs" class="d-flex justify-content-center flex-wrap">
           <% @digs.order(end_date: :desc).each do |dig| %>
+          <div class="col-lg-8 col-12">
             <%= link_to dig_path(dig) do %>
-              <div class="card col-lg-8 col-12 mb-3 shadow-sm">
+              <div class="card mb-3 shadow-sm">
                 <div class="card-header">
                   <h4 class="card-title pt-2"><%= dig.name %></h4>
                 </div>
@@ -44,6 +45,7 @@
               </div>
             <% end %>
           <% end %>
+          </div>
         <% else %>
           <p>No results</p>
         <% end %>
