@@ -1,10 +1,13 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Welcome, <%= current_user.first_name %>!</h1>
-    <%= link_to "Invitations", invitations_path %>
+    <div>
+      <%= link_to "Invitations", invitations_path, class: "btn btn-outline-secondary" %>
+      <!-- <%= image_tag("icons8-email-52.png", alt: "letter-icon") %> -->
+    </div>
   </div>
   <div style="padding: 20px; text-align: center;">
-    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-outline-secondary btn-block col-lg-8 col-12" %></h3>
+    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-secondary btn-block col-lg-8 col-12" %></h3>
   </div>
   <div style="text-align: center" class="mb-4">
     <h3>Digs You Participate In</h3>
@@ -13,6 +16,7 @@
         <% if @digs.count > 0 %>
         <div>
           <p id="filterToggle" style="cursor: pointer;">Show filter</p>
+          <hr />
           <div id="filterForm" class="mb-2">
             <%= search_form_for @q do |f| %>
               <%= f.label :name_i_cont, "Filter by name" %>
@@ -22,15 +26,17 @@
                 <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
               </div>
             <% end %>
+            <hr />
           </div>
         </div>
 
         <div id="digs" class="d-flex justify-content-center flex-wrap">
           <% @digs.order(end_date: :desc).each do |dig| %>
-          <div class="card col-lg-8 col-12 mb-3">
+          <div class="card col-lg-8 col-12 mb-3 shadow-sm">
+            <div class="card-header">
+              <h4 class="card-title pt-2"><%= dig.name %></h4>
+            </div>
             <div class="card-body">
-              <h4 class="card-title"><%= dig.name %></h4>
-              <hr />
               <p class="card-text"><%= dig.location %></p>
               <p>
                 <%= link_to "Show this dig", dig %>
