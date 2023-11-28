@@ -13,8 +13,8 @@
     <h3 class="text-center">Digs You Participate In</h3>
     <div>
       <% if current_user.digs.count != 0 %>
+        <%= render "search" %>
         <% if @digs.count > 0 %>
-          <%= render "search" %>
           <div id="digs" class="row">
             <% @digs.order(end_date: :desc).each do |dig| %>
               <%= link_to dig_path(dig), class: "col-12" do %>
