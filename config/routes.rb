@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :images
     resources :dig_participants, except: [:show]
     resources :announcements
+    resources :documents
     resources :artifacts do
       resources :images
       collection do
