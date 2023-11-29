@@ -1,11 +1,11 @@
 <div>
-  <p id="filterToggle" style="cursor: pointer;">Show filter</p>
+  <!-- <p id="filterToggle" style="cursor: pointer;">Show filter</p> -->
   <hr />
   <div id="filterForm" class="mb-2" style="display: block;">
     <%= search_form_for @q do |f| %>
       <div class="form-check form-switch">
         <%= f.check_box :led_by, { class: "form-check-input", role: "switch" }, params.dig(:q, :led_by) || current_user.id, nil  %>
-        <%= f.label :led_by, "Only digs I lead", class: "form-check-label" %>
+        <%= f.label :led_by, "Only show digs I lead", class: "form-check-label" %>
       </div>
 
       <div>
@@ -21,7 +21,7 @@
   </div>
 </div>
 
-    <script>
+    <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {
         const filterToggle = document.getElementById('filterToggle')
         const filterForm = document.getElementById('filterForm');
@@ -39,4 +39,4 @@
           }
         }
       });
-    </script>
+    </script> -->
