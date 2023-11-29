@@ -1,9 +1,11 @@
 class DocumentsController < ApplicationController
+  before_action :set_dig
   before_action :set_document, only: %i[ show edit update destroy ]
+  after_action :skip_pundit_authorization
 
   # GET /documents or /documents.json
   def index
-    @documents = Document.all
+    @documents = Document.where(:dig_id => @dig.id)
   end
 
   # GET /documents/1 or /documents/1.json
@@ -63,8 +65,17 @@ class DocumentsController < ApplicationController
       @document = Document.find(params[:id])
     end
 
+    def set_dig
+      @dig = Dig.find(params.fetch(:dig_id))
+    end
+
     # Only allow a list of trusted parameters through.
     def document_params
-      params.require(:document).permit(:title, :author, :document, :notes, :poster_id, :dig_id)
+      params.require(:document).permit(:title, :author, :document_file, :notes, :allowed_roles, :poster_id, :dig_id)
+    end
+
+    def skip_pundit_authorization
+      skip_authorization
+      skip_policy_scope
     end
 end

@@ -1,0 +1,4 @@
+class DocumentPolicy < ApplicationPolicy
+
+end
+

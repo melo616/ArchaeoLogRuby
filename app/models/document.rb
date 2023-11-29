@@ -3,6 +3,7 @@
 # Table name: documents
 #
 #  id            :integer          not null, primary key
+#  allowed_roles :string           not null
 #  author        :string
 #  document_file :string
 #  notes         :text
@@ -27,6 +28,7 @@ class Document < ApplicationRecord
   belongs_to :dig
 
   validates :title, presence: true
+  validates :allowed_roles, presence: true
 
-  mount_uploader :document_file, DocumentFile
+  mount_uploader :document_file, DocumentFileUploader
 end

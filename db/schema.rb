@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_225227) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_161129) do
   create_table "announcements", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -67,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_225227) do
     t.string "author"
     t.string "document_file"
     t.text "notes"
+    t.string "allowed_roles", null: false
     t.integer "poster_id", null: false
     t.integer "dig_id", null: false
     t.datetime "created_at", null: false

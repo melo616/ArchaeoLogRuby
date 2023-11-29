@@ -33,11 +33,13 @@ class Dig < ApplicationRecord
   has_many :images, as: :imageable, dependent: :destroy
   has_many :artifacts, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_many :documents, dependent: :destroy
   
   validates :name, presence: true
 
   before_create :set_season
 
+  # for ransack only show digs I lead toggle
   scope :led_by, ->(user_id) { joins(:dig_participants).where(dig_participants: { role: 'lead', participant_id: user_id }) }
 
   def self.ransackable_attributes(auth_object = nil)

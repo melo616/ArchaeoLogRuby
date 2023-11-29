@@ -39,6 +39,8 @@ class User < ApplicationRecord
   has_many :led_digs, -> { where(dig_participants: { role: 'lead' }) }, through: :dig_participants, source: :dig
   has_many :announcements
 
+  has_many :documents
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 end
