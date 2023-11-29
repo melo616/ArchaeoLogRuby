@@ -31,8 +31,12 @@
   </div>
 
   <div>
-    <%= form.label :allowed_roles, style: "display: block" %>
-    <%= form.check_box :allowed_roles %>
+    <strong>Roles:</strong>
+    <% roles = ["lead", "analyst", "field worker"] %>
+    <% roles.each do |role| %>
+      <%= form.check_box :allowed_roles, { multiple: true}, role, false %>
+      <%= form.label role, role.capitalize %><br>
+    <% end %>
   </div>
 
   <div>
@@ -40,7 +44,10 @@
   </div>
 
   <div>
+    <%= form.hidden_field :poster_id, value: current_user.id %>
+  </div>
+
+  <div>
     <%= form.submit class: "btn btn-outline-secondary"%>
   </div>
 <% end %>
-
