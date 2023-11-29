@@ -18,7 +18,7 @@
         <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
         <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger" %>
       <% elsif dig_participant.participant == current_user %>
-        <%= button_to "Leave dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger" %>
+        <%= button_to "Leave dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger",  data: {turbo_confirm: 'Are you sure you want to leave this dig? You will not be able to rejoin unless invited by a lead.'} %>
       <% end %>
     </div>
   </div>
