@@ -1,9 +1,12 @@
-<h1>New document</h1>
+<div class="container">
 
-<%= render "form", document: @document %>
+  <h1>New document</h1>
 
-<br>
+  <%= render "form", document: @document %>
 
-<div>
-  <%= link_to "Back to documents", dig_documents_path(@dig) %>
+  <br>
+
+  <div>
+    <%= link_to "Back to documents", dig_documents_path(@dig) %>
+  </div>
 </div>
