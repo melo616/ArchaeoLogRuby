@@ -1,33 +1,31 @@
-<div class="container">
-  <div class="d-flex justify-content-between align-items-center">
-    <h1>Welcome, <%= current_user.first_name %>!</h1>
-    <div>
-      <%= link_to "Invitations", invitations_path, class: "btn btn-outline-secondary" %>
-      <!-- <%= image_tag("icons8-email-52.png", alt: "letter-icon") %> -->
-    </div>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Welcome, <%= current_user.first_name %>!</h1>
+  <div>
+    <%= link_to "Invitations", invitations_path, class: "btn btn-outline-secondary" %>
+    <!-- <%= image_tag("icons8-email-52.png", alt: "letter-icon") %> -->
   </div>
-  <div class="text-center p-3">
-    <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-secondary btn-block col-lg-8 col-12" %></h3>
-  </div>
-  <div class="mb-4">
-    <h3 class="text-center">Digs You Participate In</h3>
-    <div>
-      <% if current_user.digs.count != 0 %>
-        <%= render "search" %>
-          <% if @digs.count > 0 %>
-            <div id="digs" class="row">
-              <% @digs.order(end_date: :desc).each do |dig| %>
-                <%= link_to dig_path(dig), class: "col-12" do %>
-                  <%= render "card", dig: dig %>
-                <% end %>
+</div>
+<div class="text-center p-3">
+  <h3><%= link_to "Create a new dig", new_dig_path, class: "btn btn-secondary btn-block col-lg-8 col-12" %></h3>
+</div>
+<div class="mb-4">
+  <h3 class="text-center">Digs You Participate In</h3>
+  <div>
+    <% if current_user.digs.count != 0 %>
+      <%= render "search" %>
+        <% if @digs.count > 0 %>
+          <div id="digs" class="row">
+            <% @digs.order(end_date: :desc).each do |dig| %>
+              <%= link_to dig_path(dig), class: "col-12" do %>
+                <%= render "card", dig: dig %>
               <% end %>
-            </div>
-          <% else %>
-            <p>No results</p>
-          <% end %>
-      <% else %>
-        <p>You're not participating in any digs. Create or join a dig to get started!<p>
-      <% end %>
-    </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>No results</p>
+        <% end %>
+    <% else %>
+      <p>You're not participating in any digs. Create or join a dig to get started!<p>
+    <% end %>
   </div>
 </div>

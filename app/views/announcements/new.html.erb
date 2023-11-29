@@ -1,12 +1,9 @@
-<div class="container">
-  <h1>New announcement</h1>
-    <div>
-      <%= link_to "Back to dig", dig_path(@dig) %> | 
-      <%= link_to "Back to announcements", dig_announcements_path %>
+<h1>New announcement</h1>
+  <div>
+    <%= link_to "Back to dig", dig_path(@dig) %> | 
+    <%= link_to "Back to announcements", dig_announcements_path %>
   </div>
 
-  <hr>
+<hr />
 
-  <%= render "form", announcement: @announcement %>
-
-</div>
+<%= render "form", announcement: @announcement %>

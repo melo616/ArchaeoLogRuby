@@ -1,24 +1,20 @@
-<div class="container">
-  <p style="color: green"><%= notice %></p>
+<h1>Announcements</h1>
 
-  <h1>Announcements</h1>
+<%= link_to "Back to dig", dig_path(@dig) %> |
+<%= link_to "New announcement", new_dig_announcement_path(@dig) %>
+<hr>
 
-  <%= link_to "Back to dig", dig_path(@dig) %> |
-  <%= link_to "New announcement", new_dig_announcement_path(@dig) %>
-  <hr>
-
-  <div id="announcements">
-    <% @announcements.each do |announcement| %>
-      <div class="d-flex justify-content-between align-items-center row">
-        <h3 class="col"><%= link_to "#{announcement.title}", dig_announcement_path(@dig, announcement) %></h3>
-        <p class="col"><%= truncate(announcement.body, :length => 50, :separator => ' ') %></p>
-        <% if announcement.poster == current_user %>
-          <p class="col">Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by you</p>
-        <% else %>
-          <p class="col">Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by <%= announcement.poster.first_name %> <%= announcement.poster.last_name %></p>
-        <% end %>
-      </div>
-      <hr>
-    <% end %>
-  </div>
+<div id="announcements">
+  <% @announcements.each do |announcement| %>
+    <div class="d-flex justify-content-between align-items-center row">
+      <h3 class="col"><%= link_to "#{announcement.title}", dig_announcement_path(@dig, announcement) %></h3>
+      <p class="col"><%= truncate(announcement.body, :length => 50, :separator => ' ') %></p>
+      <% if announcement.poster == current_user %>
+        <p class="col">Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by you</p>
+      <% else %>
+        <p class="col">Posted on <%= announcement.created_at.strftime('%b %d, %Y') %> by <%= announcement.poster.first_name %> <%= announcement.poster.last_name %></p>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
 </div>

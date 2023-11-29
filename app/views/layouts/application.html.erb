@@ -18,6 +18,8 @@
   <body class="text-secondary">
     <%= render partial: "shared/navbar" %>
     <%= render "shared/flash" %>
-    <%= yield %>
+    <div class="container mb-2">
+      <%= yield %>
+    </div>
   </body>
 </html>

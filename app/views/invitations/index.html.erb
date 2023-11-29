@@ -1,63 +1,60 @@
-<div class="container">
-  <h1>Your Pending Invitations</h1>
+<h1>Your Pending Invitations</h1>
+
+<hr />
+
+<div id="invitations">
+  <div>
+    <h3>Invitations Awaiting Your Action</h3>
+      <% if @pending_received_invitations.count > 0 %>
+        <% @pending_received_invitations.each do |invitation| %>
+          <%= render invitation %>
+          <div class="btn-toolbar">
+            <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
+            <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>You have no pending invitations.</p>
+      <% end %>
+  </div>
 
   <hr />
 
-  <div id="invitations">
-    <div>
-      <h3>Invitations Awaiting Your Action</h3>
-        <% if @pending_received_invitations.count > 0 %>
-          <% @pending_received_invitations.each do |invitation| %>
-            <%= render invitation %>
-            <div class="btn-toolbar">
-              <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
-              <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
-            </div>
-          <% end %>
-        <% else %>
-          <p>You have no pending invitations.</p>
+  <div>
+    <h3>Your Sent Invitations</h3>
+      <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" class="btn btn-outline-secondary" style="cursor: pointer; display: inline-block;">Invite new participant</p>
+      <% if @pending_sent_invitations.count > 0 %>
+        <% @pending_sent_invitations.each do |invitation| %>
+          <%= render invitation %>
+          <%= button_to "Withdraw", invitation, method: :delete, class: "btn btn-outline-secondary" %>
         <% end %>
-    </div>
-
-    <hr />
-
-    <div>
-      <h3>Your Sent Invitations</h3>
-        <p data-bs-toggle="modal" data-bs-target="#newInvitationModal" class="btn btn-outline-secondary" style="cursor: pointer; display: inline-block;">Invite new participant</p>
-        <% if @pending_sent_invitations.count > 0 %>
-          <% @pending_sent_invitations.each do |invitation| %>
-            <%= render invitation %>
-            <%= button_to "Withdraw", invitation, method: :delete, class: "btn btn-outline-secondary" %>
-          <% end %>
-        <% else %>
-          <p>You have no sent invitations awaiting acceptance. </p>
-        <% end %>
-    </div>
+      <% else %>
+        <p>You have no sent invitations awaiting acceptance. </p>
+      <% end %>
   </div>
+</div>
 
-  <!-- MODAL -->
-  <div class="modal" id="newInvitationModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-        <% if @dig %>
-          <h5 class="modal-title text-danger">Invite Participant to <%=@dig.name%></h5>
-        <% else %>
-          <h5 class="modal-title text-danger">Create Invitation</h5>
-        <% end %>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <% @invitation = Invitation.new %>
-          <%= render "invitations/form", invitation: @invitation %>
-        </div>
+<!-- MODAL -->
+<div class="modal" id="newInvitationModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      <% if @dig %>
+        <h5 class="modal-title text-danger">Invite Participant to <%=@dig.name%></h5>
+      <% else %>
+        <h5 class="modal-title text-danger">Create Invitation</h5>
+      <% end %>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @invitation = Invitation.new %>
+        <%= render "invitations/form", invitation: @invitation %>
+      </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
-
 </div>

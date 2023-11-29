@@ -1,47 +1,45 @@
-<div class="container">
-  <h1><%= @dig.name %> participants</h1>
+<h1><%= @dig.name %> participants</h1>
 
-  <div class="mt-4 mb-4 ml-4 d-flex justify-content-between">
-    <div style="inline">
-      <%= link_to "Back to dig", dig_path(@dig) %>
-      <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
-        <span data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer;">Invite new participant</span>
-      <% end %>
-    </div>
-    <div>
-      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
-        Understanding Roles
-      </button>
-    </div>
+<div class="mt-4 mb-4 ml-4 d-flex justify-content-between">
+  <div style="inline">
+    <%= link_to "Back to dig", dig_path(@dig) %>
+    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
+      <span data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer;">Invite new participant</span>
+    <% end %>
   </div>
-
-  <div id="dig_participants">
-  <%= render partial: "shared/roles_info_modal" %>
-    <ul class="list-group">
-      <% @dig_participants.each do |dig_participant| %>
-        <li class="list-group-item pt-4 pb-4">
-          <%= render dig_participant %>
-        </li>
-      <% end %>
-    </ul>
+  <div>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
+      Understanding Roles
+    </button>
   </div>
+</div>
 
-  <!-- MODAL -->
-  <div class="modal" id="newInvitationModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-danger">Invite Participant to <%=@dig.name%></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <% @invitation = Invitation.new %>
-          <%= render "invitations/form", invitation: @invitation %>
-        </div>
+<div id="dig_participants">
+<%= render partial: "shared/roles_info_modal" %>
+  <ul class="list-group">
+    <% @dig_participants.each do |dig_participant| %>
+      <li class="list-group-item pt-4 pb-4">
+        <%= render dig_participant %>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+<!-- MODAL -->
+<div class="modal" id="newInvitationModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">Invite Participant to <%=@dig.name%></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @invitation = Invitation.new %>
+        <%= render "invitations/form", invitation: @invitation %>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

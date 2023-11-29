@@ -1,40 +1,37 @@
-<div class="container mb-3">
+<h1>Artifact Details</h1>
 
-  <h1>Artifact Details</h3>
-
-  <div>
-    <%= link_to "Back to dig", dig_path(@dig) %> |
-    <%= link_to "Artifact list", dig_artifacts_path(@dig) %> 
-  </div>
-
-  <hr>
-
-  <%= render @artifact %>
-
-  <hr />
-
-  <div>
-    <p>
-      <strong>Artifact Images:</strong>
-      <% @artifact.images.each do |image| %>
-        <% if image.image.present? %>
-          <%= link_to dig_artifact_image_path(@dig, @artifact, image), style: "text-decoration: none;" do %>
-            <%= image_tag image.image.url, style: "height: 100px;" %>
-          <% end %>
-        <% else %>
-          <p>There was a problem.</p>
-        <% end %>
-      <% end %>
-    </p>
-    <%= link_to "Add a new artifact image", new_dig_artifact_image_path(@dig, @artifact) %>
-  </div>
-
-  <% if current_user == @artifact.poster || @dig.leads.any? { |lead| lead.id == current_user.id } %>
-    <hr />
-    <div class="btn-toolbar mt-2">
-      <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %> 
-      <%= button_to "Destroy this artifact", dig_artifact_path(@dig, @artifact), method: :delete, class: "btn btn-outline-danger" %>
-    </div>
-  <% end %>
-
+<div>
+  <%= link_to "Back to dig", dig_path(@dig) %> |
+  <%= link_to "Artifact list", dig_artifacts_path(@dig) %> 
 </div>
+
+<hr>
+
+<%= render @artifact %>
+
+<hr />
+
+<div>
+  <p>
+    <strong>Artifact Images:</strong>
+    <% @artifact.images.each do |image| %>
+      <% if image.image.present? %>
+        <%= link_to dig_artifact_image_path(@dig, @artifact, image), style: "text-decoration: none;" do %>
+          <%= image_tag image.image.url, style: "height: 100px;" %>
+        <% end %>
+      <% else %>
+        <p>There was a problem.</p>
+      <% end %>
+    <% end %>
+  </p>
+  <%= link_to "Add a new artifact image", new_dig_artifact_image_path(@dig, @artifact) %>
+</div>
+
+<% if current_user == @artifact.poster || @dig.leads.any? { |lead| lead.id == current_user.id } %>
+  <hr />
+  <div class="btn-toolbar mt-2">
+    <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %> 
+    <%= button_to "Destroy this artifact", dig_artifact_path(@dig, @artifact), method: :delete, class: "btn btn-outline-danger" %>
+  </div>
+<% end %>
+
