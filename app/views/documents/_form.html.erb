@@ -31,9 +31,8 @@
   </div>
 
   <div>
-    <strong>Roles:</strong>
-    <% roles = ["lead", "analyst", "field worker"] %>
-    <% roles.each do |role| %>
+    <p><strong>Allow selected roles to view this document:</strong></p>
+    <% DigParticipant.roles.values.each do |role| %>
       <%= form.check_box :allowed_roles, { multiple: true}, role, false %>
       <%= form.label role, role.capitalize %><br>
     <% end %>
