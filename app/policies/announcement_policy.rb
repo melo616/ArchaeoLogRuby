@@ -42,7 +42,7 @@ class AnnouncementPolicy < ApplicationPolicy
   end
 
   def lead?
-    @announcement.dig.leads.any? { |lead| lead.participant_id == user.id }
+    @announcement.dig.leads.any? { user }
   end
 
   def poster?
