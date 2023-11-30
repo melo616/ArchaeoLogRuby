@@ -35,7 +35,6 @@ class DigParticipantPolicy < ApplicationPolicy
   private
 
   def lead?
-    @dig_participant.dig.leads.any? { |lead| lead[:participant_id] == @user.id }
-    # @dig_participant.dig.leads.any? { |dig_participant| dig_participant.participant = @user }
+    @dig_participant.dig.leads.any? { |lead| lead == @user }
   end
 end
