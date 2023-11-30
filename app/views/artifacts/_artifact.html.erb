@@ -1,42 +1,61 @@
 <div id="<%= dom_id artifact %>">
+  <div class="row">
+    <p class="col">
+      <strong>Artifact ID:</strong>
+      <%= artifact.id %>
+    </p>
 
-  <p>
-    <strong>Material:</strong>
-    <%= artifact.material %>
-  </p>
+    <p class="col">
+      <strong>Logged on:</strong>
+      <%= artifact.created_at.strftime("%b %d, %Y") %>
+    </p>
+  </div>
 
+  <div class="row">
+    <p class="col">
+      <strong>Category:</strong>
+      <%= artifact.category.humanize %>
+    </p>
+
+    <p class="col">
+      <strong>Material:</strong>
+      <%= artifact.material %>
+    </p>
+  </div>
+
+  <div class="row">
+    <p class="col">
+      <strong>Weight:</strong>
+      <%= artifact.weight %>
+    </p>
+
+    <p class="col">
+      <strong>Mohs hardness:</strong>
+      <%= artifact.mohs_hardness %>
+    </p>
+  </div>
+
+  <div class="row">
+    <p class="col">
+      <strong>Site:</strong>
+      <%= artifact.site %>
+    </p>
+
+    <p class="col">
+      <strong>Posted by:</strong>
+      <% if artifact.poster == current_user %>
+        You
+      <% else %>
+        <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
+      <% end %>
+    </p>
+  </div>
+
+  <div class="row">
     <p>
-    <strong>Category:</strong>
-    <%= artifact.category.humanize %>
-  </p>
-  
-  <p>
-    <strong>Description:</strong>
-    <%= artifact.description %>
-  </p>
-
-  <p>
-    <strong>Mohs hardness:</strong>
-    <%= artifact.mohs_hardness %>
-  </p>
-
-  <p>
-    <strong>Weight:</strong>
-    <%= artifact.weight %>
-  </p>
-
-  <p>
-    <strong>Site:</strong>
-    <%= artifact.site %>
-  </p>
-
-  <p>
-    <strong>Posted by:</strong>
-    <% if artifact.poster == current_user %>
-      You
-    <% else %>
-      <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
-    <% end %>
-  </p>
+      <strong>Description:</strong>
+      <%= artifact.description %>
+    </p>
+  </div>
 
 </div>
