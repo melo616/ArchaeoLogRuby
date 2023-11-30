@@ -18,8 +18,12 @@
   <body class="text-secondary">
     <%= render partial: "shared/navbar" %>
     <%= render "shared/flash" %>
-    <div class="container mb-2">
+    <% if user_signed_in? %>
+      <div class="container mb-2">
+    <%end%>
       <%= yield %>
-    </div>
+    <% if user_signed_in? %>
+      </div>
+    <%end%>
   </body>
 </html>
