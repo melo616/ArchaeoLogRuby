@@ -6,3 +6,7 @@ import "controllers"
 import "chartkick"
 import "Chart.bundle"
 
+//= require turbolinks
+//= require turbo-rails
+//= require_tree .
+
