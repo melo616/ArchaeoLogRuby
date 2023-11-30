@@ -50,7 +50,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def lead?
-    @artifact.dig.leads.any? { |lead| lead.participant_id == user.id }
+    @artifact.dig.leads.any? { |lead| lead == user }
   end
 
   def poster?
