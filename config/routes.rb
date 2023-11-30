@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show]
   #static pages
   get "/about", to: "info#about", as: "about"
+  get "/how-to-use", to: "info#how_to_use", as: "how_to_use"
   # Defines the root path route ("/")
   root "digs#index"
 end
