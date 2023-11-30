@@ -7,7 +7,7 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    participant?
   end
 
   def show?
@@ -19,7 +19,7 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    participant?
   end
 
   def edit?

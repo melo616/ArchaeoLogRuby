@@ -27,13 +27,9 @@ class DigPolicy < ApplicationPolicy
     lead?
   end
 
-  def can_see_date?
-    # is_dig_leader?
-  end
-
   private
 
   def lead?
-    dig.leads.any? { |lead| lead.participant_id == user.id }
+    dig.leads.any? { |lead| lead == user }
   end
 end
