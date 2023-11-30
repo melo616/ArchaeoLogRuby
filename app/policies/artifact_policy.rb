@@ -46,15 +46,15 @@ class ArtifactPolicy < ApplicationPolicy
   private
 
   def participant?
-    @artifact.dig.dig_participants.any? { |participant| participant.participant_id == user.id }
+    @artifact.dig.dig_participants.any? { |participant| participant.participant_id == @user.id }
   end
 
   def lead?
-    @artifact.dig.leads.any? { |lead| lead == user }
+    @artifact.dig.leads.any? { |lead| lead == @user }
   end
 
   def poster?
-    @artifact.poster == user
+    @artifact.poster == @user
   end
 
 end

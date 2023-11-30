@@ -42,7 +42,7 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def lead?
-    @image.dig.leads.any? { |lead| lead.participant_id == user.id }
+    @image.dig.leads.any? { |lead| lead == user }
   end
 
   def poster?
