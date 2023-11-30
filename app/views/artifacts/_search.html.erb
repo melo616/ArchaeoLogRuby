@@ -6,15 +6,15 @@
         <%= f.text_field :description_i_cont, :placeholder => "Enter a few characters", class: "form-control", type: "search" %>
       </div>
 
-      <!-- <div>
-        <%= f.label :created_on_gteq, "Logged after" %>
-        <%= f.date_field :created_on_gteq, :placeholder => "Year greater than or equal to" %>
+      <div>
+        <%= f.label :created_at_gteq, "Logged after" %>
+        <%= f.date_field :created_at_gteq %>
       </div>
 
       <div>
-        <%= f.label :created_on_lteq, "Logged before" %>
-        <%= f.date_field :created_on_lteq, :placeholder => "Year less than or equal to" %>
-      </div> -->
+        <%= f.label :created_at_lteq, "Logged before" %>
+        <%= f.date_field :created_at_lteq %>
+      </div>
 
       <div>
         <%= f.label :category_eq, "Category" %>
