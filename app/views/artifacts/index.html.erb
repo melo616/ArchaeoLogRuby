@@ -31,6 +31,8 @@
   <% end %>
   </div>
 
+  <%= paginate @artifacts %>
+
   <hr />
 
   <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
@@ -45,6 +47,3 @@
     <hr />
     <% end %>
   </div>
-
-
-<%= paginate @artifacts %>
