@@ -23,6 +23,9 @@ gem "groupdate"
 # filtering
 gem "ransack"
 
+# pagination
+gem "kaminari"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
