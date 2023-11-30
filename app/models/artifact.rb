@@ -44,9 +44,20 @@ class Artifact < ApplicationRecord
 
   validate :poster_is_dig_participant
 
+  validates :mohs_hardness, presence: true, numericality: { greater_than_or_equal_to: 0.5, less_than_or_equal_to: 10, message: 'must be between 0.5 and 10' }
+  validate :valid_mohs_increment
+
   def poster_is_dig_participant
     unless dig.dig_participants.pluck(:participant_id).include? poster.id
       errors.add(:poster, "must be a participant")
+    end
+  end
+
+  def valid_mohs_increment
+    return if mohs_hardness.nil?
+
+    unless (mohs_hardness * 2) % 1 == 0
+      errors.add(:mohs_hardness, "must be in increments of 0.5")
     end
   end
 end
