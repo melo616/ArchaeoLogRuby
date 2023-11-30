@@ -7,8 +7,11 @@
     <%= link_to "Announcements", dig_announcements_path(dig), class: "btn btn-secondary" %>
   </div>
 
-  <hr>
+  <hr />
+  
+  <%= link_to "Back to digs", digs_path %> 
 
+  <hr />
   <p>
     <strong>Location:</strong>
     <%= dig.location %>

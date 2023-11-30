@@ -15,11 +15,19 @@
   </div>
 
   <h4>Participant in the following digs:</h4>
-  <% @profile.dig_participants.each do |participation| %>
-    <% dig = Dig.find_by(id: participation.dig_id) %>
-     <p> 
-      <%= link_to "#{dig.name}", dig_path(dig) %>
-    </p>
+  <% if @profile.dig_participants.count > 0 %>
+    <% @profile.dig_participants.each do |participation| %>
+      <% dig = Dig.find_by(id: participation.dig_id) %>
+      <p>
+        <%= link_to "#{dig.name}", dig_path(dig) %>
+      </p>
+    <% end %>
+  <% else %>
+    <% if current_user == @profile %>
+      <p>You are not currently participating in any digs.</p>
+    <% else %>
+      <p> is not currently participating in any digs.</p>
+    <% end %>
   <% end %>
 
   <p><strong>Member since <%= @profile.created_at.strftime("%b %d, %Y") %></strong></p>

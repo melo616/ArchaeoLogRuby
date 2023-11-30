@@ -14,14 +14,18 @@
     <%= Dig.find(invitation.dig_id).name %>
   </p>
 
+  <% if invitation.sender != current_user %>
   <p>
     <strong>Sender:</strong>
     <%= invitation.sender.first_name %> <%= invitation.sender.last_name %>
   </p>
+  <% end %>
 
+  <% if invitation.recipient != current_user %>
   <p>
     <strong>Recipient:</strong>
     <%= invitation.recipient.first_name %> <%= invitation.recipient.last_name %>
   </p>
+  <% end %>
 
 </div>

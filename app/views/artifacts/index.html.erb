@@ -1,38 +1,36 @@
-<div class="container">
-  <h1>Artifacts</h1>
+<h1>Artifacts</h1>
 
-  <%= link_to "Back to dig", dig_path(@dig) %> |
-  <%= link_to "New artifact", new_dig_artifact_path %>
-  <hr>
+<%= link_to "Back to dig", dig_path(@dig) %> |
+<%= link_to "New artifact", new_dig_artifact_path %>
+<hr />
 
-  <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
-    <h3>Data Visualization</h3>
-    <div class="mx-auto w-75">
-      <%= pie_chart artifacts_by_category_dig_artifacts_path(@dig) %>
-      <p class="d-flex justify-content-center">Artifacts by Category</p>
-      <%= column_chart artifacts_by_day_dig_artifacts_path(@dig) %>
-      <p class="d-flex justify-content-center">Artifacts by Date Found</p>
-    </div>
-    <hr>
-  <% end %>
-
-  <div id="artifacts" class="d-flex justify-content-center flex-wrap">
-    <% @artifacts.each do |artifact| %>
-    <div class="card mb-4" style="width: 60%;">
-      <div class="card-body">
-        <p class="card-title"><%= artifact.description %></p>
-        <p class="card-text">Posted by:
-          <% if artifact.poster == current_user %>
-            You
-          <% else %>
-            <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
-          <% end %>
-        </p>
-        <p>
-          <%= link_to "Show this artifact", dig_artifact_path(@dig.id, artifact.id) %>
-        </p>
-      </div>
-    </div>
-    <% end %>
+<% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+  <h3>Data Visualization</h3>
+  <div class="mx-auto w-75">
+    <%= pie_chart artifacts_by_category_dig_artifacts_path(@dig) %>
+    <p class="d-flex justify-content-center">Artifacts by Category</p>
+    <%= column_chart artifacts_by_day_dig_artifacts_path(@dig) %>
+    <p class="d-flex justify-content-center">Artifacts by Date Found</p>
   </div>
+  <hr />
+<% end %>
+
+<div id="artifacts" class="d-flex justify-content-center flex-wrap">
+  <% @artifacts.each do |artifact| %>
+  <div class="card mb-4" style="width: 60%;">
+    <div class="card-body">
+      <p class="card-title"><%= artifact.description %></p>
+      <p class="card-text">Posted by:
+        <% if artifact.poster == current_user %>
+          You
+        <% else %>
+          <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
+        <% end %>
+      </p>
+      <p>
+        <%= link_to "Show this artifact", dig_artifact_path(@dig.id, artifact.id) %>
+      </p>
+    </div>
+  </div>
+  <% end %>
 </div>

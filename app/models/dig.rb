@@ -29,7 +29,7 @@ class Dig < ApplicationRecord
 
   has_many :dig_participants, dependent: :destroy
   has_many :users, through: :dig_participants, source: :participant, dependent: :destroy
-  has_many :leads, -> { leads }, class_name: "DigParticipant", dependent: :destroy
+  has_many :leads, -> { where(dig_participants: { role: 'lead' }) }, through: :dig_participants, source: :participant, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
   has_many :artifacts, dependent: :destroy
   has_many :announcements, dependent: :destroy
@@ -37,6 +37,20 @@ class Dig < ApplicationRecord
   validates :name, presence: true
 
   before_create :set_season
+
+  scope :led_by, ->(user_id) { joins(:dig_participants).where(dig_participants: { role: 'lead', participant_id: user_id }) }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "season"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["dig_participants", "leads"]
+  end
+
+  def self.ransackable_scopes(auth_object = nil)
+    [:led_by]
+  end
 
   private
 

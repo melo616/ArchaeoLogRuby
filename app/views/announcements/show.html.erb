@@ -1,12 +1,8 @@
-<div class="container">
-  <%= render @announcement %>
+<%= render @announcement %>
 
-  <% if @announcement.poster == current_user %>
-    <div>
-      <%= link_to "Edit this announcement", edit_dig_announcement_path(@dig, @announcement) %> |
-      <%= link_to "Back to announcements", dig_announcements_path(@dig) %>
-
-      <%= button_to "Destroy this announcement", dig_announcement_path(@dig, @announcement), method: :delete %>
-    </div>
-  <% end %>
-</div>
+<% if @announcement.poster == current_user %>
+  <div class="btn-toolbar">
+    <%= link_to "Edit", edit_dig_announcement_path(@dig, @announcement), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
+    <%= button_to "Delete", dig_announcement_path(@dig, @announcement), method: :delete, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

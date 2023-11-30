@@ -13,29 +13,13 @@
     <%= javascript_importmap_tags %>
 
     <%= favicon_link_tag asset_path('favicon.ico') %>
-
-    <style>
-      h1 a,
-      h2 a,
-      h3 a {
-        color: #dc3545;
-      }
-      a {
-        text-decoration: none !important;
-        color: #6c757d;
-      }
-      h1, h2, h3 {
-        color: #dc3545; 
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-family: 'Lora', serif;
-      }
-    </style>
   </head>
 
   <body class="text-secondary">
     <%= render partial: "shared/navbar" %>
     <%= render "shared/flash" %>
-    <%= yield %>
+    <div class="container mb-2">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile
- 
+
   def show
     authorize(@profile, policy_class: ProfilePolicy)
   end

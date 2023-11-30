@@ -1,19 +1,24 @@
 <div id="<%= dom_id dig_participant %>">
 
   <div class="d-flex align-items-center row">
-    <h4 class="mt-0 mb-0 col-4">
+    <h4 class="mt-0 mb-0 col-md-4">
       <%= link_to "#{dig_participant.participant.first_name} #{dig_participant.participant.last_name}", profile_path(dig_participant.participant_id) %>
     </h4>
 
-    <div class="col-4">
+    <div class="col-md-4 mt-2 mt-md-0 color-secondary">
       <strong>Role:</strong>
       <%= dig_participant.role.humanize %>
     </div>
 
-    <div class="col-4 d-flex justify-content-end">
-      <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
-        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant) %>&nbsp;
-        <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete%>
+    <div class="d-flex justify-content-md-end justify-content-between col-md-4 mt-2 mt-md-0 btn-toolbar">
+      <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" && dig_participant.participant == current_user %>
+        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
+        <%= button_to "Leave dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger" %>
+      <% elsif @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
+        <%= link_to 'Edit role', edit_dig_dig_participant_path(@dig, dig_participant), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
+        <%= button_to "Remove from dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger" %>
+      <% elsif dig_participant.participant == current_user %>
+        <%= button_to "Leave dig", dig_dig_participant_path(@dig, dig_participant), method: :delete, class: "btn btn-outline-danger",  data: {turbo_confirm: 'Are you sure you want to leave this dig? You will not be able to rejoin unless invited by a lead.'} %>
       <% end %>
     </div>
   </div>
