@@ -61,7 +61,7 @@ class DigParticipantsController < ApplicationController
     @dig_participant.destroy
 
     respond_to do |format|
-      format.html { redirect_to dig_dig_participants_url, notice: "Dig participant was successfully destroyed." }
+      format.html { redirect_to dig_dig_participants_url, notice: "Dig participant was successfully removed." }
       format.json { head :no_content }
     end
   end
