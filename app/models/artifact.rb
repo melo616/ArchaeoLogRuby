@@ -47,6 +47,10 @@ class Artifact < ApplicationRecord
   validates :mohs_hardness, presence: true, numericality: { greater_than_or_equal_to: 0.5, less_than_or_equal_to: 10, message: 'must be between 0.5 and 10' }
   validate :valid_mohs_increment
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_on", "description", "category"]
+  end
+
   def poster_is_dig_participant
     unless dig.dig_participants.pluck(:participant_id).include? poster.id
       errors.add(:poster, "must be a participant")

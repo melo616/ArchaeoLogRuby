@@ -1,0 +1,31 @@
+<div>
+  <div class="mb-2">
+    <%= search_form_for [@dig, @q] do |f| %>
+      <div>
+        <%= f.label :description_i_cont, "Filter by description", class: "form-label" %>
+        <%= f.text_field :description_i_cont, :placeholder => "Enter a few characters", class: "form-control", type: "search" %>
+      </div>
+
+      <!-- <div>
+        <%= f.label :created_on_gteq, "Logged after" %>
+        <%= f.date_field :created_on_gteq, :placeholder => "Year greater than or equal to" %>
+      </div>
+
+      <div>
+        <%= f.label :created_on_lteq, "Logged before" %>
+        <%= f.date_field :created_on_lteq, :placeholder => "Year less than or equal to" %>
+      </div> -->
+
+      <div>
+        <%= f.label :category_eq, "Category" %>
+        <%= f.select :category_eq, options_from_collection_for_select(Artifact.where(:dig_id => @dig.id), :category, :category, @q.category_eq), { :include_blank => true } %>
+      </div>
+
+      <div>
+        <%= link_to "Clear filters", dig_artifacts_path(@dig) %>
+        <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
+      </div>
+    <% end %>
+    <hr />
+  </div>
+</div>

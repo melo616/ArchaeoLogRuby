@@ -4,16 +4,12 @@
 <%= link_to "New artifact", new_dig_artifact_path %>
 <hr />
 
+
 <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
-  <h3>Data Visualization</h3>
-  <div class="mx-auto w-75">
-    <%= pie_chart artifacts_by_category_dig_artifacts_path(@dig) %>
-    <p class="d-flex justify-content-center">Artifacts by Category</p>
-    <%= column_chart artifacts_by_day_dig_artifacts_path(@dig) %>
-    <p class="d-flex justify-content-center">Artifacts by Date Found</p>
-  </div>
-  <hr />
+  <a href="#data-charts">Jump to Data Charts</a>
 <% end %>
+
+<%= render "search" %>
 
 <div id="artifacts" class="d-flex justify-content-center flex-wrap">
   <% @artifacts.each do |artifact| %>
@@ -33,4 +29,19 @@
     </div>
   </div>
   <% end %>
-</div>
+  </div>
+
+  <hr />
+
+  <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+  <div id="data-charts">
+    <h3>Data Visualization</h3>
+    <div class="mx-auto w-75">
+      <%= pie_chart artifacts_by_category_dig_artifacts_path(@dig) %>
+      <p class="d-flex justify-content-center">Artifacts by Category</p>
+      <%= column_chart artifacts_by_day_dig_artifacts_path(@dig) %>
+      <p class="d-flex justify-content-center">Artifacts by Date Found</p>
+    </div>
+    <hr />
+    <% end %>
+  </div>

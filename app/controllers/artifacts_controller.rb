@@ -5,7 +5,8 @@ class ArtifactsController < ApplicationController
 
   # GET /artifacts or /artifacts.json
   def index
-    @artifacts = Artifact.where(:dig_id => @dig.id)
+    @q = Artifact.where(:dig_id => @dig.id).ransack(params[:q])
+    @artifacts = @q.result
   end
 
   # Data visualization
