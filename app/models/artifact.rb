@@ -48,7 +48,7 @@ class Artifact < ApplicationRecord
   validate :valid_mohs_increment
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "category"]
+    ["created_at", "description", "category", "poster_id"]
   end
 
   def poster_is_dig_participant

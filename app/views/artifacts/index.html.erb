@@ -7,6 +7,7 @@
 
 <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
   <a href="#data-charts">Jump to Data Charts</a>
+  <hr />
 <% end %>
 
 <%= render "search" %>
