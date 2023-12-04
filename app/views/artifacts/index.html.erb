@@ -1,4 +1,4 @@
-<h1>Artifacts</h1>
+<h1>Artifacts for <%= @dig.name %></h1>
 
 <%= link_to "Back to dig", dig_path(@dig) %> |
 <%= link_to "New artifact", new_dig_artifact_path %>
@@ -6,29 +6,17 @@
 
 
 <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
-  <a href="#data-charts">Jump to Data Charts</a>
+  <i><a href="#data-charts">Jump to Data Charts</a></i>
   <hr />
 <% end %>
 
 <%= render "search" %>
 
-<div id="artifacts" class="d-flex justify-content-center flex-wrap">
+<div id="artifacts" class="row mx-auto w-65">
   <% @artifacts.each do |artifact| %>
-  <div class="card mb-4" style="width: 60%;">
-    <div class="card-body">
-      <p class="card-title"><%= artifact.description %></p>
-      <p class="card-text">Posted by:
-        <% if artifact.poster == current_user %>
-          You
-        <% else %>
-          <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
-        <% end %>
-      </p>
-      <p>
-        <%= link_to "Show this artifact", dig_artifact_path(@dig.id, artifact.id) %>
-      </p>
-    </div>
-  </div>
+    <%= link_to dig_artifact_path(@dig, artifact) do %>
+      <%= render "card", artifact: artifact %>
+    <% end %>
   <% end %>
   </div>
 

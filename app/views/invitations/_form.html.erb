@@ -17,12 +17,12 @@
   <% else %>
     <% @led_digs = current_user.led_digs %>
     <%= form.label :dig, style: "display: block" %>
-    <%= form.collection_select :dig_id, @led_digs, :id, :name, prompt: true %>
+    <%= form.collection_select :dig_id, @led_digs, :id, :name, {}, class: "form-select" %>
   <% end %>
 
   <div>
     <%= form.label :participant_email, style: "display: block" %>
-    <%= form.text_field :participant_email %>
+    <%= form.text_field :participant_email, class: "form-control" %>
   </div>
 
   <div>
@@ -31,6 +31,6 @@
   </div>
 
   <div>
-    <%= form.submit class: "btn btn-outline-secondary"%>
+    <%= form.submit class: "btn btn-outline-secondary mt-2"%>
   </div>
 <% end %>

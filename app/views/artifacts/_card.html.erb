@@ -1,0 +1,15 @@
+<div class="card mb-4 shadow-sm text-center">
+  <div class="card-header">
+    <h5>Artifact #<%= artifact.id %></h5>
+  </div>
+  <div class="card-body">
+    <p class="card-title"><%= artifact.description %></p>
+    <p class="card-text">Posted by:
+      <% if artifact.poster == current_user %>
+        You
+      <% else %>
+        <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
+      <% end %>
+    </p>
+  </div>
+</div>

@@ -14,32 +14,32 @@
 
   <div>
     <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+    <%= form.date_field :start_date, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
+    <%= form.date_field :end_date, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%= form.text_field :location, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :season, style: "display: block" %>
-    <%= form.text_field :season %>
+    <%= form.text_field :season, class: "form-control" %>
   </div>
 
   <div>
@@ -47,6 +47,6 @@
   </div>
 
   <div>
-    <%= form.submit class: "btn btn-outline-secondary"%>
+    <%= form.submit class: "btn btn-outline-secondary mt-2"%>
   </div>
 <% end %>

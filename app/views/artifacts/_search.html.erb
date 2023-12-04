@@ -13,17 +13,18 @@
 
       <div>
         <%= f.label :created_at_gteq, "Logged after" %>
-        <%= f.date_field :created_at_gteq %>
+        <%= f.date_field :created_at_gteq, class: "form-control" %>
       </div>
 
       <div>
         <%= f.label :created_at_lteq, "Logged before" %>
-        <%= f.date_field :created_at_lteq %>
+        <%= f.date_field :created_at_lteq, class: "form-control" %>
       </div>
 
       <div>
         <%= f.label :category_eq, "Category" %>
-        <%= f.select :category_eq, options_from_collection_for_select(Artifact.where(:dig_id => @dig.id), :category, :category, @q.category_eq), { :include_blank => true } %>
+        <% categories = Artifact.where(dig_id: @dig.id).pluck(:category).uniq %>
+        <%= f.select :category_eq, options_for_select(categories.map { |cat| [cat.humanize, cat] }, @q.category_eq), { include_blank: true }, class: "form-control" %>
       </div>
 
       <div>
@@ -31,6 +32,6 @@
         <%= f.submit :class => "btn btn-outline-secondary mt-2" %>
       </div>
     <% end %>
-    <hr />
+    <hr/>
   </div>
 </div>

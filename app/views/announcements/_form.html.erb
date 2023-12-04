@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
   <div>
@@ -27,6 +27,6 @@
   </div>
 
   <div>
-    <%= form.submit class: "btn btn-outline-secondary" %>
+    <%= form.submit class: "btn btn-outline-secondary mt-2" %>
   </div>
 <% end %>

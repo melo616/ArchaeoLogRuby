@@ -44,7 +44,7 @@ class Artifact < ApplicationRecord
 
   validate :poster_is_dig_participant
 
-  validates :mohs_hardness, presence: true, numericality: { greater_than_or_equal_to: 0.5, less_than_or_equal_to: 10, message: 'must be between 0.5 and 10' }
+  validates :mohs_hardness, numericality: { greater_than_or_equal_to: 0.5, less_than_or_equal_to: 10, message: 'must be between 0.5 and 10', allow_nil: true }
   validate :valid_mohs_increment
 
   def self.ransackable_attributes(auth_object = nil)
