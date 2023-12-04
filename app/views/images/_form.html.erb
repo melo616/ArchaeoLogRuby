@@ -12,12 +12,12 @@
   <% end %>
 
   <div>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :notes, style: "display: block" %>
-    <%= form.text_field :notes %>
+    <%= form.text_field :notes, class: "form-control" %>
   </div>
 
   <% if @artifact %>
