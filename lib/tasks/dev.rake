@@ -181,7 +181,7 @@ task({ :sample_data => :environment }) do
         "Glass artifacts, including beads and vessels, showcasing the skill of ancient glassmakers and trade connections.",
         "Clay figurines representing humans and animals, serving various ceremonial and symbolic purposes.",
         "Fossilized pollen grains, contributing to the reconstruction of ancient landscapes and environmental conditions.",
-      "Stone tools with distinctive markings, hinting at the purposes and techniques of tool production in ancient societies.",
+        "Stone tools with distinctive markings, hinting at the purposes and techniques of tool production in ancient societies.",
         "Metallic ingots and smelting residues, providing evidence of early metalworking and technological advancements.",
         "Fragmented manuscripts and scrolls, offering glimpses into ancient literature, knowledge, and cultural practices.",
         "Bone and antler artifacts, showcasing the versatility of materials used in crafting tools and decorative items.",
