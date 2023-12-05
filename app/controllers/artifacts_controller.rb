@@ -17,7 +17,7 @@ class ArtifactsController < ApplicationController
   end
 
   def artifacts_by_day
-    render json: Artifact.where(dig_id: @dig.id).group_by_day(:created_at).count
+    render json: Artifact.where(dig_id: @dig.id).group_by_day(:found_date).count
   end
 
   # GET /artifacts/1 or /artifacts/1.json
