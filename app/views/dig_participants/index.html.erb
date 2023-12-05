@@ -1,9 +1,9 @@
 <h1><%= @dig.name %> participants</h1>
 
 <div class="mt-4 mb-4 ml-4 d-flex justify-content-between">
-  <div style="inline">
+  <div>
     <%= link_to "Back to dig", dig_path(@dig) %>
-    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %> | 
+    <% if @dig.leads.include? current_user %> | 
       <span data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer;">Invite new participant</span>
     <% end %>
   </div>
@@ -15,14 +15,14 @@
 </div>
 
 <div id="dig_participants">
-<%= render partial: "shared/roles_info_modal" %>
-  <ul class="list-group">
-    <% @dig_participants.each do |dig_participant| %>
-      <li class="list-group-item pt-4 pb-4">
-        <%= render dig_participant %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render partial: "shared/roles_info_modal" %>
+    <ul class="list-group">
+      <% @dig_participants.each do |dig_participant| %>
+        <li class="list-group-item pt-4 pb-4">
+          <%= render dig_participant %>
+        </li>
+      <% end %>
+    </ul>
 </div>
 
 <!-- MODAL -->

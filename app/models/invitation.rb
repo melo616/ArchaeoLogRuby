@@ -35,4 +35,11 @@ class Invitation < ApplicationRecord
     analyst: 'analyst',
     field_worker: 'field worker'
   }, _default: :field_worker
+
+  def accept
+    ActiveRecord::Base.transaction do
+      update(status: "accepted")
+      dig.dig_participants.create(participant: recipient.id, role: role)
+    end
+  end
 end
