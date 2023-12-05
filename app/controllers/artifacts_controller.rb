@@ -82,7 +82,7 @@ class ArtifactsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def artifact_params
-    params.require(:artifact).permit(:description, :material, :category, :mohs_hardness, :weight, :dig_id, :site)
+    params.require(:artifact).permit(:description, :material, :category, :mohs_hardness, :weight, :dig_id, :site, :found_date)
   end
 
   def set_dig

@@ -6,8 +6,10 @@
     </p>
 
     <p class="col">
-      <strong>Logged on:</strong>
-      <%= artifact.created_at.strftime("%b %d, %Y") %>
+      <strong>Date found:</strong>
+      <% if artifact.found_date %>
+        <%= artifact.found_date.strftime("%b %d, %Y") %>
+      <% end %>
     </p>
   </div>
 
@@ -46,9 +48,9 @@
     <p class="col">
       <strong>Posted by:</strong>
       <% if artifact.poster == current_user %>
-        You
+        You on <%= artifact.created_at.strftime("%b %d, %Y") %>
       <% else %>
-        <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> 
+        <%= artifact.poster.first_name %> <%= artifact.poster.last_name %> on <%= artifact.created_at.strftime("%b %d, %Y") %>
       <% end %>
     </p>
   </div>

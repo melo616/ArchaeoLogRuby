@@ -160,6 +160,7 @@ task({ :sample_data => :environment }) do
       category = categories.keys.sample
       hardness = rand(1..6)
       poster = dig.dig_participants.sample
+      found_date = dig.start_date + rand((dig.end_date - dig.start_date).to_i)
       sample_data_descriptions = [
         "Pottery fragments from a Bronze Age settlement, showcasing intricate designs and evidence of advanced craftsmanship.",
         "Excavated animal bones providing insights into the dietary habits of a prehistoric community.",
@@ -212,6 +213,7 @@ task({ :sample_data => :environment }) do
         dig_id: dig.id,
         poster_id: poster.participant_id,
         description: description,
+        found_date: found_date,
       )
     end
   end
