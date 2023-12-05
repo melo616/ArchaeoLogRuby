@@ -5,6 +5,7 @@
 #  id            :integer          not null, primary key
 #  category      :string
 #  description   :text
+#  found_date    :date
 #  material      :string
 #  mohs_hardness :decimal(, )
 #  site          :string
@@ -46,6 +47,8 @@ class Artifact < ApplicationRecord
 
   validates :mohs_hardness, numericality: { greater_than_or_equal_to: 0.5, less_than_or_equal_to: 10, message: 'must be between 0.5 and 10', allow_nil: true }
   validate :valid_mohs_increment
+
+  validates :found_date, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "category", "poster_id"]
