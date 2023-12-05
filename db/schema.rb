@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_201658) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_05_182457) do
   create_table "announcements", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_201658) do
     t.integer "poster_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "found_date"
     t.index ["dig_id"], name: "index_artifacts_on_dig_id"
     t.index ["poster_id"], name: "index_artifacts_on_poster_id"
   end
