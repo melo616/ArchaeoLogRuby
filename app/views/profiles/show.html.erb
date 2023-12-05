@@ -18,9 +18,15 @@
   <% if @profile.dig_participants.count > 0 %>
     <% @profile.dig_participants.each do |participation| %>
       <% dig = Dig.find_by(id: participation.dig_id) %>
-      <p>
-        <%= link_to "#{dig.name}", dig_path(dig) %>
-      </p>
+        <% if dig.users.include? current_user %>
+          <p>
+            <strong><%= link_to "#{dig.name}", dig_path(dig) %></strong>
+          </p>
+        <% else %>
+          <p>
+            <%= dig.name %>
+          </p>
+        <% end %>
     <% end %>
   <% else %>
     <% if current_user == @profile %>
