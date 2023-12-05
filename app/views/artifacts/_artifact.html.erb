@@ -7,7 +7,9 @@
 
     <p class="col">
       <strong>Date found:</strong>
-      <%= artifact.found_date.strftime("%b %d, %Y") %>
+      <% if artifact.found_date %>
+        <%= artifact.found_date.strftime("%b %d, %Y") %>
+      <% end %>
     </p>
   </div>
 
