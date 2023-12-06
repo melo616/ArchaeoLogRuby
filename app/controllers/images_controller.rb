@@ -28,8 +28,13 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to dig_url(@dig), notice: "Image was successfully created." }
-        format.json { render :show, status: :created, location: @image }
+        if @artifact
+          format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        else
+          format.html { redirect_to dig_url(@dig), notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @image.errors, status: :unprocessable_entity }
