@@ -2,8 +2,11 @@
 
 <div>
   <%= link_to "Back to dig", dig_path(@dig) %>
+  <% if @artifact %>
+    | <%= link_to "Back to artifact", dig_artifact_path(@dig, @artifact) %>
+  <% end %>
 </div>
 
-<hr>
+<hr />
 
 <%= render "form", image: @image %>

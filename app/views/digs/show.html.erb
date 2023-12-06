@@ -1,20 +1,6 @@
 <%= render @dig %>
 
-<div>
-  <p>
-    <strong>Dig Images:</strong>
-    <% @dig.images.each do |image| %>
-      <% if image.image.present? %>
-        <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
-          <%= image_tag image.image.url, style: "height: 100px;" %>
-        <% end %>
-      <% else %>
-        <p>There was a problem.</p>
-      <% end %>
-    <% end %>
-  </p>
-  <%= link_to "Add a new dig image", new_dig_image_path(@dig), class: "btn btn-outline-secondary" %>
-</div>
+<%= render "shared/images", parent: @dig %>
 
 <hr />
 

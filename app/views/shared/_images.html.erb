@@ -1,0 +1,19 @@
+<div>
+  <p>
+    <strong><%= parent.class %> Images:</strong>
+    <% parent.images.each do |image| %>
+      <% if image.image.present? %>
+        <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
+          <%= image_tag image.image.url, style: "height: 100px;" %>
+        <% end %>
+      <% else %>
+        <p>There was a problem.</p>
+      <% end %>
+    <% end %>
+  </p>
+  <% if parent.class == Dig %>
+    <%= link_to "Add a new dig image", new_dig_image_path(@dig), class: "btn btn-outline-secondary" %>
+  <% elsif parent.class == Artifact %>
+    <%= link_to "Add a new artifact image", new_dig_artifact_image_path(@dig, @artifact),  class: "btn btn-outline-secondary" %>
+  <% end %>
+</div>

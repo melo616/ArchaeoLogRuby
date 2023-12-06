@@ -8,11 +8,6 @@ class DigParticipantsController < ApplicationController
     @dig_participants = DigParticipant.where(:dig_id => @dig.id)
   end
 
-  # GET /dig_participants/new
-  def new
-    @dig_participant = authorize @dig.dig_participants.new
-  end
-
   # GET /dig_participants/1/edit
   def edit
   end
