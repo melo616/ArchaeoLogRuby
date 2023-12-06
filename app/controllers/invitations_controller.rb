@@ -44,9 +44,7 @@ class InvitationsController < ApplicationController
   end
 
   def accept
-    @invitation.status = "accepted"
-    @invitation.save
-    DigParticipant.create(dig_id: @invitation.dig_id, participant: current_user, role: @invitation.role)
+    @invitation.accept
     respond_to do |format|
       format.html { redirect_to invitations_url, notice: "Invitation to #{@invitation.dig.name} accepted." }
       format.json { render json: { message: "Invitation accepted" }, status: :ok }

@@ -12,6 +12,7 @@
   <%= link_to "Back to digs", digs_path %> 
 
   <hr />
+
   <p>
     <strong>Location:</strong>
     <%= dig.location %>
@@ -43,9 +44,11 @@
     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#rolesInfoModal">
       ?
     </button>
+
     <%= render partial: "shared/roles_info_modal" %>
+
   </p>
 
-  <hr>
+  <hr />
 
 </div>

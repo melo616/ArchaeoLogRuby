@@ -8,11 +8,6 @@ class DigParticipantsController < ApplicationController
     @dig_participants = DigParticipant.where(:dig_id => @dig.id)
   end
 
-  # GET /dig_participants/new
-  def new
-    @dig_participant = authorize @dig.dig_participants.new
-  end
-
   # GET /dig_participants/1/edit
   def edit
   end
@@ -26,7 +21,7 @@ class DigParticipantsController < ApplicationController
       if participant
         @dig_participant = @dig.dig_participants.new(dig_id: @dig.id, participant: participant, role: dig_participant_params[:role])
         if @dig_participant.save
-          format.html { redirect_to dig_dig_participants_url(@dig), notice: "Dig participant was successfully created." }
+          format.html { redirect_to dig_dig_participants_url(@dig), notice: "Dig participant was successfully added." }
           format.json { render :show, status: :created, location: @dig_participant }
         else
           format.html { render :new, status: :unprocessable_entity }

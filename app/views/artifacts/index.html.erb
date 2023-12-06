@@ -24,15 +24,7 @@
 
   <hr />
 
-  <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
-  <div id="data-charts">
-    <h3>Data Visualization</h3>
-    <div class="mx-auto w-75">
-      <%= pie_chart artifacts_by_category_dig_artifacts_path(@dig) %>
-      <p class="d-flex justify-content-center">Artifacts by Category</p>
-      <%= column_chart artifacts_by_day_dig_artifacts_path(@dig) %>
-      <p class="d-flex justify-content-center">Artifacts by Date Found</p>
-    </div>
-    <hr />
+    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+      <%= render "data_charts" %>
     <% end %>
   </div>

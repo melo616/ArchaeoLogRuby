@@ -88,13 +88,15 @@ task({ :sample_data => :environment }) do
     name = dig_names.sample
     description = Faker::Lorem.sentence(word_count: 3)
     address = Faker::Address.full_address
-    date = Date.today
+    num_days = rand(1..60)
+    start_date = Date.new(Date.today.year, 1, 1) + rand(Date.today.yday)
+    end_date = start_date + num_days
     test_id = User.all.sample.id
-    season = ["Spring", "Summer", "Fall", "Winter"].sample + " 2023"
+    season = ["Spring", "Summer", "Fall", "Winter"].sample + " #{Date.today.year}"
     Dig.create(
       description: description,
-      start_date: date,
-      end_date: date,
+      start_date: start_date,
+      end_date: end_date,
       location: address,
       name: name,
       season: season,

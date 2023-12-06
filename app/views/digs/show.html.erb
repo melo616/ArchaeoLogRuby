@@ -1,20 +1,6 @@
 <%= render @dig %>
 
-<div>
-  <p>
-    <strong>Dig Images:</strong>
-    <% @dig.images.each do |image| %>
-      <% if image.image.present? %>
-        <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
-          <%= image_tag image.image.url, style: "height: 100px;" %>
-        <% end %>
-      <% else %>
-        <p>There was a problem.</p>
-      <% end %>
-    <% end %>
-  </p>
-  <%= link_to "Add a new dig image", new_dig_image_path(@dig), class: "btn btn-outline-secondary" %>
-</div>
+<%= render "shared/images", parent: @dig %>
 
 <hr />
 
@@ -29,33 +15,33 @@
 
 <hr />
 
-  <div class="mb-3">
-    <h3>Latest Artifacts</h3>
-    <p><%= link_to "Log new artifact", new_dig_artifact_path(@dig), class: "btn btn-outline-secondary" %></p>
-    <i><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></i>
-  </div>
+<div class="mb-3">
+  <h3>Latest Artifacts</h3>
+  <p><%= link_to "Log new artifact", new_dig_artifact_path(@dig), class: "btn btn-outline-secondary" %></p>
+  <i><%= link_to "Show all (#{@dig.artifacts_count})", dig_artifacts_path(@dig) %></i>
+</div>
 
-  <div>
-    <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
-    <% if artifact.description.blank? && artifact.category.blank? %>
-      <p>
-        <%= link_to "Artifact ##{artifact.id}", dig_artifact_path(@dig, artifact) %>
-      </p>
-    <% elsif artifact.description.blank? %>
-      <p>
-        <%= link_to "Artifact ##{artifact.id} #{artifact.category}, #{artifact.material}", dig_artifact_path(@dig, artifact) %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to "Artifact ##{artifact.id} #{artifact.description}", dig_artifact_path(@dig, artifact) %>
-      </p>
-    <% end %>
+<div>
+  <% @dig.artifacts.order(created_at: :desc).limit(10).each do |artifact| %>
+  <% if artifact.description.blank? && artifact.category.blank? %>
+    <p>
+      <%= link_to "Artifact ##{artifact.id}", dig_artifact_path(@dig, artifact) %>
+    </p>
+  <% elsif artifact.description.blank? %>
+    <p>
+      <%= link_to "Artifact ##{artifact.id} #{artifact.category}, #{artifact.material}", dig_artifact_path(@dig, artifact) %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to "Artifact ##{artifact.id} #{artifact.description}", dig_artifact_path(@dig, artifact) %>
+    </p>
   <% end %>
-  </div>
+<% end %>
+</div>
 
-  <hr />
+<hr />
 
-<% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" %>
+<% if @dig.leads.include? current_user %>
   <div class="btn-toolbar mt-2">
     <%= link_to "Edit this dig", edit_dig_path(@dig), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
     <%= button_to "Delete this dig", @dig, method: :delete, class: "btn btn-outline-danger", data: {turbo_confirm: 'Are you sure you want to delete this dig? This action is irreversible and will also delete all associated data.'} %>

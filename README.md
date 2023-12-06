@@ -2,7 +2,7 @@
 
 [`ArchaeoLog`](https://archaeolog.onrender.com) is a digital field log where archaeologists can create digs, add participants, add images, and log artifacts. It is a streamlined and user-friendly application that serves as a modern and lightweight upgrade to traditional museum and archaeological software.
 
-# Features
+## Features
 
 1. Digs: Create and manage archaeological digs with details such as location, start and end date, and description. 
 2. Participants: Invite participants involved in a dig and assign roles to ensure security and control access.
@@ -12,7 +12,7 @@
 6.  Modularized Data: Easy navigation of information related to digs, participants, and artifacts.
 7. Announcements: Keep dig participants informed with announcements related to your project.
 
-# Future Features
+## Future Features
 
 1. Maps Integration: View your dig's location on a map using GeoCoding and Google Maps API.
 

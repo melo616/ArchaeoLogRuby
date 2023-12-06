@@ -42,7 +42,6 @@ class ArtifactPolicy < ApplicationPolicy
     lead? || poster?
   end
 
-
   private
 
   def participant?

@@ -51,7 +51,7 @@ class Artifact < ApplicationRecord
   validates :found_date, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "category", "poster_id"]
+    ["found_date", "description", "category", "poster_id"]
   end
 
   def poster_is_dig_participant

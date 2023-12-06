@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :set_dig
   before_action :set_artifact
   before_action :set_image, only: %i[ show edit update destroy ]
-  after_action :skip_pundit_authorization
+  before_action { authorize(@image || Image ) }
 
   # GET /images or /images.json
   def index
@@ -28,8 +28,13 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to dig_url(@dig), notice: "Image was successfully created." }
-        format.json { render :show, status: :created, location: @image }
+        if @artifact
+          format.html { redirect_to dig_artifact_url(@dig, @artifact), notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        else
+          format.html { redirect_to dig_url(@dig), notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @image.errors, status: :unprocessable_entity }
@@ -79,11 +84,5 @@ class ImagesController < ApplicationController
       if params[:artifact_id]
         @artifact = Artifact.find(params.fetch(:artifact_id))
       end
-    end
-
-    #for development only - DELETE
-    def skip_pundit_authorization
-      skip_authorization
-      skip_policy_scope
     end
 end
