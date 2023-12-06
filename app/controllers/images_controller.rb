@@ -3,7 +3,6 @@ class ImagesController < ApplicationController
   before_action :set_artifact
   before_action :set_image, only: %i[ show edit update destroy ]
   before_action { authorize(@image || Image ) }
-  # after_action :skip_pundit_authorization
 
   # GET /images or /images.json
   def index
@@ -85,11 +84,5 @@ class ImagesController < ApplicationController
       if params[:artifact_id]
         @artifact = Artifact.find(params.fetch(:artifact_id))
       end
-    end
-
-    #for development only - DELETE
-    def skip_pundit_authorization
-      skip_authorization
-      skip_policy_scope
     end
 end
