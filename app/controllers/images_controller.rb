@@ -2,7 +2,8 @@ class ImagesController < ApplicationController
   before_action :set_dig
   before_action :set_artifact
   before_action :set_image, only: %i[ show edit update destroy ]
-  after_action :skip_pundit_authorization
+  before_action { authorize(@image || Image ) }
+  # after_action :skip_pundit_authorization
 
   # GET /images or /images.json
   def index

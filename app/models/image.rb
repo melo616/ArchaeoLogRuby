@@ -24,6 +24,7 @@
 class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true
   belongs_to :poster, class_name: "User", foreign_key: "poster_id"
+  # belongs_to :dig
 
   #for image uploads
   mount_uploader :image, ImageUploader

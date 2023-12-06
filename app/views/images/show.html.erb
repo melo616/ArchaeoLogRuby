@@ -1,5 +1,5 @@
 <%= render @image %>
-
+<%= @image.imageable_type %>
 <% if current_user == @image.poster %>
   <div>
     <% if @artifact %>
