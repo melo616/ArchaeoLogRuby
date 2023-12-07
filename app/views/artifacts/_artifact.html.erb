@@ -16,7 +16,7 @@
   <div class="row">
     <p class="col">
       <strong>Category:</strong>
-      <% if !artifact.category == nil %>
+      <% if artifact.category != nil %>
         <%= artifact.category.humanize %>
       <% end %>
     </p>
