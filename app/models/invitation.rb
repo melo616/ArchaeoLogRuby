@@ -39,7 +39,7 @@ class Invitation < ApplicationRecord
   def accept
     ActiveRecord::Base.transaction do
       update(status: "accepted")
-      dig.dig_participants.create(participant: recipient.id, role: role)
+      dig.dig_participants.create(participant: recipient, role: role)
     end
   end
 end
