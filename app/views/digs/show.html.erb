@@ -33,7 +33,7 @@
     </p>
   <% else %>
     <p>
-      <%= link_to "Artifact ##{artifact.id} #{artifact.description}", dig_artifact_path(@dig, artifact) %>
+      <%= link_to "Artifact ##{artifact.id} #{truncate(artifact.description, length: 50)}", dig_artifact_path(@dig, artifact) %>
     </p>
   <% end %>
 <% end %>
