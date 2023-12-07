@@ -43,7 +43,7 @@ class Artifact < ApplicationRecord
     faunal_remains: 'faunal remains', 
     gastronomic: 'gastronomic',
     currency: 'currency',
-    armor: 'armor'
+    armor: 'armor',
     other: 'other'}
 
   validate :poster_is_dig_participant
