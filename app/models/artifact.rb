@@ -41,6 +41,9 @@ class Artifact < ApplicationRecord
     human_remains: 'human remains', 
     clothing: 'clothing', 
     faunal_remains: 'faunal remains', 
+    gastronomic: 'gastronomic',
+    currency: 'currency',
+    armor: 'armor'
     other: 'other'}
 
   validate :poster_is_dig_participant
