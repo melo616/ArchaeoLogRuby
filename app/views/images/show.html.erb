@@ -1,6 +1,6 @@
 <%= render @image %>
 
-<% if current_user == @image.poster %>
+<% if policy(@image).edit? && policy(@image).destroy? %>
   <div class="btn btn-toolbar">
     <% if @artifact %>
       <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
