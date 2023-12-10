@@ -5,7 +5,7 @@
 <hr />
 
 
-<% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+<% if policy(@dig).show_data_charts? %>
   <i><a href="#data-charts">Jump to Data Charts</a></i>
   <hr />
 <% end %>
@@ -24,7 +24,8 @@
 
   <hr />
 
-    <% if @dig.dig_participants.find_by(participant_id: current_user.id).role == "lead" || @dig.dig_participants.find_by(participant_id: current_user.id).role == "analyst" %>
+
+    <% if policy(@dig).show_data_charts? %>
       <%= render "data_charts" %>
     <% end %>
   </div>

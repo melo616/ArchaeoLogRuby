@@ -1,7 +1,7 @@
 class ArtifactsController < ApplicationController
   before_action :set_dig
   before_action :set_artifact, only: %i[ show edit update destroy ]
-  before_action(except: [:new, :create]) { authorize(@artifact || Artifact) }
+  before_action(except: [:new, :create, :artifacts_by_category, :artifacts_by_day]) { authorize(@artifact || Artifact) }
 
   # GET /artifacts or /artifacts.json
   def index
