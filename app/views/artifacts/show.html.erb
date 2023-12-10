@@ -13,7 +13,7 @@
 
 <%= render "shared/images", parent: @artifact %>
 
-<% if current_user == @artifact.poster || @dig.leads.any? { |lead| lead.id == current_user.id } %>
+<% if policy(@artifact).edit? && policy(@artifact).destroy? %>
   <hr />
   <div class="btn-toolbar mt-2">
     <%= link_to "Edit this artifact", edit_dig_artifact_path(@dig, @artifact), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %> 
