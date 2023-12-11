@@ -52,7 +52,7 @@ class ImagePolicy < ApplicationPolicy
 
   def lead?
     dig = get_dig(@image)
-    dig.leads.any? { |lead| lead == user }
+    dig.leads.include?(user)
   end
 
   def poster?

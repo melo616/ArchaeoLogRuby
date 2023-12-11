@@ -35,6 +35,6 @@ class DigParticipantPolicy < ApplicationPolicy
   private
 
   def lead?
-    @dig_participant.dig.leads.any? { |lead| lead == @user }
+    @dig_participant.dig.leads.include?(user)
   end
 end

@@ -42,7 +42,7 @@ class ArtifactPolicy < ApplicationPolicy
   end
 
   def lead?
-    @artifact.dig.leads.any? { |lead| lead == @user }
+    @artifact.dig.leads.include?(user)
   end
 
   def poster?
