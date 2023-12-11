@@ -4,7 +4,7 @@
   <div>
     <%= link_to "Back to dig", dig_path(@dig) %>
     <% if @dig.leads.include? current_user %> | 
-      <span data-bs-toggle="modal" data-bs-target="#newInvitationModal" style="cursor: pointer;">Invite new participant</span>
+      <span data-bs-toggle="modal" data-bs-target="#newInvitationModal" class="pointer">Invite new participant</span>
     <% end %>
   </div>
   <div>

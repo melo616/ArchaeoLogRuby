@@ -16,9 +16,40 @@ h1, h2, h3 {
 p {
   line-height: 2;
 }
+/* Image show page */
 .full-image {
   height: 350px;
 }
 .pointer {
   cursor: pointer;
+}
+/* Landing page image */
+.banner-image {
+  width: 100%; 
+  max-height: 400px; 
+  object-fit: cover;
+}
+.stripe {
+  height: 200px; 
+  background-color: #800000;
+}
+.landing-layout {
+  position: relative; 
+  width: 100%; 
+  max-height: 350px;
+}
+.homepage-overlay {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: white; 
+  text-align: center;
+}
+.red-link {
+  color: #dc3545;
+}
+/* Button spacing */
+.button-margin {
+  margin-right: 10px;
 }

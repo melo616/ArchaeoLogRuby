@@ -3,10 +3,10 @@
 <% if policy(@image).edit? && policy(@image).destroy? %>
   <div class="btn btn-toolbar">
     <% if @artifact %>
-      <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
+      <%= link_to "Edit this image", edit_dig_artifact_image_path(@dig, @artifact, @image), class: "btn btn-outline-secondary button-margin" %>
       <%= button_to "Destroy this image", dig_artifact_image_path(@dig, @artifact, @image), method: :delete, class: "btn btn-outline-danger" %>
     <% else %>
-      <%= link_to "Edit this image", edit_dig_image_path(@dig, @image), class: "btn btn-outline-secondary", style: "margin-right: 10px;" %>
+      <%= link_to "Edit this image", edit_dig_image_path(@dig, @image), class: "btn btn-outline-secondary button-margin" %>
       <%= button_to "Destroy this image", dig_image_path(@dig, @image), method: :delete, class: "btn btn-outline-danger" %>
     <% end %>
   </div>
