@@ -42,7 +42,7 @@ class AnnouncementPolicy < ApplicationPolicy
   end
 
   def lead?
-    @announcement.dig.leads.any? { user }
+    @announcement.dig.leads.include?(user)
   end
 
   def poster?

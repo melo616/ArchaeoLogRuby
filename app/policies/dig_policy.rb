@@ -37,7 +37,7 @@ class DigPolicy < ApplicationPolicy
   end
 
   def lead?
-    dig.leads.any? { |lead| lead == user }
+    @dig.leads.include?(user)
   end
 
   def analyst?
