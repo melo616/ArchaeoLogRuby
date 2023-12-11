@@ -127,22 +127,6 @@ task({ :sample_data => :environment }) do
   end
   pp "There are now #{DigParticipant.count} participants."
 
-  # pp "Generating dig images"
-  # Dig.all.each do |dig|
-  #   num = rand(1..6)
-  #   num.times do 
-  #     user = dig.dig_participants.sample
-  #     image_url = "https://res.cloudinary.com/demo/image/upload/sample1.jpg"
-  #     Image.create(
-  #       notes: Faker::Quote.jack_handey,
-  #       image_url: image_url,
-  #       dig_id: dig.id,
-  #       user_id: user.participant_id,
-  #     )
-  #   end
-  # end
-  # pp "There are now #{Image.count} dig images."
-
   pp "Generating artifacts (suspenseful music plays...)"
   Dig.all.each do |dig|
     rand(5..20).times do

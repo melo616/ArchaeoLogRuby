@@ -18,7 +18,7 @@
   <% if @profile.dig_participants.count > 0 %>
     <% @profile.dig_participants.each do |participation| %>
       <% dig = Dig.find_by(id: participation.dig_id) %>
-        <% if dig.users.include? current_user %>
+        <% if policy(dig).show? %>
           <p>
             <strong><%= link_to "#{dig.name}", dig_path(dig) %></strong>
           </p>

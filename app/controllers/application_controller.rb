@@ -3,9 +3,8 @@ class ApplicationController < ActionController::Base
   skip_forgery_protection
   include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  after_action :verify_authorized, unless: :devise_controller?
+  after_action :verify_authorized, except: [:artifacts_by_category, :artifacts_by_day], unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 
   protected
   #accepts additional user parameters

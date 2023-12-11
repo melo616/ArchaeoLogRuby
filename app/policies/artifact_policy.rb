@@ -10,14 +10,6 @@ class ArtifactPolicy < ApplicationPolicy
     true
   end
 
-  def artifacts_by_category?
-    true
-  end
-
-  def artifacts_by_day?
-    true
-  end
-
   def show?
     participant?
   end
@@ -42,10 +34,11 @@ class ArtifactPolicy < ApplicationPolicy
     lead? || poster?
   end
 
+
   private
 
   def participant?
-    @artifact.dig.dig_participants.any? { |participant| participant.participant_id == @user.id }
+    @artifact.dig.dig_participants.any? { |participant| participant.participant_id == user.id }
   end
 
   def lead?

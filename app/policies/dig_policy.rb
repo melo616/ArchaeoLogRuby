@@ -10,9 +10,8 @@ class DigPolicy < ApplicationPolicy
     true
   end
 
-  #user can only see dig if they are a participant
   def show?
-    @dig.users.include?(user)
+    participant?
   end
 
   def edit?
@@ -27,9 +26,21 @@ class DigPolicy < ApplicationPolicy
     lead?
   end
 
+  def show_data_charts?
+    lead? || analyst?
+  end
+
   private
+
+  def participant?
+    @dig.dig_participants.any? { |participant| participant.participant_id == user.id }
+  end
 
   def lead?
     dig.leads.any? { |lead| lead == user }
+  end
+
+  def analyst?
+    @dig.dig_participants.find_by(participant_id: user.id).role == "analyst"
   end
 end

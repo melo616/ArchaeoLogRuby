@@ -1,17 +1,12 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: %i[ accept destroy ]
-  after_action :skip_pundit_authorization
+  before_action { authorize (@invitation || Invitation) }
   
   # GET /invitations or /invitations.json
   def index
     @pending_received_invitations = current_user.pending_received_invitations
     @pending_sent_invitations = current_user.pending_sent_invitations
   end
-
-  # GET /invitations/new
-  # def new
-  #   @invitation = Invitation.new
-  # end
 
   # POST /invitations or /invitations.json
   def create
@@ -70,11 +65,5 @@ class InvitationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def invitation_params
       params.require(:invitation).permit(:role, :status, :dig_id, :sender_id, :recipient_id)
-    end
-
-    #for development only - DELETE
-    def skip_pundit_authorization
-      skip_authorization
-      skip_policy_scope
     end
 end
