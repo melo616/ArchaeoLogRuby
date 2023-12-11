@@ -16,4 +16,9 @@ h1, h2, h3 {
 p {
   line-height: 2;
 }
-
+.full-image {
+  height: 350px;
+}
+.pointer {
+  cursor: pointer;
+}
