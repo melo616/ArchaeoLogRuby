@@ -2,7 +2,7 @@
 
 <% if policy(@announcement).edit? && policy(@announcement).destroy? %>
   <div class="btn-toolbar">
-    <%= link_to "Edit", edit_dig_announcement_path(@dig, @announcement), class: "btn btn-outline-primary", style: "margin-right: 10px;" %>
+    <%= link_to "Edit", edit_dig_announcement_path(@dig, @announcement), class: "btn btn-outline-primary button-margin" %>
     <%= button_to "Delete", dig_announcement_path(@dig, @announcement), method: :delete, class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
