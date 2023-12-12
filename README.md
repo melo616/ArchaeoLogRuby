@@ -16,6 +16,11 @@
 
 1. Maps Integration: View your dig's location on a map using GeoCoding and Google Maps API.
 
+##
+Data Model
+
+![ERD](erd.png)
+
 This project was built using a base Ruby on Rails template provided by DPI.
 
 - Ruby version: `3.2.1`
