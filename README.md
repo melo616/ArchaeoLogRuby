@@ -16,8 +16,7 @@
 
 1. Maps Integration: View your dig's location on a map using GeoCoding and Google Maps API.
 
-##
-Data Model
+## Data Model
 
 ![ERD](erd.png)
 
