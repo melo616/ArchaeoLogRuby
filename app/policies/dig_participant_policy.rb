@@ -7,7 +7,6 @@ class DigParticipantPolicy < ApplicationPolicy
   end
 
   def index?
-    # TODO: need to know the dig
     true
   end
 
@@ -16,7 +15,6 @@ class DigParticipantPolicy < ApplicationPolicy
   end
 
   def create?
-    # lead?
     true
   end
 
