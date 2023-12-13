@@ -22,6 +22,10 @@
 ## Future Features
 
 1. Maps Integration: View your dig's location on a map using GeoCoding and Google Maps API.
+2. More robust data charts based on additional artifact attributes
+3. Email notifications for invitations, announcements, and account information
+4. Ability to add custom fields for artifacts
+5. PDF uploads to share academic papers
 
 ## Data Model
 
