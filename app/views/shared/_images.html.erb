@@ -1,9 +1,9 @@
 <div>
   <p>
-    <strong><%= parent.class %> Images:</strong>
+    <strong><%= parent.class.name %> Images:</strong>
     <% parent.images.each do |image| %>
       <% if image.image.present? %>
-        <%= link_to dig_image_path(@dig, image), style: "text-decoration: none;" do %>
+        <%= link_to image_path(image), style: "text-decoration: none;" do %>
           <%= image_tag image.image.url, style: "height: 100px;" %>
         <% end %>
       <% else %>
@@ -12,8 +12,8 @@
     <% end %>
   </p>
   <% if parent.class == Dig %>
-    <%= link_to "Add a new dig image", new_dig_image_path(@dig), class: "btn btn-outline-secondary" %>
+    <%= link_to "Add a new dig image", new_image_path(imageable_id: @dig.id, imageable_type: @dig.class.name), class: "btn btn-outline-secondary" %>
   <% elsif parent.class == Artifact %>
-    <%= link_to "Add a new artifact image", new_dig_artifact_image_path(@dig, @artifact),  class: "btn btn-outline-secondary" %>
+    <%= link_to "Add a new artifact image", new_image_path(imageable_id: @artifact.id, imageable_type: @artifact.class.name),  class: "btn btn-outline-secondary" %>
   <% end %>
 </div>
