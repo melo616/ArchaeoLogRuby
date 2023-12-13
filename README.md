@@ -3,11 +3,11 @@
 [`ArchaeoLog`](https://archaeolog.onrender.com) is a digital field log where archaeologists can create digs, add participants, add images, and log artifacts. It is a streamlined and user-friendly application that serves as a modern and lightweight upgrade to traditional museum and archaeological software.
 
 ## Table of Contents
-1. [Features](##features)
-2. [Future Features](##future-features)
-3. [Data Model](##data-model)
-4. [Installation](##installation)
-5. [Credits and Gems/Software](##credits)
+1. [Features](#features)
+2. [Future Features](#future-features)
+3. [Data Model](#data-model)
+4. [Installation](#installation)
+5. [Credits and Gems/Software](#credits)
 
 ## Features
 
@@ -49,11 +49,11 @@
 5. Setup environment variables:
    -Set up a Cloudinary account and access your cloud name, api secret, and api key
    -Create a .env with the following format:
-   ```
-     CLOUDINARY_CLOUD_NAME="your cloud name"
-     CLOUDINARY_API_KEY="your api key"
-     CLOUDINARY_API_SECRET="your api secret"
-   ```
+```
+ CLOUDINARY_CLOUD_NAME="your cloud name"
+ CLOUDINARY_API_KEY="your api key"
+ CLOUDINARY_API_SECRET="your api secret"
+```
 
 ## Credits
 
