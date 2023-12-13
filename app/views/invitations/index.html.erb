@@ -9,7 +9,7 @@
         <% @pending_received_invitations.each do |invitation| %>
           <%= render invitation %>
           <div class="btn-toolbar">
-            <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary", class: "button-margin" %>
+            <%= button_to "Accept", accept_invitation_path(invitation), class: "btn btn-outline-primary button-margin" %>
             <%= button_to "Decline", invitation_path(invitation), method: :delete, class: "btn btn-outline-secondary" %>
           </div>
         <% end %>
