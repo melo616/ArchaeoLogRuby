@@ -7,7 +7,7 @@
 2. [Future Features](#future-features)
 3. [Data Model](#data-model)
 4. [Installation](#installation)
-5. [Credits and Gems/Software](#credits)
+5. [Contact](#contact)
 
 ## Features
 
@@ -60,6 +60,6 @@
  CLOUDINARY_API_SECRET="your api secret"
 ```
 
-## Credits
+## Contact
 
-This project was built using a base Ruby on Rails template provided by DPI.
+Kat Jarboe - [LinkedIn](https://www.linkedin.com/in/katjarboe/)
