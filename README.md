@@ -2,6 +2,9 @@
 
 [`ArchaeoLog`](https://archaeolog.onrender.com) is a digital field log where archaeologists can create digs, add participants, add images, and log artifacts. It is a streamlined and user-friendly application that serves as a modern and lightweight upgrade to traditional museum and archaeological software.
 
+## Table of Contents
+1. [Features](##features)
+
 ## Features
 
 1. Digs: Create and manage archaeological digs with details such as location, start and end date, and description. 
@@ -19,6 +22,8 @@
 ## Data Model
 
 ![ERD](erd.png)
+
+## Credits and Versions
 
 This project was built using a base Ruby on Rails template provided by DPI.
 
