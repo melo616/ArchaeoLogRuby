@@ -4,6 +4,10 @@
 
 ## Table of Contents
 1. [Features](##features)
+2. [Future Features](##future-features)
+3. [Data Model](##data-model)
+4. [Installation](##installation)
+5. [Credits and Gems/Software](##credits)
 
 ## Features
 
@@ -23,12 +27,37 @@
 
 ![ERD](erd.png)
 
-## Credits and Versions
+## Installation
+1. Clone this repository:
+```
+  git clone https://github.com/melo616/ArchaeoLogRuby.git
+  cd ArchaeoLog
+```
+2. Install dependencies:
+  - Postgresql 12
+  - Ruby version: `3.2.1`
+  - Rails version: `7.0.4.3`
+3. Install gems:
+```
+  bundle install
+```
+4. Set up database:
+```
+  rails db:create
+  rails db:migrate
+```
+5. Setup environment variables:
+   -Set up a Cloudinary account and access your cloud name, api secret, and api key
+   -Create a .env with the following format:
+   ```
+     CLOUDINARY_CLOUD_NAME="your cloud name"
+     CLOUDINARY_API_KEY="your api key"
+     CLOUDINARY_API_SECRET="your api secret"
+   ```
+
+## Credits
 
 This project was built using a base Ruby on Rails template provided by DPI.
-
-- Ruby version: `3.2.1`
-- Rails version: `7.0.4.3`
 
 ### Gems included in DPI's Rails Template
 
