@@ -37,7 +37,6 @@ class ImagePolicy < ApplicationPolicy
   private
 
   def get_dig(image)
-    debugger
     if image.imageable_type == "Dig"
       dig = Dig.find_by(id: image.imageable_id)
     elsif image.imageable_type == "Artifact"

@@ -21,8 +21,8 @@
     <%= form.text_field :notes, class: "form-control" %>
   </div>
 
-  <%= form.hidden_field :imageable_type, value: params[:imageable_type] %>
-  <%= form.hidden_field :imageable_id, value: params[:imageable_id] %>
+  <%= form.hidden_field :imageable_type, value: image.imageable_type %>
+  <%= form.hidden_field :imageable_id, value: image.imageable_id %>
 
   <div>
     <%= form.hidden_field :poster_id, value: current_user.id %>
