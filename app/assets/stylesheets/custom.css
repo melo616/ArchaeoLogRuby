@@ -53,3 +53,7 @@ p {
 .button-margin {
   margin-right: 10px;
 }
+/* For image thumbnails */
+.thumbnail {
+  height: 100px;
+}

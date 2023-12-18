@@ -1,3 +1,11 @@
+<% if @image.imageable_type == "Dig" %>
+  <h3>Image for <%= @image.imageable.name %> </h3>
+  <%= link_to "Back to dig", dig_path(@image.imageable) %>
+<% else %>
+  <h3>Image for Artifact <%= @image.imageable.id %> </h3>
+  <%= link_to "Back to artifact", dig_artifact_path(@image.imageable.dig, @image.imageable) %>
+<% end %>
+
 <%= render @image %>
 
 <% if policy(@image).edit? && policy(@image).destroy? %>

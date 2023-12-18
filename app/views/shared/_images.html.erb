@@ -1,16 +1,18 @@
 <div>
-  <p>
-    <strong><%= parent.class.name %> Images:</strong>
+  <strong><%= parent.class.name %> Images:</strong>
+  <div class="overflow-auto mb-2 container-fluid">
+    <div class="d-flex flex-nowrap">
     <% parent.images.each do |image| %>
       <% if image.image.present? %>
         <%= link_to image_path(image), style: "text-decoration: none;" do %>
-          <%= image_tag image.image.url, style: "height: 100px;" %>
+          <%= image_tag image.image.url, class: "thumbnail button-margin" %>
         <% end %>
       <% else %>
         <p>There was a problem.</p>
       <% end %>
     <% end %>
-  </p>
+    </div>
+  </div>
   <% if parent.class == Dig %>
     <%= link_to "Add a new dig image", new_image_path(imageable_id: @dig.id, imageable_type: @dig.class.name), class: "btn btn-outline-secondary" %>
   <% elsif parent.class == Artifact %>

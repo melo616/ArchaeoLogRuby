@@ -22,7 +22,6 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    debugger
     @image =  authorize Image.new(image_params)
     respond_to do |format|
       if @image.save
@@ -37,7 +36,6 @@ class ImagesController < ApplicationController
 
   # PATCH/PUT /images/1 or /images/1.json
   def update
-    debugger
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to image_url(@image), notice: "Image was successfully updated." }
