@@ -4,7 +4,7 @@
     <div class="d-flex flex-nowrap">
     <% parent.images.each do |image| %>
       <% if image.image.present? %>
-        <%= link_to image_path(image), style: "text-decoration: none;" do %>
+        <%= link_to image_path(image) do %>
           <%= image_tag image.image.url, class: "thumbnail button-margin" %>
         <% end %>
       <% else %>
