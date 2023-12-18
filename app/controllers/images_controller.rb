@@ -2,11 +2,6 @@ class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
   before_action(except: [:new, :create]) { authorize(@image || Image ) }
 
-  # GET /images or /images.json
-  def index
-    @images = Image.all
-  end
-
   # GET /images/1 or /images/1.json
   def show
   end
