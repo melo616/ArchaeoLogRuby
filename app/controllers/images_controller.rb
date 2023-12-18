@@ -46,7 +46,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to dig_url(@dig), notice: "Image was successfully destroyed." }
+      format.html { redirect_to image_redirect_path, notice: "Image was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -60,6 +60,17 @@ class ImagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def image_params
       params.require(:image).permit(:image, :notes, :imageable_type, :imageable_id, :poster_id)
+    end
+
+    # Handles redirect on destroy
+    def image_redirect_path
+      if @image.imageable_type == "Dig"
+        dig_url(@image.imageable)
+      elsif @image.imageable_type == "Artifact"
+        dig_artifact_url(@image.imageable.dig, @image.imageable)
+      else
+        root_url
+      end
     end
 
 end
