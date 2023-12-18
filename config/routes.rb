@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   get 'info/about'
 
+  resources :images
   resources :digs do
-    resources :images
+    # resources :images
     resources :dig_participants, except: [:show]
     resources :announcements
     resources :artifacts do
-      resources :images
+      # resources :images
       collection do
         get "artifacts_by_category"
         get "artifacts_by_day"
