@@ -1,6 +1,6 @@
 class DigPolicy < ApplicationPolicy
   attr_reader :user, :dig
-
+# Looks great!
   def initialize(user, dig)
     @user = user
     @dig = dig
