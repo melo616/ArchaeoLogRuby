@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: [:artifacts_by_category, :artifacts_by_day], unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # Very nice
   protected
   #accepts additional user parameters
   def configure_permitted_parameters
